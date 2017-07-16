@@ -100,12 +100,12 @@
 <meta property="og:url" content="http://loyd.tech/2017/05/18/4.抽象工厂模式/index.html">
 <meta property="og:site_name" content="Loyd">
 <meta property="og:description" content="4.抽象工厂模式 抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在抽象工厂模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。  抽象工厂模式与工厂模式的区别：  抽象工厂模式是工厂方法模式的升级版">
-<meta property="og:image" content="http://loyd.tech/2017/05/18/4.抽象工厂模式/media/15001087425929/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-15%20%E4%B8%8B%E5%8D%886.38.39.png">
-<meta property="og:updated_time" content="2017-07-16T12:49:27.000Z">
+<meta property="og:image" content="http://loyd.tech/media/15001087425929/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-15%20%E4%B8%8B%E5%8D%886.38.39.png">
+<meta property="og:updated_time" content="2017-07-16T13:16:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抽象工厂模式">
 <meta name="twitter:description" content="4.抽象工厂模式 抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在抽象工厂模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。  抽象工厂模式与工厂模式的区别：  抽象工厂模式是工厂方法模式的升级版">
-<meta name="twitter:image" content="http://loyd.tech/2017/05/18/4.抽象工厂模式/media/15001087425929/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-15%20%E4%B8%8B%E5%8D%886.38.39.png">
+<meta name="twitter:image" content="http://loyd.tech/media/15001087425929/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-15%20%E4%B8%8B%E5%8D%886.38.39.png">
 
 
 
@@ -367,7 +367,7 @@
 <p>在抽象工厂模式中，提出了产品族的概念：所谓的产品族，是指位于不同产品等级结构中功能相关联的产品组成的家族(如Engine, Tyre, Seat)。抽象工厂模式所提供的一系列产品就组成一个产品族；而工厂方法提供的一系列产品称为一个等级结构.</p>
 <p>加入要生产两种车，高端车和低端车，他们的配置在引擎，座椅和轮胎上都有不同，下面通过抽象方法实现它：</p>
 <p><strong>UML图</strong></p>
-<p><img src="media/15001087425929/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-15%20%E4%B8%8B%E5%8D%886.38.39.png" alt="屏幕快照 2017-07-15 下午6.38.39"></p>
+<p><img src="/media/15001087425929/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-15%20%E4%B8%8B%E5%8D%886.38.39.png" alt="屏幕快照 2017-07-15 下午6.38.39"></p>
 <a id="more"></a>
 <p><strong>引擎</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.dp.abstractfactory;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Engine</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
