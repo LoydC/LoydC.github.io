@@ -1,602 +1,1336 @@
 <!DOCTYPE html>
-<html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="welcome" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Stay hungry,Stay foolish.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Loyd">
+<meta property="og:url" content="http://loyd.tech/index.html">
+<meta property="og:site_name" content="Loyd">
+<meta property="og:description" content="Stay hungry,Stay foolish.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Loyd">
+<meta name="twitter:description" content="Stay hungry,Stay foolish.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://loyd.tech/"/>
+
+
+
+
+
+  <title>Loyd</title>
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-选择排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/选择排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
+        <p class="site-subtitle"></p>
+      
   </div>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/选择排序/">选择排序</a>
-    </h1>
+</div>
+
+<nav class="site-nav">
   
 
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/堆排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/堆排序/" itemprop="url">堆排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序（Selection Sort）。</p>
-<h2 id="选择排序思想"><a href="#选择排序思想" class="headerlink" title="选择排序思想"></a>选择排序思想</h2><p>首先在未排序的数列中找到最小(or最大)元素，然后将其存放到数列的起始位置；接着，再从剩余未排序的元素中继续寻找最小(or最大)元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
-<p><strong>具体步骤：</strong></p>
-<p><img src="/media/14995815106535/14995831145390.png" alt=""></p>
-<p><strong>排序效果：</strong></p>
-<p><img src="/media/14995815106535/14998471777435.gif" alt=""></p>
-<h2 id="选择排序实现"><a href="#选择排序实现" class="headerlink" title="选择排序实现"></a>选择排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(AnyType[] array)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (array == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span>;</div><div class="line"></div><div class="line">		AnyType min;</div><div class="line">		<span class="keyword">int</span> minPos;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length - <span class="number">1</span>; i++) &#123;</div><div class="line">			min = array[i];</div><div class="line">			minPos = i;</div><div class="line"></div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; array.length; j++) &#123;</div><div class="line">				<span class="keyword">if</span> (min.compareTo(array[j]) &gt; <span class="number">0</span>) &#123;</div><div class="line">					min = array[j];</div><div class="line">					minPos = j;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (minPos != i) &#123;</div><div class="line">				AnyType temp = array[i];</div><div class="line">				array[i] = array[minPos];</div><div class="line">				array[minPos] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	private static &lt;AnyType&gt; void print(AnyType[] array)&#123;</div><div class="line">		for(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		Integer[] array = &#123;1,3,6,2,4,9,10,0,3,9,2,7&#125;;</div><div class="line">		print(array);</div><div class="line">		</div><div class="line">		//测试选择排序</div><div class="line">		SelectionSort.selectionSort(array);</div><div class="line">		print(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>输出结果</strong>：</p>
-<blockquote>
-<p>1 3 6 2 4 9 10 0 3 9 2 7<br>0 1 2 2 3 3 4 6 7 9 9 10 </p>
-</blockquote>
-<h2 id="选择排序的分析"><a href="#选择排序的分析" class="headerlink" title="选择排序的分析"></a>选择排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n <sup>2</sup>)</p>
-</li>
-<li><p>空间复杂度为O(1)</p>
-</li>
-<li><p>最好和最差时间复杂度都为O(n <sup>2</sup>)</p>
-</li>
-<li><p>选择排序不稳定 </p>
-</li>
-</ul>
+
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/选择排序/" data-id="cj56omtvk000yro2fbetiwmlh" class="article-share-link">Share</a>
       
+
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-插入排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/插入排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/插入排序/">插入排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>插入排序（Insertion Sort）。</p>
-<h2 id="插入排序思想"><a href="#插入排序思想" class="headerlink" title="插入排序思想"></a>插入排序思想</h2><p>算法的基本思想是把n个带排序元素看成一个有序表和一个无序表。开始时有序表只包含1个元素，无需表包含n-1个元素，从无序表中取出第一个元素，将它插入到有序表中的适当位置，使之成为新的有序表，重复n-1次完成排序。</p>
-<p><strong>具体步骤：</strong></p>
-<p><img src="/media/14994786667223/14994796361094.jpg" alt=""></p>
-<p><strong>排序效果：</strong></p>
-<p><img src="/media/14994786667223/14998470542989.gif" alt=""></p>
-<h2 id="插入排序实现"><a href="#插入排序实现" class="headerlink" title="插入排序实现"></a>插入排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">inserttionSort</span><span class="params">(AnyType[] array)</span></span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;array.length;i++)&#123;</div><div class="line">			<span class="keyword">int</span> j;</div><div class="line">			AnyType temp = array[i];</div><div class="line">			<span class="keyword">for</span>(j=i;j&gt;<span class="number">0</span> &amp;&amp; temp.compareTo(array[j-<span class="number">1</span>])&lt;<span class="number">0</span> ;j--)&#123;</div><div class="line">				array[j] = array[j-<span class="number">1</span>];</div><div class="line">			&#125;</div><div class="line">			array[j] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	private static &lt;AnyType&gt; void print(AnyType[] array)&#123;</div><div class="line">		for(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		Double[] array = &#123;3.14,3.1,4.56,1.0,4.38,0.0,9.5,2.34,7.23&#125;;</div><div class="line">		print(array);</div><div class="line">		</div><div class="line">		//测试插入排序</div><div class="line">		InsertionSort.inserttionSort(array);</div><div class="line">		print(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>输出结果</strong>：</p>
-<blockquote>
-<p>3.14 3.1 4.56 1.0 4.38 0.0 9.5 2.34 7.23<br>0.0 1.0 2.34 3.1 3.14 4.38 4.56 7.23 9.5 </p>
-</blockquote>
-<h2 id="插入排序的分析"><a href="#插入排序的分析" class="headerlink" title="插入排序的分析"></a>插入排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n <sup>2</sup>)</p>
-</li>
-<li><p>空间复杂度为O(1)</p>
-</li>
-<li><p>最差时间复杂度为O(n <sup>2</sup>)</p>
-<blockquote>
-<p>最差的情况为逆序</p>
-</blockquote>
-</li>
-<li><p>最好时间复杂度为O(n)</p>
-<blockquote>
-<p>最好的情况为顺序</p>
-</blockquote>
-</li>
-<li><p>插入排序稳定 </p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/插入排序/" data-id="cj56omtvj000tro2fcjwkvu66" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-快速排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/快速排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/快速排序/">快速排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序（Quick Sort），它和归并排序一样，使用分治的策略。</p>
-<h2 id="快速排序思想"><a href="#快速排序思想" class="headerlink" title="快速排序思想"></a>快速排序思想</h2><p>选择一个基准数，通过一趟排序将要排序的数据分割成独立的两部分；其中一部分的所有数据都比另外一部分的所有数据都要小。然后，再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
-<p><strong>具体步骤：</strong></p>
-<p>第一趟排序为如下的步骤：</p>
-<p><img src="/media/15001871057749/15001876917340.jpg" alt=""></p>
-<p>完成第一趟排序后，将序列分为比67小的序列{24，23，10，35，28}和比67大的序列{90，89}，再针对每个序列用与上面相同的方法划分</p>
-<p><strong>排序效果：</strong><br><img src="/media/15001871057749/15001907563996.gif" alt=""></p>
-<h2 id="快速排序实现"><a href="#快速排序实现" class="headerlink" title="快速排序实现"></a>快速排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(AnyType[] array)</span> </span>&#123;</div><div class="line">		quickSort(array,<span class="number">0</span>,array.length-<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(AnyType[] array, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (start &lt; end) &#123;</div><div class="line">			</div><div class="line">			Test.print(array,start,end);</div><div class="line">			</div><div class="line">			<span class="keyword">int</span> i = start;</div><div class="line">			<span class="keyword">int</span> j = end;</div><div class="line"></div><div class="line">			AnyType povit = array[start];</div><div class="line"></div><div class="line">			<span class="keyword">while</span> (i &lt; j) &#123;</div><div class="line">				<span class="comment">// 从右向左找第一个小于枢纽元的数</span></div><div class="line">				<span class="keyword">while</span> (i &lt; j &amp;&amp; array[j].compareTo(povit) &gt; <span class="number">0</span>)</div><div class="line">					j--;</div><div class="line">				<span class="keyword">if</span> (i &lt; j)</div><div class="line">					array[i++] = array[j];</div><div class="line">				<span class="comment">// 从左向右找第一个大于枢纽元的数</span></div><div class="line">				<span class="keyword">while</span> (i &lt; j &amp;&amp; array[i].compareTo(povit) &lt; <span class="number">0</span>)</div><div class="line">					i++;</div><div class="line">				<span class="keyword">if</span> (i &lt; j)</div><div class="line">					array[j--] = array[i];</div><div class="line">			&#125;</div><div class="line">			array[i] = povit;</div><div class="line">			quickSort(array,start,i-<span class="number">1</span>);</div><div class="line">			quickSort(array,i+<span class="number">1</span>,end);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(AnyType[] array)</span></span>&#123;</div><div class="line">		<span class="keyword">for</span>(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + <span class="string">" "</span>);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(AnyType[] array,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = start;i&lt;=end;i++)&#123;</div><div class="line">			System.out.print(array[i] + <span class="string">" "</span>);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		</div><div class="line">		Integer[] array = &#123;<span class="number">67</span>,<span class="number">23</span>,<span class="number">89</span>,<span class="number">35</span>,<span class="number">28</span>,<span class="number">90</span>,<span class="number">10</span>,<span class="number">24</span>&#125;;</div><div class="line"></div><div class="line">		QuickSort.quickSort(array);</div><div class="line">		</div><div class="line">		print(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面是算法递归处理的数组的元素，最后一条是排序后的数组<br><strong>输出结果</strong>：</p>
-<blockquote>
-<p>67 23 89 35 28 90 10 24<br>24 23 10 35 28<br>10 23<br>35 28<br>90 89<br>10 23 24 28 35 67 89 90 </p>
-</blockquote>
-<h2 id="快速排序的分析"><a href="#快速排序的分析" class="headerlink" title="快速排序的分析"></a>快速排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n log n)</p>
-</li>
-<li><p>最差时间复杂度也为O(n <sup>2</sup>) </p>
-<blockquote>
-<p>已经排好序的情况</p>
-</blockquote>
-</li>
-<li><p>空间复杂度为O(log n)~O(n)</p>
-<blockquote>
-<p>函数栈，最坏的情况下元素有序，调用深度是O(n)</p>
-</blockquote>
-</li>
-<li><p>快速排序不稳定 </p>
-</li>
-</ul>
-<h2 id="快速排序的优化"><a href="#快速排序的优化" class="headerlink" title="快速排序的优化"></a>快速排序的优化</h2><h3 id="选取枢纽元"><a href="#选取枢纽元" class="headerlink" title="选取枢纽元"></a>选取枢纽元</h3><p>选取枢纽元一般有三种做法：</p>
-<ul>
-<li><p>选取第一个元素作为枢纽元</p>
-<p>  这中选取对于输入是预排序或者反序的，效率就很糟糕。</p>
-</li>
-<li><p>随机选取枢纽元</p>
-<p>  该策略相对安全，因为随机的枢纽元不可能总在连续不断的产生劣质的分割。另一方面，随机数的生成一般开销很大，根本减少不了算法其余部分的平均运算。</p>
-</li>
-<li><p>三数中值分割法</p>
-<p>  使用左端、右端和中心位置上的三个元素的中值作为枢纽元，据说实际上减少了14%的比较次数。</p>
-</li>
-</ul>
-<h3 id="小数组"><a href="#小数组" class="headerlink" title="小数组"></a>小数组</h3><p>对于很小的数组（N &lt;= 20），快速排序不如插入排序，并且快速排序是递归的，所以这样的情况经常发生。通常的解决方法是对于小的数组不使用递归的快速排序，而代之以诸如插入排序这样的对小数组有效的排序算法。使用这种策略实际上可以节约15%的运行时间。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/快速排序/" data-id="cj56omtvi000rro2fuswibbel" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-归并排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/归并排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/归并排序/">归并排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序（Merge Sort），是采用分治法的一个非常典型的应用。</p>
-<h2 id="归并排序思想"><a href="#归并排序思想" class="headerlink" title="归并排序思想"></a>归并排序思想</h2><p>将两个有序数列合并，效率很高，可以达到O(N)，归并排序的思想就是讲数组分为两组A,B，如果这两组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。所以，可以将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。这样通过先递归的分解数列，再合并数列就完成了归并排序。</p>
-<p><strong>具体步骤：</strong></p>
-<p><img src="/media/14998462517540/14998476778561.png" alt=""></p>
-<p><strong>排序效果：</strong></p>
-<p><img src="/media/14998462517540/15001879306816.gif" alt=""></p>
-<h2 id="归并排序实现"><a href="#归并排序实现" class="headerlink" title="归并排序实现"></a>归并排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(AnyType[] array)</span></span>&#123;</div><div class="line">		AnyType[] tempArray = (AnyType[]) <span class="keyword">new</span> Comparable[array.length];</div><div class="line">		mergeSort(array, tempArray, <span class="number">0</span>, array.length-<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//递归的分为两部分后合并</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(AnyType[] array,AnyType[] tempArray,<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(left &lt; right)&#123;</div><div class="line">			<span class="keyword">int</span> center = (left + right) / <span class="number">2</span>;</div><div class="line">			mergeSort(array, tempArray, left, center);</div><div class="line">			mergeSort(array, tempArray, center + <span class="number">1</span>,right);</div><div class="line">			merge(array, tempArray, left, center+<span class="number">1</span>, right);</div><div class="line">			Test.print(array);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 将两个有序的序列合并</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(AnyType[] array,AnyType[] tempArray,<span class="keyword">int</span> leftPos,<span class="keyword">int</span> rightPos,<span class="keyword">int</span> rightEnd)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> leftEnd = rightPos-<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> tempPos = leftPos;</div><div class="line">		<span class="keyword">int</span> numElements = rightEnd - leftPos + <span class="number">1</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(leftPos &lt;= rightPos &amp;&amp; rightPos &lt;= rightEnd)&#123;</div><div class="line">			<span class="keyword">if</span>(array[leftPos].compareTo(array[rightPos]) &lt;= <span class="number">0</span>)&#123;</div><div class="line">				tempArray[tempPos++] = array[leftPos++];</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				tempArray[tempPos++] = array[rightPos++];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(leftPos &lt;= leftEnd)&#123;</div><div class="line">			tempArray[tempPos++] = array[leftPos++];</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(rightPos &lt;= rightEnd)&#123;</div><div class="line">			tempArray[tempPos++] = array[rightPos++];</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="comment">//将tempArray中排序的值赋给array中</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numElements;i++,rightEnd--)&#123;</div><div class="line">			array[rightEnd] = tempArray[rightEnd];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType&gt; <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(AnyType[] array)</span></span>&#123;</div><div class="line">		<span class="keyword">for</span>(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + <span class="string">" "</span>);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		</div><div class="line">		Integer[] array = &#123;<span class="number">8</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</div><div class="line">		print(array);</div><div class="line"></div><div class="line">		<span class="comment">//测试归并排序</span></div><div class="line">		MergeSort.mergeSort(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>每次merge后调用打印，<strong>输出结果</strong>：</p>
-<blockquote>
-<p>8 3 2 6 7 1 5 4<br>3 8 2 6 7 1 5 4<br>3 8 2 6 7 1 5 4<br>2 3 6 8 7 1 5 4<br>2 3 6 8 1 7 5 4<br>2 3 6 8 1 7 4 5<br>2 3 6 8 1 4 5 7<br>1 2 3 4 5 6 7 8 </p>
-</blockquote>
-<h2 id="归并排序的分析"><a href="#归并排序的分析" class="headerlink" title="归并排序的分析"></a>归并排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n log n)</p>
-</li>
-<li><p>最差最好时间复杂度也为O(n log n) </p>
-</li>
-<li><p>空间复杂度为O(n)</p>
-</li>
-<li><p>归并排序稳定 </p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/归并排序/" data-id="cj56omtvf000oro2fw8otv6zk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-冒泡排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/冒泡排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/冒泡排序/">冒泡排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>冒泡排序（Bubble Sort）,又被称为气泡排序或泡沫排序。</p>
-<h2 id="冒泡排序思想"><a href="#冒泡排序思想" class="headerlink" title="冒泡排序思想"></a>冒泡排序思想</h2><p>算法的基本思想是遍历若干次要排序的数列，每次遍历是，它都会从前往后一次的比较相邻两个元素的大小，如果前者比后者大，则交换它们的位置，这样，一次遍历后，最大的元素在数组的末尾。再次遍历，第二大的元素排列在最大的元素之前，如此操作，直到整个数列都有序为止。</p>
-<p><strong>具体步骤：</strong></p>
-<p><img src="/media/14994830359995/14994837181406.png" alt=""></p>
-<p><strong>排序效果：</strong></p>
-<p><img src="/media/14994830359995/14998471156848.gif" alt=""></p>
-<h2 id="冒泡排序实现"><a href="#冒泡排序实现" class="headerlink" title="冒泡排序实现"></a>冒泡排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(AnyType[] array)</span></span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=array.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">			<span class="keyword">boolean</span> isHaveExchange = <span class="keyword">false</span>;</div><div class="line">			</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i-<span class="number">1</span>;j++)&#123;</div><div class="line">				<span class="keyword">if</span>(array[j].compareTo(array[j+<span class="number">1</span>]) &gt; <span class="number">0</span>)&#123;</div><div class="line">					AnyType temp = array[j];</div><div class="line">					array[j] = array[j+<span class="number">1</span>];</div><div class="line">					array[j+<span class="number">1</span>] = temp;</div><div class="line">					isHaveExchange = <span class="keyword">true</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(!isHaveExchange)</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	private static &lt;AnyType&gt; void print(AnyType[] array)&#123;</div><div class="line">		for(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		Double[] array = &#123;3.14,3.1,4.56,1.0,4.38,0.0,9.5,2.34,7.23&#125;;</div><div class="line">		print(array);</div><div class="line">		</div><div class="line">		//测试冒泡排序</div><div class="line">		BubbleSort.bubbleSort(array);</div><div class="line">		print(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>输出结果</strong>：</p>
-<blockquote>
-<p>3.14 3.1 4.56 1.0 4.38 0.0 9.5 2.34 7.23<br>0.0 1.0 2.34 3.1 3.14 4.38 4.56 7.23 9.5 </p>
-</blockquote>
-<h2 id="冒泡排序的分析"><a href="#冒泡排序的分析" class="headerlink" title="冒泡排序的分析"></a>冒泡排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n <sup>2</sup>)</p>
-</li>
-<li><p>空间复杂度为O(1)</p>
-</li>
-<li><p>最差时间复杂度为O(n <sup>2</sup>)</p>
-<blockquote>
-<p>最差的情况为逆序</p>
-</blockquote>
-</li>
-<li><p>最好时间复杂度为O(n)</p>
-<blockquote>
-<p>最好情况为顺序</p>
-</blockquote>
-</li>
-<li><p>冒泡排序稳定 </p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/冒泡排序/" data-id="cj56omtv3000bro2f6xurytk9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-希尔排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/希尔排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/希尔排序/">希尔排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><p>希尔排序（Shell Sort）的名称源于它的发明者Donald Shell。希尔排序有时也叫做缩减增量排序（Diminishing Increment Sort）。</p>
-<h2 id="希尔排序思想"><a href="#希尔排序思想" class="headerlink" title="希尔排序思想"></a>希尔排序思想</h2><p>希尔排序实质上是一种分组插入方法。它的基本思想是：对于n个待排序的数列，取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列，所有距离为gap的倍数的记录放在同一个组中；然后，对各组内的元素进行直接插入排序。 这一趟排序完成之后，每一个组的元素都是有序的。然后减小gap的值，并重复执行上述的分组和排序。重复这样的操作，当gap=1时，整个数列就是有序的。</p>
-<p><strong>具体步骤：</strong></p>
-<p><img src="/media/14995830261385/14995837964050.png" alt=""></p>
-<p><strong>排序效果：</strong></p>
-<p><img src="/media/14995830261385/14998473255741.gif" alt=""></p>
-<h2 id="希尔排序实现"><a href="#希尔排序实现" class="headerlink" title="希尔排序实现"></a>希尔排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShellSort</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(AnyType[] array)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> j;</div><div class="line">		<span class="comment">//增量序列的选择是使用希尔增量</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> gap = array.length/<span class="number">2</span>;gap&gt;<span class="number">0</span>;gap/=<span class="number">2</span>)&#123;			</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=gap;i&lt;array.length;i++)&#123;</div><div class="line">				<span class="comment">//插入排序</span></div><div class="line">				AnyType temp = array[i];</div><div class="line">				<span class="keyword">for</span>(j=i;j&gt;=gap &amp;&amp; temp.compareTo(array[j-gap]) &lt; <span class="number">0</span>;j-=gap)&#123;</div><div class="line">					array[j] = array[j-gap];</div><div class="line">				&#125;</div><div class="line">				array[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Test &#123;</div><div class="line">	private static &lt;AnyType&gt; void print(AnyType[] array)&#123;</div><div class="line">		for(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		Integer[] array = &#123;9,1,5,8,3,7,4,6,2&#125;;</div><div class="line">		print(array);</div><div class="line"></div><div class="line">		ShellSort.shellSort(array);</div><div class="line">		print(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>输出结果</strong>：</p>
-<blockquote>
-<p>9 1 5 8 3 7 4 6 2<br>1 2 3 4 5 6 7 8 9 </p>
-</blockquote>
-<h2 id="希尔排序的分析"><a href="#希尔排序的分析" class="headerlink" title="希尔排序的分析"></a>希尔排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n <sup>m</sup>)</p>
-<blockquote>
-<p>其中 1&lt;m&lt;2</p>
-</blockquote>
-</li>
-<li><p>空间复杂度为O(1)</p>
-</li>
-<li><p>选择排序不稳定 </p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/希尔排序/" data-id="cj56omtvc000mro2fw6fqabos" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-堆排序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/10/堆排序/" class="article-date">
-  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/堆排序/">堆排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>堆排序（Heap Sort），是指利用有限队列的一种排序算法。</p>
+          <h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>堆排序（Heap Sort），是指利用有限队列的一种排序算法。</p>
 <h2 id="堆排序思想"><a href="#堆排序思想" class="headerlink" title="堆排序思想"></a>堆排序思想</h2><p>堆分为”最大堆”和”最小堆”。最大堆通常被用来进行”升序”排序，而最小堆通常被用来进行”降序”排序。</p>
 <p>首先建立N个元素的二叉堆，这个阶段花费O(N)时间。然后把最大（最小）的元素导出后重新排序，操作花费时间为O(log N)，因此总的运行时间是O(N log N)。</p>
-<p><strong>建堆的过程如下图所示：</strong><br><img src="/media/14995862333021/14995882718919.jpg" alt=""></p>
-<p>注意在第一个元素的索引为零的情形中：</p>
-<ul>
-<li>索引为i的左孩子的索引是（2 * i + 1）</li>
-<li>索引为i的右孩子的索引是（2 * i + 2）</li>
-<li>索引为i的父节点的索引是 floor((i-1) / 2)</li>
-</ul>
-<p><strong>排序效果：</strong></p>
-<p><img src="/media/14995862333021/14998473807195.gif" alt=""></p>
-<h2 id="堆排序实现"><a href="#堆排序实现" class="headerlink" title="堆排序实现"></a>堆排序实现</h2><p><strong>算法实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(AnyType[] array)</span> </span>&#123;</div><div class="line">		<span class="comment">//建立最大堆</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=array.length/<span class="number">2</span>-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">			percolateDown(array,i,array.length);</div><div class="line">		&#125;</div><div class="line">		AnyType temp;</div><div class="line">		<span class="comment">//将最大的那个元素和数组随后一个元素交换，在重新调整0位置</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=array.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">			temp = array[i];</div><div class="line">			array[i] = array[<span class="number">0</span>];</div><div class="line">			array[<span class="number">0</span>] = temp;</div><div class="line">			percolateDown(array, <span class="number">0</span>, i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 用于调整堆的顺序</div><div class="line">	 * @param array 待调整的数组</div><div class="line">	 * @param i 待调整的位置</div><div class="line">	 * @param n 堆的逻辑大小</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">percolateDown</span><span class="params">(AnyType[] array,<span class="keyword">int</span> i,<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> child;</div><div class="line">		AnyType temp;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(temp = array[i];leftChild(i) &lt; n;i=child)&#123;</div><div class="line">			child = leftChild(i);</div><div class="line">			<span class="comment">//如果存在右孩子，且左孩子小于右孩子，就将child指向右孩子的位置</span></div><div class="line">			<span class="keyword">if</span>(child != n-<span class="number">1</span> &amp;&amp; array[child].compareTo(array[child+<span class="number">1</span>])&lt;<span class="number">0</span>)</div><div class="line">				child++;</div><div class="line">			<span class="comment">//比较该节点和孩子节点的大小，若小于，将孩子节点的值赋给该节点</span></div><div class="line">			<span class="keyword">if</span>(temp.compareTo(array[child]) &lt; <span class="number">0</span>)</div><div class="line">				array[i] = array[child];</div><div class="line">			<span class="keyword">else</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		array[i] = temp;</div><div class="line">		Test.print(array);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 返回最孩子的位置</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leftChild</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span> * n + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>算法测试</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static &lt;AnyType&gt; void print(AnyType[] array)&#123;</div><div class="line">		for(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		Integer[] array = &#123;52,23,101,33,34,26,15,98&#125;;</div><div class="line">		print(array);</div><div class="line"></div><div class="line">		//测试堆排序</div><div class="line">		HeapSort.heapSort(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将每次调整堆后的数组都打印出来，便于和上面的图对比。<br><strong>输出结果</strong>：</p>
-<blockquote>
-<p>52 23 101 33 34 26 15 98<br>52 23 101 98 34 26 15 33<br>52 23 101 98 34 26 15 33<br>52 98 101 33 34 26 15 23<br>101 98 52 33 34 26 15 23<br>98 34 52 33 23 26 15 101<br>52 34 26 33 23 15 98 101<br>34 33 26 15 23 52 98 101<br>33 23 26 15 34 52 98 101<br>26 23 15 33 34 52 98 101<br>23 15 26 33 34 52 98 101<br>15 23 26 33 34 52 98 101 </p>
-</blockquote>
-<ul>
-<li>第一条是原数组</li>
-<li>第二到五条是建堆的过程</li>
-<li>余下的是每次将第一和最后交换后调整的过程</li>
-</ul>
-<h2 id="堆排序的分析"><a href="#堆排序的分析" class="headerlink" title="堆排序的分析"></a>堆排序的分析</h2><ul>
-<li><p>平均时间复杂度为O(n log n)</p>
-</li>
-<li><p>空间复杂度为O(1)</p>
-</li>
-<li><p>堆排序不稳定 </p>
-</li>
-</ul>
-
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/堆排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/10/堆排序/" data-id="cj56omtv9000iro2fq9a5o98t" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
+  </article>
+
+
+    
+      
+
   
-</article>
-
 
   
-    <article id="post-Hibernare高级查询" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/20/Hibernare高级查询/" class="article-date">
-  <time datetime="2017-03-20T12:58:15.000Z" itemprop="datePublished">2017-03-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java框架/">Java框架</a>
-  </div>
+  
+  
 
-  </div>
-  <div class="article-inner">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/选择排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/Hibernare高级查询/">Hibernare高级查询</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/选择排序/" itemprop="url">选择排序</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="Hibernate中标准化对象查询"><a href="#Hibernate中标准化对象查询" class="headerlink" title="Hibernate中标准化对象查询"></a>Hibernate中标准化对象查询</h1><blockquote>
+      
+
+      
+        
+          <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序（Selection Sort）。</p>
+<h2 id="选择排序思想"><a href="#选择排序思想" class="headerlink" title="选择排序思想"></a>选择排序思想</h2><p>首先在未排序的数列中找到最小(or最大)元素，然后将其存放到数列的起始位置；接着，再从剩余未排序的元素中继续寻找最小(or最大)元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/选择排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/插入排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/插入排序/" itemprop="url">插入排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>插入排序（Insertion Sort）。</p>
+<h2 id="插入排序思想"><a href="#插入排序思想" class="headerlink" title="插入排序思想"></a>插入排序思想</h2><p>算法的基本思想是把n个带排序元素看成一个有序表和一个无序表。开始时有序表只包含1个元素，无需表包含n-1个元素，从无序表中取出第一个元素，将它插入到有序表中的适当位置，使之成为新的有序表，重复n-1次完成排序。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/插入排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/快速排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/快速排序/" itemprop="url">快速排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序（Quick Sort），它和归并排序一样，使用分治的策略。</p>
+<h2 id="快速排序思想"><a href="#快速排序思想" class="headerlink" title="快速排序思想"></a>快速排序思想</h2><p>选择一个基准数，通过一趟排序将要排序的数据分割成独立的两部分；其中一部分的所有数据都比另外一部分的所有数据都要小。然后，再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/快速排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/冒泡排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/冒泡排序/" itemprop="url">冒泡排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>冒泡排序（Bubble Sort）,又被称为气泡排序或泡沫排序。</p>
+<h2 id="冒泡排序思想"><a href="#冒泡排序思想" class="headerlink" title="冒泡排序思想"></a>冒泡排序思想</h2><p>算法的基本思想是遍历若干次要排序的数列，每次遍历是，它都会从前往后一次的比较相邻两个元素的大小，如果前者比后者大，则交换它们的位置，这样，一次遍历后，最大的元素在数组的末尾。再次遍历，第二大的元素排列在最大的元素之前，如此操作，直到整个数列都有序为止。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/冒泡排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/希尔排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/希尔排序/" itemprop="url">希尔排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><p>希尔排序（Shell Sort）的名称源于它的发明者Donald Shell。希尔排序有时也叫做缩减增量排序（Diminishing Increment Sort）。</p>
+<h2 id="希尔排序思想"><a href="#希尔排序思想" class="headerlink" title="希尔排序思想"></a>希尔排序思想</h2><p>希尔排序实质上是一种分组插入方法。它的基本思想是：对于n个待排序的数列，取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列，所有距离为gap的倍数的记录放在同一个组中；然后，对各组内的元素进行直接插入排序。 这一趟排序完成之后，每一个组的元素都是有序的。然后减小gap的值，并重复执行上述的分组和排序。重复这样的操作，当gap=1时，整个数列就是有序的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/希尔排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/04/10/归并排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/10/归并排序/" itemprop="url">归并排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T19:24:44+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序（Merge Sort），是采用分治法的一个非常典型的应用。</p>
+<h2 id="归并排序思想"><a href="#归并排序思想" class="headerlink" title="归并排序思想"></a>归并排序思想</h2><p>将两个有序数列合并，效率很高，可以达到O(N)，归并排序的思想就是讲数组分为两组A,B，如果这两组组内的数据都是有序的，那么就可以很方便的将这二组数据进行排序。所以，可以将A，B组各自再分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。这样通过先递归的分解数列，再合并数列就完成了归并排序。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/10/归并排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/03/20/Hibernare高级查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/20/Hibernare高级查询/" itemprop="url">Hibernare高级查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T20:58:15+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Java框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Hibernate中标准化对象查询"><a href="#Hibernate中标准化对象查询" class="headerlink" title="Hibernate中标准化对象查询"></a>Hibernate中标准化对象查询</h1><blockquote>
 <p>通过面向对象化的设计，将查询条件封装为一个对象。它支持在运行时动态生成查询语句。</p>
 </blockquote>
 <p>主要由四部分组成：</p>
@@ -606,212 +1340,144 @@
 <li>Order类</li>
 <li>Projection接口</li>
 </ul>
-<h2 id="Criteria接口"><a href="#Criteria接口" class="headerlink" title="Criteria接口"></a>Criteria接口</h2><blockquote>
-<p>是一个存放查询条件的容器，创建Criteria接口对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; Criteria criteria = session.createCriteria(Class persistentClass)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="Critertion接口"><a href="#Critertion接口" class="headerlink" title="Critertion接口"></a>Critertion接口</h2><blockquote>
-<p>代表一个查询条件，可以通过它的实现类Restrictions类来产生查询条件，并且还需要通过Criteria的add方法添加到Criteria实例中。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>HQL</th>
-<th>QBC</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&gt;=</td>
-<td>Restrictions.ge()</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>Restrictions.gt()</td>
-</tr>
-<tr>
-<td>&lt;=</td>
-<td>Restrictions.le()</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>Restrictions.lt()</td>
-</tr>
-<tr>
-<td>=</td>
-<td>Restrictions.eq()</td>
-</tr>
-<tr>
-<td>!= (&lt;&gt;)</td>
-<td>Restrictions.ne()</td>
-</tr>
-<tr>
-<td>is null</td>
-<td>Restrictions.isNull()</td>
-</tr>
-<tr>
-<td>is not null</td>
-<td>Restrictions.isNotNull()</td>
-</tr>
-<tr>
-<td>between v1 and v2</td>
-<td>Restrictions.between()</td>
-</tr>
-<tr>
-<td>not between v1 and v2</td>
-<td>Restrictions.not(Restrictions.between())</td>
-</tr>
-<tr>
-<td>in (v1,v2 …)</td>
-<td>Restrictions.in()</td>
-</tr>
-<tr>
-<td>not in (v1,v2 …)</td>
-<td>Restrictions.not(Restrictions.in())</td>
-</tr>
-<tr>
-<td>and</td>
-<td>Restrictions.and()</td>
-</tr>
-<tr>
-<td>or</td>
-<td>Restrictions.or()</td>
-</tr>
-<tr>
-<td>not</td>
-<td>Restrictions.not()</td>
-</tr>
-<tr>
-<td>like</td>
-<td>Restrictions.like()，Restrictions.ilike()不区分大小写</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Order类"><a href="#Order类" class="headerlink" title="Order类"></a>Order类</h2><blockquote>
-<p>对查询结果进行排序，通过Criteria的addOrder()方法添加到Criteria实例中</p>
-</blockquote>
-<p>排序方式有：</p>
-<ul>
-<li>Order.desc(String propertyName)</li>
-<li>Order.esc(String propertyName)</li>
-</ul>
-<h2 id="Projection接口"><a href="#Projection接口" class="headerlink" title="Projection接口"></a>Projection接口</h2><blockquote>
-<p>代表投影查询，它的Projections类提供了一系列产生具体Projection实例的静态方法。通过Criteria的setProjection()方法添加到Criteria实例中。</p>
-</blockquote>
-<p>Projections类中的聚合函数有：</p>
-<ul>
-<li>avg(String propertyName)</li>
-<li>count(String propertyName)</li>
-<li>sum(String propertyName)</li>
-<li>max(String propertyName)</li>
-<li>min(String propertyName)</li>
-</ul>
-<h2 id="离线查询"><a href="#离线查询" class="headerlink" title="离线查询"></a>离线查询</h2><blockquote>
-<p>DetachedCriteria类可以在session范围之外创建一个查询，并且可以附加到任意Session上来执行查询。</p>
-</blockquote>
-<hr>
-<h1 id="Hibernate中HQL的高级查询"><a href="#Hibernate中HQL的高级查询" class="headerlink" title="Hibernate中HQL的高级查询"></a>Hibernate中HQL的高级查询</h1><h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><blockquote>
-<p>内嵌在另一个查询语句中的查询，称为子查询</p>
-</blockquote>
-<p>HQL中的子查询只可以在select或者where子句中出现</p>
-<p>查找订单数量为零的账户</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String hql=<span class="string">"from Account a where (select count(o) from a.orderList o)=0"</span>;</div></pre></td></tr></table></figure>
-<p>对应的SQL语句为</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span></div><div class="line">       account0_.id <span class="keyword">as</span> id1_0_,</div><div class="line">       account0_.name <span class="keyword">as</span> name2_0_,</div><div class="line">       account0_.gender <span class="keyword">as</span> gender3_0_,</div><div class="line">       account0_.age <span class="keyword">as</span> age4_0_ </div><div class="line">   <span class="keyword">from</span></div><div class="line">       acc_tab account0_ </div><div class="line">   <span class="keyword">where</span></div><div class="line">       (</div><div class="line">           <span class="keyword">select</span></div><div class="line">               <span class="keyword">count</span>(orderlist1_.id) </div><div class="line">           <span class="keyword">from</span></div><div class="line">               order_tab orderlist1_ </div><div class="line">           <span class="keyword">where</span></div><div class="line">               account0_.id=orderlist1_.acc_id</div><div class="line">       )=<span class="number">0</span></div></pre></td></tr></table></figure>
-<h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><blockquote>
-<p>Hibernate中的连接查询只能在建立了关联映射的实体类之间进行，可以通过HQL的with关键字，来提供额外的join条件</p>
-</blockquote>
-<h3 id="内连接-inner-join"><a href="#内连接-inner-join" class="headerlink" title="内连接 ([inner] join)"></a>内连接 ([inner] join)</h3><blockquote>
-<p>内联接使用比较运算符根据每个表共有的列的值匹配两个表中的行。</p>
-</blockquote>
-<p>找没有重复的账户，账户的id为2，订单的时间要大于2015-06-10</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String hql=<span class="string">"select distinct a from Account a inner join a.orderList o with o.order_time&gt;'2016-12-10' where a.id=2"</span>;</div></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">select</span></div><div class="line">       <span class="keyword">distinct</span> account0_.id <span class="keyword">as</span> id1_0_,</div><div class="line">       account0_.name <span class="keyword">as</span> name2_0_,</div><div class="line">       account0_.gender <span class="keyword">as</span> gender3_0_,</div><div class="line">       account0_.age <span class="keyword">as</span> age4_0_ </div><div class="line">   <span class="keyword">from</span></div><div class="line">       acc_tab account0_ </div><div class="line">   <span class="keyword">inner</span> <span class="keyword">join</span></div><div class="line">       order_tab orderlist1_ </div><div class="line">           <span class="keyword">on</span> account0_.id=orderlist1_.acc_id </div><div class="line">           <span class="keyword">and</span> (</div><div class="line">               orderlist1_.order_time&gt;<span class="string">'2015-06-10'</span></div><div class="line">           ) </div><div class="line">   <span class="keyword">where</span></div><div class="line">       account0_.id=<span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">select</span></div><div class="line">       orderlist0_.acc_id <span class="keyword">as</span> acc_id4_0_0_,</div><div class="line">       orderlist0_.id <span class="keyword">as</span> id1_1_0_,</div><div class="line">       orderlist0_.id <span class="keyword">as</span> id1_1_1_,</div><div class="line">       orderlist0_.order_no <span class="keyword">as</span> order_no2_1_1_,</div><div class="line">       orderlist0_.order_time <span class="keyword">as</span> order_ti3_1_1_,</div><div class="line">       orderlist0_.acc_id <span class="keyword">as</span> acc_id4_1_1_ </div><div class="line">   <span class="keyword">from</span></div><div class="line">       order_tab orderlist0_ </div><div class="line">   <span class="keyword">where</span></div><div class="line">       orderlist0_.acc_id=?</div></pre></td></tr></table></figure>
-<h3 id="左外连接-left-outer-join"><a href="#左外连接-left-outer-join" class="headerlink" title="左外连接(left [outer] join)"></a>左外连接(left [outer] join)</h3><blockquote>
-<p>左向外联接的结果集包括  LEFT OUTER子句中指定的左表的所有行，而不仅仅是联接列所匹配的行。如果左表的某行在右表中没有匹配行，则在相关联的结果集行中右表的所有选择列表列均为空值。       </p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String hql=<span class="string">"select distinct a from Account a left join a.orderList o "</span>;</div></pre></td></tr></table></figure>
-<p>对应的sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">select</span></div><div class="line">       <span class="keyword">distinct</span> account0_.id <span class="keyword">as</span> id1_0_,</div><div class="line">       account0_.name <span class="keyword">as</span> name2_0_,</div><div class="line">       account0_.gender <span class="keyword">as</span> gender3_0_,</div><div class="line">       account0_.age <span class="keyword">as</span> age4_0_ </div><div class="line">   <span class="keyword">from</span></div><div class="line">       acc_tab account0_ </div><div class="line">   <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span></div><div class="line">       order_tab orderlist1_ </div><div class="line">           <span class="keyword">on</span> account0_.id=orderlist1_.acc_id</div><div class="line"></div><div class="line"><span class="keyword">select</span></div><div class="line">       orderlist0_.acc_id <span class="keyword">as</span> acc_id4_0_0_,</div><div class="line">       orderlist0_.id <span class="keyword">as</span> id1_1_0_,</div><div class="line">       orderlist0_.id <span class="keyword">as</span> id1_1_1_,</div><div class="line">       orderlist0_.order_no <span class="keyword">as</span> order_no2_1_1_,</div><div class="line">       orderlist0_.order_time <span class="keyword">as</span> order_ti3_1_1_,</div><div class="line">       orderlist0_.acc_id <span class="keyword">as</span> acc_id4_1_1_ </div><div class="line">   <span class="keyword">from</span></div><div class="line">       order_tab orderlist0_ </div><div class="line">   <span class="keyword">where</span></div><div class="line">       orderlist0_.acc_id=?</div></pre></td></tr></table></figure>
-<h3 id="右外连接-right-outer-join"><a href="#右外连接-right-outer-join" class="headerlink" title="右外连接(right [outer] join)"></a>右外连接(right [outer] join)</h3><blockquote>
-<p>右向外联接是左向外联接的反向联接。将返回右表的所有行。如果右表的某行在左表中没有匹配行，则将为左表返回空值。 </p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String hql=<span class="string">"select distinct a from Account a right join a.orderList o with o.order_time&gt;'2015-06-10' where a.id=2"</span>;</div></pre></td></tr></table></figure>
-<p>对应的sql语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span></div><div class="line">    <span class="keyword">distinct</span> account0_.id <span class="keyword">as</span> id1_0_,</div><div class="line">    account0_.name <span class="keyword">as</span> name2_0_,</div><div class="line">    account0_.gender <span class="keyword">as</span> gender3_0_,</div><div class="line">    account0_.age <span class="keyword">as</span> age4_0_ </div><div class="line"><span class="keyword">from</span></div><div class="line">    acc_tab account0_ </div><div class="line"><span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span></div><div class="line">    order_tab orderlist1_ </div><div class="line">        <span class="keyword">on</span> account0_.id=orderlist1_.acc_id </div><div class="line">        <span class="keyword">and</span> (</div><div class="line">            orderlist1_.order_time&gt;<span class="string">'2015-06-10'</span></div><div class="line">        ) </div><div class="line"><span class="keyword">where</span></div><div class="line">    account0_.id=<span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">select</span></div><div class="line">    orderlist0_.acc_id <span class="keyword">as</span> acc_id4_0_0_,</div><div class="line">    orderlist0_.id <span class="keyword">as</span> id1_1_0_,</div><div class="line">    orderlist0_.id <span class="keyword">as</span> id1_1_1_,</div><div class="line">    orderlist0_.order_no <span class="keyword">as</span> order_no2_1_1_,</div><div class="line">    orderlist0_.order_time <span class="keyword">as</span> order_ti3_1_1_,</div><div class="line">    orderlist0_.acc_id <span class="keyword">as</span> acc_id4_1_1_ </div><div class="line"><span class="keyword">from</span></div><div class="line">    order_tab orderlist0_ </div><div class="line"><span class="keyword">where</span></div><div class="line">    orderlist0_.acc_id=?</div></pre></td></tr></table></figure>
-<h3 id="全连接-full-join"><a href="#全连接-full-join" class="headerlink" title="全连接(full join)"></a>全连接(full join)</h3><blockquote>
-<p>完整外部联接返回左表和右表中的所有行。当某行在另一个表中没有匹配行时，则另一个表的选择列表列包含空值。如果表之间有匹配行，则整个结果集行包含基表的数据值。   </p>
-</blockquote>
-<p>很少用，而且mysql不支持</p>
-<h3 id="内外连接的区别"><a href="#内外连接的区别" class="headerlink" title="内外连接的区别"></a>内外连接的区别</h3><p>inner和outer连接。两种类型的主要区别在于</p>
-<ul>
-<li>即使是在连接条件不满足的情况下，外部连接也会在结果集内返回行，而内部连接不会在结果集类返回行 </li>
-<li>当外部连接不满足连接条件时，通常返回一个表中的列，但是第二个表中没有返回值–为null。</li>
-</ul>
-<h2 id="抓去连接查询"><a href="#抓去连接查询" class="headerlink" title="抓去连接查询"></a>抓去连接查询</h2><blockquote>
-<p>fetch连接，只使用一个查询语句就将相关联的对象或一组值的集合随着它们的父对象的初始化而被初始化</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String hql=<span class="string">"select distinct a from Account a right join fetch a.orderList o  where a.id=2"</span>;</div></pre></td></tr></table></figure>
-<p>对应的sql语句，只有一条select</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span></div><div class="line">    <span class="keyword">distinct</span> account0_.id <span class="keyword">as</span> id1_0_0_,</div><div class="line">    orderlist1_.id <span class="keyword">as</span> id1_1_1_,</div><div class="line">    account0_.name <span class="keyword">as</span> name2_0_0_,</div><div class="line">    account0_.gender <span class="keyword">as</span> gender3_0_0_,</div><div class="line">    account0_.age <span class="keyword">as</span> age4_0_0_,</div><div class="line">    orderlist1_.order_no <span class="keyword">as</span> order_no2_1_1_,</div><div class="line">    orderlist1_.order_time <span class="keyword">as</span> order_ti3_1_1_,</div><div class="line">    orderlist1_.acc_id <span class="keyword">as</span> acc_id4_1_1_,</div><div class="line">    orderlist1_.acc_id <span class="keyword">as</span> acc_id4_0_0__,</div><div class="line">    orderlist1_.id <span class="keyword">as</span> id1_1_0__ </div><div class="line"><span class="keyword">from</span></div><div class="line">    acc_tab account0_ </div><div class="line"><span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span></div><div class="line">    order_tab orderlist1_ </div><div class="line">        <span class="keyword">on</span> account0_.id=orderlist1_.acc_id </div><div class="line"><span class="keyword">where</span></div><div class="line">    account0_.id=<span class="number">2</span></div></pre></td></tr></table></figure>
-<hr>
-<h1 id="Hibernate中Native-SQL查询"><a href="#Hibernate中Native-SQL查询" class="headerlink" title="Hibernate中Native SQL查询"></a>Hibernate中Native SQL查询</h1><blockquote>
-<p>直接使用数据库SQL语句进行查询</p>
-<p>通过Session.createSQLQuery()来获取SQLQuery接口实例</p>
-</blockquote>
-<ul>
-<li>原生SQL语句进行多表查询，可以用addEntity指定返回的数据类型</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">String sql="<span class="keyword">select</span> &#123;a.*&#125;,&#123;o.*&#125; <span class="keyword">from</span> acc_tab a <span class="keyword">join</span> order_tab o <span class="keyword">on</span> a.id=o.acc_id<span class="string">";</span></div><div class="line">SQLQuery query = session.createSQLQuery(sql).addEntity("a<span class="string">",Account.class).addEntity("</span>o<span class="string">", Orders.class);</span></div><div class="line">List list=query.list();</div><div class="line">//下标为0是账户信息，下标为1是订单信息</div><div class="line">for(int i=0;i&lt;list.size();i++)&#123;</div><div class="line">	Object[] obj=(Object[])list.get(i);</div><div class="line">	Account acc=(Account)obj[0];</div><div class="line">	System.out.println(acc);</div><div class="line">	Orders order=(Orders)obj[1];</div><div class="line">	System.out.println(order);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h1 id="Hibernate调用存储过程"><a href="#Hibernate调用存储过程" class="headerlink" title="Hibernate调用存储过程"></a>Hibernate调用存储过程</h1><p>存储过程/函数必须返回一个结果集，作为Hibernate能够使用的第一个外部参数。在程序中调用的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.createSQLQuery(<span class="string">"&#123;存储过程&#125;"</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">QLQuery query=session.createSQLQuery(<span class="string">"&#123;call findAccounts(:ids)&#125;"</span>).addEntity(Account.class);</div><div class="line">query.setInteger(<span class="string">"ids"</span>, <span class="number">1</span>);</div><div class="line">List&lt;Account&gt; list=query.list();</div><div class="line"><span class="keyword">for</span>(Account acc:list)&#123;</div><div class="line">	System.out.println(acc);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateQBC" target="_blank" rel="external">Hibernate高级查询源码</a></p>
-
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/20/Hibernare高级查询/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/20/Hibernare高级查询/" data-id="cj56omtuh0000ro2fc367q1no" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
+  </article>
+
+
+    
+      
+
   
-</article>
-
 
   
-    <article id="post-高效macbook工作环境（持续更新）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/20/高效macbook工作环境（持续更新）/" class="article-date">
-  <time datetime="2017-03-20T08:23:01.000Z" itemprop="datePublished">2017-03-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/macbook/">macbook</a>
-  </div>
+  
+  
 
-  </div>
-  <div class="article-inner">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/03/20/高效macbook工作环境（持续更新）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/高效macbook工作环境（持续更新）/">高效macbook工作环境（持续更新）</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/20/高效macbook工作环境（持续更新）/" itemprop="url">高效macbook工作环境（持续更新）</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T16:23:01+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/macbook/" itemprop="url" rel="index">
+                    <span itemprop="name">macbook</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="1-系统快捷键"><a href="#1-系统快捷键" class="headerlink" title="1.系统快捷键"></a>1.系统快捷键</h1><h2 id="1-1-系统快捷键标志"><a href="#1-1-系统快捷键标志" class="headerlink" title="1.1 系统快捷键标志"></a>1.1 系统快捷键标志</h2><ul>
+      
+
+      
+        
+          <h1 id="1-系统快捷键"><a href="#1-系统快捷键" class="headerlink" title="1.系统快捷键"></a>1.系统快捷键</h1><h2 id="1-1-系统快捷键标志"><a href="#1-1-系统快捷键标志" class="headerlink" title="1.1 系统快捷键标志"></a>1.1 系统快捷键标志</h2><ul>
 <li>Command ⌘</li>
 <li>Shift ⇧</li>
 <li>Option ⌥</li>
@@ -819,762 +1485,459 @@
 <li>Caps Lock ⇪</li>
 <li>Fn</li>
 </ul>
-<h2 id="1-2-最常用快捷键"><a href="#1-2-最常用快捷键" class="headerlink" title="1.2 最常用快捷键"></a>1.2 最常用快捷键</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Command-X</td>
-<td><strong>剪切</strong>：删除所选项并将其拷贝到剪贴板。</td>
-</tr>
-<tr>
-<td>Command-C</td>
-<td>将所选项<strong>拷贝</strong>到剪贴板。这同样适用于 Finder 中的文件。</td>
-</tr>
-<tr>
-<td>Command-V</td>
-<td>将剪贴板的内容<strong>粘贴</strong>到当前文稿或 app 中。这同样适用于 Finder 中的文件。</td>
-</tr>
-<tr>
-<td>Command-Z</td>
-<td><strong>撤销</strong>前一个命令。随后您可以按 Command-Shift-Z 来<strong>重做</strong>，从而反向执行撤销命令。在某些 app 中，您可以撤销和重做多个命令。</td>
-</tr>
-<tr>
-<td>Command-A</td>
-<td><strong>全选</strong>各项。</td>
-</tr>
-<tr>
-<td>Command-F</td>
-<td><strong>查找</strong>：打开“查找”窗口，或在文稿中查找项目。</td>
-</tr>
-<tr>
-<td>Command-G</td>
-<td><strong>再次查找</strong>：查找之前所找到项目出现的下一个位置。要查找出现的上一个位置，请按 Command-Shift-G。</td>
-</tr>
-<tr>
-<td>Command-H</td>
-<td><strong>隐藏</strong>最前面的 app 的窗口。要查看最前面的 app 但隐藏所有其他 app，请按 Command-Option-H。</td>
-</tr>
-<tr>
-<td>Command-M</td>
-<td>将最前面的窗口<strong>最小化</strong>至 Dock。要最小化最前面的 app 的所有窗口，请按 Command-Option-M。</td>
-</tr>
-<tr>
-<td>Command-N</td>
-<td><strong>新建</strong>：打开一个新文稿或窗口。</td>
-</tr>
-<tr>
-<td>Command-O</td>
-<td><strong>打开</strong>所选项，或打开一个对话框以选择要打开的文件。</td>
-</tr>
-<tr>
-<td>Command-P</td>
-<td><strong>打印</strong>当前文稿。</td>
-</tr>
-<tr>
-<td>Command-S</td>
-<td><strong>存储</strong>当前文稿。</td>
-</tr>
-<tr>
-<td>Command-W</td>
-<td><strong>关闭</strong>最前面的窗口。要关闭该 app 的所有窗口，请按 Command-Option-W。</td>
-</tr>
-<tr>
-<td>Command-Q</td>
-<td><strong>退出</strong> app。</td>
-</tr>
-<tr>
-<td>Option-Command-Esc</td>
-<td><strong>强制退出</strong>：选择要[强制退出]的 app。或者，按住 Command-Shift-Option-Esc 3 秒钟来仅强制最前面的 app 退出。</td>
-</tr>
-<tr>
-<td>Command–空格键</td>
-<td><strong>Spotlight</strong>：显示或隐藏 [Spotlight]搜索栏。要从 Finder 窗口执行 Spotlight 搜索，请按 Command–Option–空格键。如果您使用多个输入源以便用不同的语言键入内容，这些快捷键会更改输入源而非显示 Spotlight。</td>
-</tr>
-<tr>
-<td>空格键</td>
-<td><strong>快速查看</strong>：使用快速查看预览所选项。</td>
-</tr>
-<tr>
-<td>Command-Tab</td>
-<td><strong>切换 app</strong>：在打开的 app 中切换到下一个最近使用的 app。</td>
-</tr>
-<tr>
-<td>Command-逗号 (,)</td>
-<td><strong>偏好设置</strong>：打开最前面的 app 的偏好设置。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="1-3-Finder快捷键"><a href="#1-3-Finder快捷键" class="headerlink" title="1.3 Finder快捷键"></a>1.3 Finder快捷键</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Command-D</td>
-<td>复制所选文件。</td>
-</tr>
-<tr>
-<td>Command-E</td>
-<td>推出所选磁盘或宗卷。</td>
-</tr>
-<tr>
-<td>Command-F</td>
-<td>在 Finder 窗口中开始 Spotlight 搜索。</td>
-</tr>
-<tr>
-<td>Command-I</td>
-<td>显示所选文件的“显示简介”窗口。</td>
-</tr>
-<tr>
-<td>Shift-Command-C</td>
-<td>打开“电脑”窗口。</td>
-</tr>
-<tr>
-<td>Shift-Command-D</td>
-<td>打开“桌面”文件夹。</td>
-</tr>
-<tr>
-<td>Shift-Command-F</td>
-<td>打开“我的所有文件”窗口。</td>
-</tr>
-<tr>
-<td>Shift-Command-G</td>
-<td>打开“前往文件夹”窗口。</td>
-</tr>
-<tr>
-<td>Shift-Command-H</td>
-<td>打开当前 macOS 用户帐户的个人文件夹。</td>
-</tr>
-<tr>
-<td>Shift-Command-K</td>
-<td>打开“网络”窗口。</td>
-</tr>
-<tr>
-<td>Option-Command-L</td>
-<td>打开“下载”文件夹。</td>
-</tr>
-<tr>
-<td>Shift-Command-O</td>
-<td>打开“文稿”文件夹。</td>
-</tr>
-<tr>
-<td>Shift-Command-R</td>
-<td>打开“AirDrop”窗口。</td>
-</tr>
-<tr>
-<td>Shift-Command-T</td>
-<td>将所选的 Finder 项目添加到 Dock（OS X Mountain Lion 或较早版本）</td>
-</tr>
-<tr>
-<td>Control-Shift-Command-T</td>
-<td>将所选的 Finder 项目添加到 Dock（OS X Mavericks 或更高版本）</td>
-</tr>
-<tr>
-<td>Shift-Command-U</td>
-<td>打开“实用工具”文件夹。</td>
-</tr>
-<tr>
-<td>Option-Command-D</td>
-<td>显示或隐藏 Dock。即使您未打开 Finder，此快捷键通常也有效。</td>
-</tr>
-<tr>
-<td>Control-Command-T</td>
-<td>将所选项添加到边栏（OS X Mavericks 或更高版本）。</td>
-</tr>
-<tr>
-<td>Option-Command-P</td>
-<td>隐藏或显示 Finder 窗口中的路径栏。</td>
-</tr>
-<tr>
-<td>Option-Command-S</td>
-<td>隐藏或显示 Finder 窗口中的边栏。</td>
-</tr>
-<tr>
-<td>Command–斜线 (/)</td>
-<td>隐藏或显示 Finder 窗口中的状态栏。</td>
-</tr>
-<tr>
-<td>Command-J</td>
-<td>调出“显示”选项。</td>
-</tr>
-<tr>
-<td>Command-K</td>
-<td>打开“连接服务器”窗口。</td>
-</tr>
-<tr>
-<td>Command-L</td>
-<td>为所选项制作替身。</td>
-</tr>
-<tr>
-<td>Command-N</td>
-<td>打开一个新的 Finder 窗口。</td>
-</tr>
-<tr>
-<td>Shift-Command-N</td>
-<td>新建文件夹。</td>
-</tr>
-<tr>
-<td>Option-Command-N</td>
-<td>新建智能文件夹。</td>
-</tr>
-<tr>
-<td>Command-R</td>
-<td>显示所选替身的原始文件。</td>
-</tr>
-<tr>
-<td>Command-T</td>
-<td>在当前 Finder 窗口中打开单个标签时显示或隐藏标签栏。</td>
-</tr>
-<tr>
-<td>Shift-Command-T</td>
-<td>显示或隐藏 Finder 标签。</td>
-</tr>
-<tr>
-<td>Option-Command-T</td>
-<td>在当前 Finder 窗口中打开单个标签时显示或隐藏工具栏。</td>
-</tr>
-<tr>
-<td>Option-Command-V</td>
-<td>移动：将剪贴板中的文件从其原始位置移动到当前位置。</td>
-</tr>
-<tr>
-<td>Option-Command-Y</td>
-<td>显示所选文件的快速查看幻灯片显示。</td>
-</tr>
-<tr>
-<td>Command-Y</td>
-<td>使用“快速查看”预览所选文件。</td>
-</tr>
-<tr>
-<td>Command-1</td>
-<td>以图标方式显示 Finder 窗口中的项目。</td>
-</tr>
-<tr>
-<td>Command-2</td>
-<td>以列表方式显示 Finder 窗口中的项目。</td>
-</tr>
-<tr>
-<td>Command-3</td>
-<td>以分栏方式显示 Finder 窗口中的项目。</td>
-</tr>
-<tr>
-<td>Command-4</td>
-<td>以 Cover Flow 方式显示 Finder 窗口中的项目。</td>
-</tr>
-<tr>
-<td>Command–左中括号 ([)</td>
-<td>前往上一文件夹。</td>
-</tr>
-<tr>
-<td>Command–右中括号 (])</td>
-<td>前往下一文件夹。</td>
-</tr>
-<tr>
-<td>Command–上箭头</td>
-<td>打开包含当前文件夹的文件夹。</td>
-</tr>
-<tr>
-<td>Command–Control–上箭头</td>
-<td>在新窗口中打开包含当前文件夹的文件夹。</td>
-</tr>
-<tr>
-<td>Command–下箭头</td>
-<td>打开所选项。</td>
-</tr>
-<tr>
-<td>Command–Mission Control</td>
-<td>显示桌面。即使您未打开 Finder，此快捷键也有效。</td>
-</tr>
-<tr>
-<td>Command–调高亮度</td>
-<td>开启或关闭目标显示器模式。</td>
-</tr>
-<tr>
-<td>Command–调低亮度</td>
-<td>当 Mac 连接到多个显示器时打开或关闭显示器镜像功能。</td>
-</tr>
-<tr>
-<td>右箭头</td>
-<td>打开所选文件夹。此快捷键仅在列表视图中有效。</td>
-</tr>
-<tr>
-<td>左箭头</td>
-<td>关闭所选文件夹。此快捷键仅在列表视图中有效。</td>
-</tr>
-<tr>
-<td>Option-连按</td>
-<td>在单独窗口中打开文件夹，并关闭当前窗口。</td>
-</tr>
-<tr>
-<td>Command-连按</td>
-<td>在单独标签或窗口中打开文件夹。</td>
-</tr>
-<tr>
-<td>Command-Delete</td>
-<td>将所选项移到废纸篓。</td>
-</tr>
-<tr>
-<td>Shift-Command-Delete</td>
-<td>清倒废纸篓。</td>
-</tr>
-<tr>
-<td>Option-Shift-Command-Delete</td>
-<td>清倒废纸篓（不显示确认对话框）。</td>
-</tr>
-<tr>
-<td>Command-Y</td>
-<td>使用“快速查看”预览文件。</td>
-</tr>
-<tr>
-<td>Option–调高亮度</td>
-<td>打开“显示器”偏好设置。此快捷键可与任一亮度键搭配使用。</td>
-</tr>
-<tr>
-<td>Option–Mission Control</td>
-<td>打开“Mission Control”偏好设置。</td>
-</tr>
-<tr>
-<td>Option–调高音量</td>
-<td>打开“声音”偏好设置。此快捷键可与任一音量键搭配使用。</td>
-</tr>
-<tr>
-<td><em>拖移时按 Command 键</em></td>
-<td>将拖移的项目移到其他宗卷或位置。拖移项目时指针会随之变化。</td>
-</tr>
-<tr>
-<td><em>拖移时按 Option 键</em></td>
-<td>拷贝拖移的项目。拖移项目时指针会随之变化。</td>
-</tr>
-<tr>
-<td><em>拖移时按下 Option-Command</em></td>
-<td>为拖移的项目制作替身。拖移项目时指针会随之变化。</td>
-</tr>
-<tr>
-<td><em>Option-点按伸缩三角形</em></td>
-<td>打开所选文件夹内的所有文件夹。此快捷键仅在列表视图中有效。</td>
-</tr>
-<tr>
-<td><em>Command-点按窗口标题</em></td>
-<td>查看包含当前文件夹的文件夹。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="2-软件快捷键"><a href="#2-软件快捷键" class="headerlink" title="2.软件快捷键"></a>2.软件快捷键</h1><h2 id="2-1-窗口管理软件-SizeUp"><a href="#2-1-窗口管理软件-SizeUp" class="headerlink" title="2.1 窗口管理软件-SizeUp"></a>2.1 窗口管理软件-SizeUp</h2><ul>
-<li><code>control+option+command + M</code> ： 使当前窗口全屏</li>
-<li><code>control+option+command + 方向键上键</code> ： 使当前窗口占用当前屏幕上半部分</li>
-<li><code>control+option+command + 方向键下键</code> ： 使当前窗口占用当前屏幕下半部分</li>
-<li><code>control+option+command + 方向键左键</code> ： 使当前窗口占用当前屏幕左半部分</li>
-<li><code>control+option+command + 方向键右键</code> ： 使当前窗口占用当前屏幕右半部分</li>
-<li><code>control+option + 方向键左键</code> ： 将当前窗口发送到左边显示器屏幕</li>
-<li><code>control+option + 方向键右键</code> ： 将当前窗口发送到右边显示器屏幕</li>
-</ul>
-<h2 id="2-2-查找文件以及应用程序Alfred"><a href="#2-2-查找文件以及应用程序Alfred" class="headerlink" title="2.2 查找文件以及应用程序Alfred"></a>2.2 查找文件以及应用程序Alfred</h2><h2 id="2-3-OmniFocus"><a href="#2-3-OmniFocus" class="headerlink" title="2.3 OmniFocus"></a>2.3 OmniFocus</h2><h2 id="2-4-Chrome浏览器"><a href="#2-4-Chrome浏览器" class="headerlink" title="2.4 Chrome浏览器"></a>2.4 Chrome浏览器</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/20/高效macbook工作环境（持续更新）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/20/高效macbook工作环境（持续更新）/" data-id="cj56omtvn000zro2fb1h6ytre" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macbook/">macbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/快捷键/">快捷键</a></li></ul>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
+  </article>
+
+
+    
+      
+
   
-</article>
-
 
   
-    <article id="post-Hibernate关联映射" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/20/Hibernate关联映射/" class="article-date">
-  <time datetime="2017-03-20T08:17:54.000Z" itemprop="datePublished">2017-03-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java框架/">Java框架</a>
-  </div>
+  
+  
 
-  </div>
-  <div class="article-inner">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/03/20/Hibernate关联映射/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/Hibernate关联映射/">Hibernate关联映射</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/20/Hibernate关联映射/" itemprop="url">Hibernate关联映射</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T16:17:54+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Java框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="Hibernate关联映射"><a href="#Hibernate关联映射" class="headerlink" title="Hibernate关联映射"></a>Hibernate关联映射</h1><blockquote>
+      
+
+      
+        
+          <h1 id="Hibernate关联映射"><a href="#Hibernate关联映射" class="headerlink" title="Hibernate关联映射"></a>Hibernate关联映射</h1><blockquote>
 <p>对象与对象之间的关联关系，对于客观世界的建模是非常重要的。</p>
 <p>Hibernate完全可以理解面向对象的继承、多态等概念，一旦建立了正确的继承映射，程序就能以面向对象的方式进行数据库访问</p>
 </blockquote>
-<p>映射关联关系：</p>
-<ul>
-<li>在对象关系模型中，类与类之间的关系最常见的是关联关系。</li>
-<li>关联关系分类：<ul>
-<li>单向关联</li>
-<li>双向关联</li>
-</ul>
-</li>
-<li>映射关联关系就是把对象模型中类之间的关联关系映射成关系模型中表之间的外键引用关系。</li>
-</ul>
-<hr>
-<h2 id="单向一对一关联映射"><a href="#单向一对一关联映射" class="headerlink" title="单向一对一关联映射"></a>单向一对一关联映射</h2><p>一对一关联映射策略：</p>
-<ul>
-<li>外键关联</li>
-<li>主键关联</li>
-</ul>
-<h3 id="基于外键的单向一对一关联映射"><a href="#基于外键的单向一对一关联映射" class="headerlink" title="基于外键的单向一对一关联映射"></a>基于外键的单向一对一关联映射</h3><blockquote>
-<p>基于外键的单向一对一实际上是多对一关联映射的特例</p>
-</blockquote>
-<p>有两个实体类，Account和Address，每一个Address对应一个Account，Account为主控端，Address为被控端，步骤如下：</p>
-<ul>
-<li><p>在主控段引用被控端的对象，并加入被控端的set/get方法</p>
-</li>
-<li><p>在主控端的hbm.xml文件中加入<many-to-one>标签，并指定多的一端的unique=true，这样就限制了多的一段多重性为一</many-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">column</span>=<span class="string">"address_id"</span> <span class="attr">unique</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
-</li>
-<li><p>建表时的sql语句</p>
-<ul>
-<li>生成两张表</li>
-<li>acc_table01表中的address_id增加了唯一的约束</li>
-<li>创建两张表的主外键关系</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> acc_table01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    address_id <span class="built_in">integer</span>,</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> address_table01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    address <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> acc_table01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> UK_d87hbvswjuy4mu25pj96usgaw  <span class="keyword">unique</span> (address_id)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> acc_table01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_d87hbvswjuy4mu25pj96usgaw </div><div class="line">    foreign <span class="keyword">key</span> (address_id) </div><div class="line">    <span class="keyword">references</span> address_table01 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>当插入数据时，将会有两条插入语句</p>
-</li>
-<li><p>若插入数据时两个Account共用一个Address对象，程序将会报错</p>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateOTO" target="_blank" rel="external">基于外键的单向一对一关联映射源码</a></p>
-<h3 id="基于主键的单向一对一关联映射"><a href="#基于主键的单向一对一关联映射" class="headerlink" title="基于主键的单向一对一关联映射"></a>基于主键的单向一对一关联映射</h3><p>有两个实体类，Citizen和IDCard，每一个Citizen对应一个IDCard，步骤如下：</p>
-<ul>
-<li><p>在主控端需要加入被控端对象的引用，并且加入set/get方法</p>
-</li>
-<li><p>在主控端的hbm.xml文件中，generator的class不再是native而是foreign，使用<one-to-one>标签</one-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>citizen<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">generator</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"citizen"</span> <span class="attr">constrained</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
-</li>
-<li><p>建表时的sql语句</p>
-<ul>
-<li>生成两张表</li>
-<li>两个id为相同的值</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> citizen_tab1 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">       <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">create</span> <span class="keyword">table</span> idcard_tab1 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">       <span class="keyword">no</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">alter</span> <span class="keyword">table</span> idcard_tab1 </div><div class="line">       <span class="keyword">add</span> <span class="keyword">constraint</span> FK_2bxrettaaux1a562y39a3jhaj </div><div class="line">       foreign <span class="keyword">key</span> (<span class="keyword">id</span>) </div><div class="line">       <span class="keyword">references</span> citizen_tab1 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>当插入数据时，将会有两条插入语句</p>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernatePKOTO" target="_blank" rel="external">基于主键的单向一对一关联映射源码</a></p>
-<hr>
-<h2 id="双向一对一关联映射"><a href="#双向一对一关联映射" class="headerlink" title="双向一对一关联映射"></a>双向一对一关联映射</h2><h3 id="基于外键的双向一对一关联映射"><a href="#基于外键的双向一对一关联映射" class="headerlink" title="基于外键的双向一对一关联映射"></a>基于外键的双向一对一关联映射</h3><p>还是两个实体类，Account和Address，每个账户对应一个地址，每个地址也知道他所对应的账户是谁，Account为主控端，Address为被控端，步骤如下：</p>
-<ul>
-<li><p>在主控段引用被控端的对象，并加入被控端的set/get方法</p>
-</li>
-<li><p>在被控端引用主控端的对象，并加入主控端的set/get方法</p>
-</li>
-<li><p>在主控端的hbm.xml文件中加入<many-to-one>标签，并指定多的一端的unique=true，这样就限制了多的一段多重性为一</many-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">column</span>=<span class="string">"address_id"</span> <span class="attr">unique</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在被控端的hbm.xml文件中加入<one-to-one>标签，用property-ref来指定反向属性引用</one-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">property-ref</span>=<span class="string">"address_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
-</li>
-<li><p>建表时的sql语句</p>
-<ul>
-<li>生成两张表</li>
-<li>acc_table01表中的address_id增加了唯一的约束</li>
-<li>创建两张表的主外键关系</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> acc_table02 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">       <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       address_id <span class="built_in">integer</span>,</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">create</span> <span class="keyword">table</span> address_table02 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">       address <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">alter</span> <span class="keyword">table</span> acc_table02 </div><div class="line">       <span class="keyword">add</span> <span class="keyword">constraint</span> UK_ga1rk41rrbk0ksw32n53ru8ry  <span class="keyword">unique</span> (address_id)</div><div class="line"></div><div class="line">   <span class="keyword">alter</span> <span class="keyword">table</span> acc_table02 </div><div class="line">       <span class="keyword">add</span> <span class="keyword">constraint</span> FK_ga1rk41rrbk0ksw32n53ru8ry </div><div class="line">       foreign <span class="keyword">key</span> (address_id) </div><div class="line">       <span class="keyword">references</span> address_table02 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>当插入数据时，将会有两条插入语句</p>
-</li>
-<li><p>若插入数据时两个Account共用一个Address对象，程序将会报错</p>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateOTO2" target="_blank" rel="external">基于外键的双向一对一关联映射源码</a></p>
-<h3 id="基于主键的双向一对一关联映射"><a href="#基于主键的双向一对一关联映射" class="headerlink" title="基于主键的双向一对一关联映射"></a>基于主键的双向一对一关联映射</h3><p>还是两个实体类，Citizen和IDCard，每一个Citizen对应一个IDCard，步骤如下：</p>
-<ul>
-<li><p>在主控段引用被控端的对象，并加入被控端的set/get方法</p>
-</li>
-<li><p>在被控端引用主控端的对象，并加入主控端的set/get方法</p>
-</li>
-<li><p>在主控端的hbm.xml文件中，generator的class不再是native而是foreign，使用<one-to-one>标签</one-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span></div><div class="line"> 		<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>citizen<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">generator</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"citizen"</span> <span class="attr">constrained</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在被控端的hbm.xml文件中加入<one-to-one>标签</one-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"idCard"</span> /&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
-</li>
-<li><p>建表时的sql语句</p>
-<ul>
-<li>生成两张表</li>
-<li>两个id为相同的值</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> citizen_tab2 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> idcard_tab2 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">    <span class="keyword">no</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> idcard_tab2 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_clvskb79psq8bihium1cxia0y </div><div class="line">    foreign <span class="keyword">key</span> (<span class="keyword">id</span>) </div><div class="line">    <span class="keyword">references</span> citizen_tab2 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>当插入数据时，将会有两条插入语句</p>
-</li>
-<li><p>若插入数据时两个Account共用一个Address对象，程序将会报错</p>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernatePKOTO2" target="_blank" rel="external">基于主键的双向一对一关联映射源码</a></p>
-<hr>
-<h2 id="单向一对多（多对一）关联映射"><a href="#单向一对多（多对一）关联映射" class="headerlink" title="单向一对多（多对一）关联映射"></a>单向一对多（多对一）关联映射</h2><h3 id="单向一对多关联映射"><a href="#单向一对多关联映射" class="headerlink" title="单向一对多关联映射"></a>单向一对多关联映射</h3><blockquote>
-<p>单向一对多关联映射，在对象关系映射文件中使用<one-to-many>标签映射，开发中不常见</one-to-many></p>
-</blockquote>
-<p>两个实体类，Account和Order，一个账户可以对应多个订单，</p>
-<ul>
-<li><p>在Account对象中加入对Order集合的引用，并加入set/get方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Set&lt;Orders&gt; setOrders;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在对应的xml文件中添加对集合的操作，并在其中加入<one-to-many>标签</one-to-many></p>
-</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;set name="setOrders"&gt;</div><div class="line">    &lt;key column="acc_id"&gt;&lt;/key&gt; 		</div><div class="line">    &lt;one-to-many class="tech.loyd.entity.Orders"/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>在hibernate.cfg.xml中mapping这两个对象</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/hibernateOTM" target="_blank" rel="external">单向一对多关联映射源码</a></p>
-<h3 id="单向多对一关联映射"><a href="#单向多对一关联映射" class="headerlink" title="单向多对一关联映射"></a>单向多对一关联映射</h3><blockquote>
-<p>单向多对一关联中对象模型中类之间的引用在关系模型中表示为表之间的外键引用，通过<many-to-one>标签映射多对一关联</many-to-one></p>
-</blockquote>
-<p>两个实体类，员工Employee和部门Department，好多员工对应同一个部门，</p>
-<ul>
-<li><p>在Employee对象中加入对Department的引用，并加入set/get方法</p>
-</li>
-<li><p>在对应的xml文件中加入<many-to-one>标签</many-to-one></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"dept"</span> <span class="attr">column</span>=<span class="string">"dept_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTO" target="_blank" rel="external">单向多对一关联映射源码</a></p>
-<hr>
-<h2 id="双向一对多（多对一）关联映射"><a href="#双向一对多（多对一）关联映射" class="headerlink" title="双向一对多（多对一）关联映射"></a>双向一对多（多对一）关联映射</h2><h3 id="双向多对一（一对多）关联"><a href="#双向多对一（一对多）关联" class="headerlink" title="双向多对一（一对多）关联"></a>双向多对一（一对多）关联</h3><blockquote>
-<p>双向多对一（一对多）关联是最常见的关联关系</p>
-</blockquote>
-<p>两个实体类，Account和Order，一个账户可以对应多个订单，需要双向关联</p>
-<ul>
-<li><p>两个实体类都需要互相引用</p>
-</li>
-<li><p>少的一端需要对多的一端进行集合的引用，这里是Account中加入Set<order>集合</order></p>
-</li>
-<li><p>在Account.hbm.xml中，casecade选项为级联，inverse为反转关联关系的维护权，一般应交给多端来维护，两个结合使用insert和update会级联，但是关联关系不会反转</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"setOrders"</span> <span class="attr">cascade</span>=<span class="string">"all"</span> <span class="attr">inverse</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"acc_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"tech.loyd.entity.Orders"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在Order.hbm.xml中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">column</span>=<span class="string">"acc_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTO(OTM" target="_blank" rel="external">双向多对一（一对多）关联映射源码</a>)</p>
-<h3 id="双向一对多自身关联"><a href="#双向一对多自身关联" class="headerlink" title="双向一对多自身关联"></a>双向一对多自身关联</h3><p>以类别为例，类别可能有父类别和子类别，其中子类别可能就不止一个，是一个类别的集合</p>
-<ul>
-<li><p>Category类相当于把上面的两个类的结合</p>
-</li>
-<li><p>在Category类中的引用如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//如果把Category看成是多的一端</span></div><div class="line"><span class="keyword">private</span> Category parent;</div><div class="line"></div><div class="line"><span class="comment">//如果把Category看成是少的一端,则需要对多的一端进行对象集合的引用</span></div><div class="line"><span class="keyword">private</span> Set&lt;Category&gt; clist;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在对应的xml文件中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"clist"</span> <span class="attr">inverse</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"parent_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">		<span class="comment">&lt;!-- 配置一对多的关联映射 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"com.jikexueyuan.entity.Category"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"parent"</span> <span class="attr">column</span>=<span class="string">"parent_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTO(self" target="_blank" rel="external">双向一对多自身关联</a>)</p>
-<hr>
-<h2 id="多对多关联映射"><a href="#多对多关联映射" class="headerlink" title="多对多关联映射"></a>多对多关联映射</h2><blockquote>
-<p>在关系模型中，无法直接表达两个表之间的多对多关系。需要创建一个连接表，它同时参照两个表。</p>
-</blockquote>
-<p>例如，学生和课程两个实体类，一个学生可以选择多个课程，一个课程也可以被多个学生选择，</p>
-<ul>
-<li><p>在Course类中添加对Student集合的引用，并加入set/get方法</p>
-</li>
-<li><p>在Student类中添加对Course集合的引用，并加入set/get方法</p>
-</li>
-<li><p>Course.hbm.xml中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"stuList"</span> <span class="attr">table</span>=<span class="string">"stu_course01"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"course_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">column</span>=<span class="string">"student_id"</span> <span class="attr">class</span>=<span class="string">"com.jikexueyuan.entity1.Student"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-many</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>Student.hbm.xml中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"courseList"</span> <span class="attr">table</span>=<span class="string">"stu_course01"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"student_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span>	</div><div class="line">    <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">column</span>=<span class="string">"course_id"</span> <span class="attr">class</span>=<span class="string">"com.jikexueyuan.entity1.Course"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-many</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在SQL语句中，不但有course_tab01表和stu_tab01表，还会有一个stu_course01表</p>
-<p>相当于把两个多对多的关联映射分解成两个一对多关联映射</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> course_tab01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> stu_course01 (</div><div class="line">    course_id <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">    student_id <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">    primary <span class="keyword">key</span> (student_id, course_id)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> stu_tab01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    gender <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> stu_course01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_19y3ja4j3qell9u0r2xg8dseq </div><div class="line">    foreign <span class="keyword">key</span> (student_id) </div><div class="line">    <span class="keyword">references</span> stu_tab01 (<span class="keyword">id</span>)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> stu_course01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_1m6b55xhhjylvvsev04wi216 </div><div class="line">    foreign <span class="keyword">key</span> (course_id) </div><div class="line">    <span class="keyword">references</span> course_tab01 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>第二种情况，有三个类，除了学生和课程两个实体类之外，还有一个学生和课程的关系实体类</p>
-<ul>
-<li><p>在Course类中添加对Student集合的引用，并加入set/get方法</p>
-</li>
-<li><p>在Student类中添加对Course集合的引用，并加入set/get方法</p>
-</li>
-<li><p>在关系实体类中，添加课程和学生类的引用</p>
-</li>
-<li><p>课程类对应的xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"stuList"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"course_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"tech.loyd.entity2.StuCourse02"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>学生类对应的xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"courseList"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"student_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"tech.loyd.entity2.StuCourse02"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>关系实体类中的xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span>  <span class="attr">name</span>=<span class="string">"stu"</span>  <span class="attr">column</span>=<span class="string">"student_id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"course"</span>  <span class="attr">column</span>=<span class="string">"course_id"</span>/&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTM" target="_blank" rel="external">多对多关系映射</a></p>
-<hr>
-<h2 id="Hibernate中关联映射的最佳实践"><a href="#Hibernate中关联映射的最佳实践" class="headerlink" title="Hibernate中关联映射的最佳实践"></a>Hibernate中关联映射的最佳实践</h2><ul>
-<li>为每个持久实体类写一个映射文件</li>
-<li>不要用怪异的连接映射</li>
-<li>偏爱双向关联</li>
-</ul>
-
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/20/Hibernate关联映射/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/20/Hibernate关联映射/" data-id="cj56omtun0001ro2f1wsdfcan" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
+  </article>
+
+
+    
+  </section>
+
   
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
-</section>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
         
-          <aside id="sidebar">
+          
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java框架/">Java框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macbook/">macbook</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-
-  
+  <aside id="sidebar" class="sidebar">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macbook/">macbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查询/">查询</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注释/">注释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Loyd Chen" />
+          <p class="site-author-name" itemprop="name">Loyd Chen</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
     </div>
-  </div>
+  </aside>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hibernate/" style="font-size: 16.67px;">Hibernate</a> <a href="/tags/Java基础/" style="font-size: 10px;">Java基础</a> <a href="/tags/SSH/" style="font-size: 16.67px;">SSH</a> <a href="/tags/macbook/" style="font-size: 10px;">macbook</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/排序/" style="font-size: 20px;">排序</a> <a href="/tags/查询/" style="font-size: 10px;">查询</a> <a href="/tags/注释/" style="font-size: 10px;">注释</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/集合/" style="font-size: 13.33px;">集合</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/04/10/选择排序/">选择排序</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/10/插入排序/">插入排序</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/10/快速排序/">快速排序</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/10/归并排序/">归并排序</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/10/冒泡排序/">冒泡排序</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer">
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Loyd Chen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
