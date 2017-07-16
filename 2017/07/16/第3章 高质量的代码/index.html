@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="剑指Offer,求职," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="第3章 高质量的代码面试题11.数值的整数次方 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。">
+<meta name="keywords" content="剑指Offer,求职">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第3章 高质量的代码">
+<meta property="og:url" content="http://loyd.tech/2017/07/16/第3章 高质量的代码/index.html">
+<meta property="og:site_name" content="Loyd">
+<meta property="og:description" content="第3章 高质量的代码面试题11.数值的整数次方 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。">
+<meta property="og:updated_time" content="2017-07-16T12:49:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第3章 高质量的代码">
+<meta name="twitter:description" content="第3章 高质量的代码面试题11.数值的整数次方 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://loyd.tech/2017/07/16/第3章 高质量的代码/"/>
+
+
+
+
+
+  <title>第3章 高质量的代码 | Loyd</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/07/16/第3章 高质量的代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第3章 高质量的代码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T15:21:13+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/剑指Offer/" itemprop="url" rel="index">
+                    <span itemprop="name">剑指Offer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第3章-高质量的代码"><a href="#第3章-高质量的代码" class="headerlink" title="第3章 高质量的代码"></a>第3章 高质量的代码</h1><h2 id="面试题11-数值的整数次方"><a href="#面试题11-数值的整数次方" class="headerlink" title="面试题11.数值的整数次方"></a>面试题11.数值的整数次方</h2><blockquote>
+<p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question11_1</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(exponent == <span class="number">0</span>)&#123;</div><div class="line">        	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">double</span> result = <span class="number">1</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(exponent &gt; <span class="number">0</span>)&#123;</div><div class="line">        	<span class="keyword">while</span>(exponent !=<span class="number">0</span>)&#123;</div><div class="line">        		result *= base;</div><div class="line">        		exponent--;</div><div class="line">        	&#125;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">        	<span class="keyword">while</span>(exponent !=<span class="number">0</span>)&#123;</div><div class="line">        		result *= base;</div><div class="line">        		exponent++;</div><div class="line">        	&#125;</div><div class="line">        	result = <span class="number">1</span>/result;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">	  &#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		</div><div class="line">			System.out.println(Power(<span class="number">3</span>, -<span class="number">5</span>));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>思路二：</p>
+<ul>
+<li>用右移运算符代替除以2</li>
+<li>用位运算符代替%来判断是奇数还是偶数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question11_2</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (exponent == <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">double</span> result;</div><div class="line">		<span class="keyword">if</span> (exponent &gt; <span class="number">0</span>) &#123;</div><div class="line">			result = powerWithUnExpinent(base, exponent);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			result = powerWithUnExpinent(base, -exponent);</div><div class="line">			result = <span class="number">1.0</span> / result;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">powerWithUnExpinent</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (exponent == <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (exponent == <span class="number">1</span>) &#123;</div><div class="line">			<span class="keyword">return</span> base;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">double</span> result = powerWithUnExpinent(base, exponent &gt;&gt; <span class="number">1</span>);</div><div class="line">		result *= result;</div><div class="line">		<span class="keyword">if</span> ((exponent &amp; <span class="number">0x1</span>) == <span class="number">1</span>) &#123;</div><div class="line">			result *= base;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(Power(<span class="number">0.0005</span>,<span class="number">3</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题12-打印1到最大的n位数"><a href="#面试题12-打印1到最大的n位数" class="headerlink" title="面试题12.打印1到最大的n位数"></a>面试题12.打印1到最大的n位数</h2><blockquote>
+<p>输入数字n，按顺序打印出从1到最大的n位十进制数，比如输入3，则打印出1、2、3一直到走愈大的3位数即999。</p>
+</blockquote>
+<p><strong>解题思路</strong>：若n很大时，求最大的n位数都会溢出，应该用字符数组。全排列用递归很容易表达。递归结束的条件是我们已经设置了数字的最后一位。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question12</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printOneToNthDigits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;  </div><div class="line">        <span class="comment">// 输入的数字不能为小于1  </span></div><div class="line">        <span class="keyword">if</span> (n &lt; <span class="number">1</span>) &#123;  </div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"The input number must larger than 0"</span>);  </div><div class="line">        &#125;  </div><div class="line">        <span class="comment">// 创建一个数组用于打存放值  </span></div><div class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[n];  </div><div class="line">        printOneToNthDigits(<span class="number">0</span>, arr);  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printOneToNthDigits</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] arr)</span> </span>&#123;  </div><div class="line">  </div><div class="line">        <span class="comment">// 说明所有的数据排列选择已经处理完了  </span></div><div class="line">        <span class="keyword">if</span> (n &gt;= arr.length) &#123;  </div><div class="line">            <span class="comment">// 可以输入数组的值  </span></div><div class="line">            printArray(arr);  </div><div class="line">        &#125; <span class="keyword">else</span> &#123;  </div><div class="line">            <span class="comment">// 对  </span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; i++) &#123;  </div><div class="line">                arr[n] = i;  </div><div class="line">                printOneToNthDigits(n + <span class="number">1</span>, arr);  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printArray</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;  </div><div class="line">        <span class="comment">// 找第一个非0的元素  </span></div><div class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;  </div><div class="line">        <span class="keyword">while</span> (index &lt; arr.length &amp;&amp; arr[index] == <span class="number">0</span>) &#123;  </div><div class="line">            index++;  </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        <span class="comment">// 从第一个非0值到开始输出到最后的元素。  </span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = index; i &lt; arr.length; i++) &#123;  </div><div class="line">            System.out.print(arr[i]);  </div><div class="line">        &#125;  </div><div class="line">        <span class="comment">// 条件成立说明数组中有非零元素，所以需要换行  </span></div><div class="line">        <span class="keyword">if</span> (index &lt; arr.length) &#123;  </div><div class="line">            System.out.println();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        printOneToNthDigits(<span class="number">5</span>);  </div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题13：在O-1-时间删除链表节点"><a href="#面试题13：在O-1-时间删除链表节点" class="headerlink" title="面试题13：在O(1)时间删除链表节点"></a>面试题13：在O(1)时间删除链表节点</h2><blockquote>
+<p>给定单向链表的头指针和一个节点指针，定义一个函数在O(1)时间删除该节点。</p>
+</blockquote>
+<p><strong>解题思路</strong>:若目标节点有next，将目标节点和其next的值互换，并将目标节点的next指向next的next，其它情况单独判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> value;</div><div class="line">	Node next;</div><div class="line">	</div><div class="line">	Node(<span class="keyword">int</span> value,Node next)&#123;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">		<span class="keyword">this</span>.next = next;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question13</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 删除节点</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(Node head,Node target)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(target.next == <span class="keyword">null</span>)&#123;</div><div class="line">			Node node = head.next;</div><div class="line">			</div><div class="line">			<span class="keyword">while</span>(node.next != target)&#123;</div><div class="line">				node = node.next;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			node.next = <span class="keyword">null</span>;</div><div class="line">			</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			target.value = target.next.value;</div><div class="line">			target.next = target.next.next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 打印链表</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printNodeList</span><span class="params">(Node head)</span></span>&#123;</div><div class="line">		<span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</div><div class="line">			System.out.println(head.value);</div><div class="line">			head = head.next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Node node5 = <span class="keyword">new</span> Node(<span class="number">5</span>,<span class="keyword">null</span>);</div><div class="line">		Node node4 = <span class="keyword">new</span> Node(<span class="number">4</span>,node5);</div><div class="line">		Node node3 = <span class="keyword">new</span> Node(<span class="number">3</span>,node4);</div><div class="line">		Node node2 = <span class="keyword">new</span> Node(<span class="number">2</span>,node3);</div><div class="line">		Node node1 = <span class="keyword">new</span> Node(<span class="number">1</span>,node2);</div><div class="line">		</div><div class="line">		printNodeList(node1);</div><div class="line">		</div><div class="line">		deleteNode(node1,node3);</div><div class="line">		</div><div class="line">		printNodeList(node1);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题14：调整数组顺序使奇数位于偶数前面"><a href="#面试题14：调整数组顺序使奇数位于偶数前面" class="headerlink" title="面试题14：调整数组顺序使奇数位于偶数前面"></a>面试题14：调整数组顺序使奇数位于偶数前面</h2><blockquote>
+<p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。</p>
+</blockquote>
+<p><strong>解题思路</strong>：两个变量，一个指向前面，寻找偶数的元素，一个指向后面，寻找奇数的元素。交换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question14</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] resort(<span class="keyword">int</span>[] array)&#123;</div><div class="line">		<span class="keyword">if</span>(array==<span class="keyword">null</span> || array.length == <span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">return</span> array;	</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> front = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> end = array.length-<span class="number">1</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(front &lt; end)&#123;</div><div class="line">			<span class="keyword">if</span>(array[front] % <span class="number">2</span> == <span class="number">0</span>)&#123;</div><div class="line">				<span class="keyword">while</span>(array[end] % <span class="number">2</span> == <span class="number">0</span>)&#123;</div><div class="line">					end--;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				<span class="keyword">if</span>(end &lt;= front)&#123;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					<span class="keyword">int</span> temp = array[front];</div><div class="line">					array[front] = array[end];</div><div class="line">					array[end] = temp;</div><div class="line">					front++;</div><div class="line">					end--;</div><div class="line">				&#125;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				front++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> array;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">int</span>[] array = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>&#125;;</div><div class="line">		</div><div class="line">		array = resort(array);</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</div><div class="line">			System.out.println(array[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题15：链表中倒数第k个节点"><a href="#面试题15：链表中倒数第k个节点" class="headerlink" title="面试题15：链表中倒数第k个节点"></a>面试题15：链表中倒数第k个节点</h2><blockquote>
+<p>输入一个链表，输出该链表中倒数第k和节点。为了符合大多人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如一个链表有6个节点，从头结点开始他们的值一次是1、2、3、4、5、6.这个链表的倒数第3个节点是值为4的节点。</p>
+</blockquote>
+<p><strong>解题思路</strong>:先让节点a在前面走n-1步，节点b指向头结点，则当节点a到尾节点时，节点b就指向所求的节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 输入一个链表，输出该链表中倒数第k和节点。为了符合大多人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。</div><div class="line"> * 例如一个链表有6个节点，从头结点开始他们的值一次是1、2、3、4、5、6.这个链表的倒数第3个节点是值为4的节点。</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question15</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Node <span class="title">getNodeFromBack</span><span class="params">(Node head,<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(num == <span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> x = num;</div><div class="line">		</div><div class="line">		Node temp = head;</div><div class="line">		<span class="keyword">while</span>(num &gt; <span class="number">0</span>)&#123;</div><div class="line">			<span class="keyword">if</span>(temp != <span class="keyword">null</span>)&#123;</div><div class="line">				temp = temp.next;</div><div class="line">				num--;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(temp !=<span class="keyword">null</span>)&#123;</div><div class="line">			head = head.next;</div><div class="line">			temp = temp.next;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> head;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		</div><div class="line">		Node node5 = <span class="keyword">new</span> Node(<span class="number">5</span>,<span class="keyword">null</span>);</div><div class="line">		Node node4 = <span class="keyword">new</span> Node(<span class="number">4</span>,node5);</div><div class="line">		Node node3 = <span class="keyword">new</span> Node(<span class="number">3</span>,node4);</div><div class="line">		Node node2 = <span class="keyword">new</span> Node(<span class="number">2</span>,node3);</div><div class="line">		Node node1 = <span class="keyword">new</span> Node(<span class="number">1</span>,node2);</div><div class="line">		</div><div class="line">		System.out.println(getNodeFromBack(node1, <span class="number">3</span>).value);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题16：反转链表"><a href="#面试题16：反转链表" class="headerlink" title="面试题16：反转链表"></a>面试题16：反转链表</h2><blockquote>
+<p>定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。</p>
+</blockquote>
+<p><strong>解题思路</strong>：找到节点的前一个节点和后一个节点，然后将next指向前一个节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question16</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Node <span class="title">reverseList</span><span class="params">(Node head)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(head == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">if</span>(head.next == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> head;</div><div class="line">		</div><div class="line">		Node node1 = head;</div><div class="line">		Node node2 = head.next;</div><div class="line">		Node node3 = node2.next;</div><div class="line">		node1.next = <span class="keyword">null</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(node3 != <span class="keyword">null</span>)&#123;</div><div class="line">			node2.next = node1;</div><div class="line">			node1 = node2;</div><div class="line">			node2 = node3;</div><div class="line">			node3 = node3.next;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		node2.next = node1;</div><div class="line">		<span class="keyword">return</span> node2;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 打印链表</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printNodeList</span><span class="params">(Node head)</span></span>&#123;</div><div class="line">		<span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</div><div class="line">			System.out.println(head.value);</div><div class="line">			head = head.next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Node node5 = <span class="keyword">new</span> Node(<span class="number">5</span>,<span class="keyword">null</span>);</div><div class="line">		Node node4 = <span class="keyword">new</span> Node(<span class="number">4</span>,node5);</div><div class="line">		Node node3 = <span class="keyword">new</span> Node(<span class="number">3</span>,node4);</div><div class="line">		Node node2 = <span class="keyword">new</span> Node(<span class="number">2</span>,node3);</div><div class="line">		Node node1 = <span class="keyword">new</span> Node(<span class="number">1</span>,node2);</div><div class="line"></div><div class="line">		printNodeList(node1);</div><div class="line">		</div><div class="line">		System.out.println(<span class="string">"翻转后："</span>);</div><div class="line">		</div><div class="line">		printNodeList(reverseList(node1));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题17：合并两个排序的链表"><a href="#面试题17：合并两个排序的链表" class="headerlink" title="面试题17：合并两个排序的链表"></a>面试题17：合并两个排序的链表</h2><blockquote>
+<p>输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然按照递增排序的。</p>
+</blockquote>
+<p><strong>解题思路</strong>：注意边界条件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question17</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Node <span class="title">mergeTwoList</span><span class="params">(Node head1,Node head2)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(head1 == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> head2;</div><div class="line">		<span class="keyword">if</span>(head2 == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> head1;</div><div class="line">			</div><div class="line">		Node node;</div><div class="line">		Node headNew;</div><div class="line">		<span class="keyword">if</span>(head1.value &lt; head2.value)&#123;</div><div class="line">			node = head1;</div><div class="line">			headNew = node;</div><div class="line">			head1= head1.next;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			node = head2;</div><div class="line">			headNew = node;</div><div class="line">			head2 = head2.next;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(head1!=<span class="keyword">null</span> &amp;&amp; head2 !=<span class="keyword">null</span>)&#123;</div><div class="line">			<span class="keyword">if</span>(head1.value &lt; head2.value)&#123;</div><div class="line">				node.next = head1;</div><div class="line">				node = head1;</div><div class="line">				head1= head1.next;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				node.next = head2;</div><div class="line">				node = head2;</div><div class="line">				head2 = head2.next;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(head1 == <span class="keyword">null</span>)&#123;</div><div class="line">			node.next = head2;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			node.next = head1;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> headNew;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printNodeList</span><span class="params">(Node head)</span></span>&#123;</div><div class="line">		<span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</div><div class="line">			System.out.println(head.value);</div><div class="line">			head = head.next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Node node7 = <span class="keyword">new</span> Node(<span class="number">6</span>,<span class="keyword">null</span>);</div><div class="line">		Node node6 = <span class="keyword">new</span> Node(<span class="number">5</span>,node7);</div><div class="line">		Node node5 = <span class="keyword">new</span> Node(<span class="number">4</span>,node6);</div><div class="line">		Node node4 = <span class="keyword">new</span> Node(<span class="number">3</span>,node5);</div><div class="line">		Node node3 = <span class="keyword">new</span> Node(<span class="number">2</span>,node4);</div><div class="line"></div><div class="line">		Node node2 = <span class="keyword">new</span> Node(<span class="number">7</span>,<span class="keyword">null</span>);</div><div class="line">		Node node1 = <span class="keyword">new</span> Node(<span class="number">1</span>,node2);</div><div class="line">		</div><div class="line">		printNodeList(mergeTwoList(node1, node3));</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题18：树的子结构"><a href="#面试题18：树的子结构" class="headerlink" title="面试题18：树的子结构"></a>面试题18：树的子结构</h2><blockquote>
+<p>输入两棵二叉树A和B，判断B是不是A的子结构。</p>
+</blockquote>
+<p><strong>解题思路</strong>：分为两部，第一步是在树A中找到与B的根节点值一样的节点，第二部是判断以找到的节点为根的子树和B的结构是否一致。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch3;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 输入两棵二叉树A和B，判断B是不是A的子结构。</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> value;</div><div class="line">	TreeNode leftChild;</div><div class="line">	TreeNode rightChild;</div><div class="line"></div><div class="line">	TreeNode(<span class="keyword">int</span> value) &#123;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">		<span class="keyword">this</span>.leftChild = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">this</span>.rightChild = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	TreeNode(<span class="keyword">int</span> value, TreeNode leftChild, TreeNode rightChild) &#123;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">		<span class="keyword">this</span>.leftChild = leftChild;</div><div class="line">		<span class="keyword">this</span>.rightChild = rightChild;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question18</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//判断B是不是A的子结构</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isHaveSubTree</span><span class="params">(TreeNode A, TreeNode B)</span> </span>&#123;</div><div class="line">		<span class="keyword">boolean</span> result = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (A != <span class="keyword">null</span> &amp;&amp; B != <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">if</span> (A.value == B.value) &#123;</div><div class="line">				result = isChild(A, B);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (!result)</div><div class="line">				result = isHaveSubTree(A.leftChild, B);</div><div class="line">			<span class="keyword">if</span> (!result)</div><div class="line">				result = isHaveSubTree(A.rightChild, B);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//判断A为根节点的树和B为根节点的树是否结构一致或包含，边界条件是到A或B的叶子节点</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isChild</span><span class="params">(TreeNode A, TreeNode B)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (B == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		<span class="keyword">if</span> (A == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		<span class="keyword">if</span> (A.value != B.value)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> isChild(A.leftChild, B.leftChild) &amp;&amp; isChild(A.rightChild, B.rightChild);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		TreeNode tn1 = <span class="keyword">new</span> TreeNode(<span class="number">4</span>);</div><div class="line">		TreeNode tn2 = <span class="keyword">new</span> TreeNode(<span class="number">7</span>);</div><div class="line">		TreeNode tn3 = <span class="keyword">new</span> TreeNode(<span class="number">2</span>, tn1, tn2);</div><div class="line">		TreeNode tn4 = <span class="keyword">new</span> TreeNode(<span class="number">9</span>);</div><div class="line">		TreeNode tn5 = <span class="keyword">new</span> TreeNode(<span class="number">8</span>, tn4, tn3);</div><div class="line">		TreeNode tn6 = <span class="keyword">new</span> TreeNode(<span class="number">7</span>);</div><div class="line">		TreeNode tn7 = <span class="keyword">new</span> TreeNode(<span class="number">8</span>, tn5, tn6);</div><div class="line"></div><div class="line">		TreeNode tn8 = <span class="keyword">new</span> TreeNode(<span class="number">9</span>);</div><div class="line">		TreeNode tn9 = <span class="keyword">new</span> TreeNode(<span class="number">2</span>);</div><div class="line">		TreeNode tn10 = <span class="keyword">new</span> TreeNode(<span class="number">8</span>, tn8, tn9);</div><div class="line"></div><div class="line">		System.out.println(isHaveSubTree(tn7, tn10));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/剑指Offer/" rel="tag"># 剑指Offer</a>
+          
+            <a href="/tags/求职/" rel="tag"># 求职</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/06/堆排序/" rel="next" title="堆排序">
+                <i class="fa fa-chevron-left"></i> 堆排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Loyd Chen" />
+          <p class="site-author-name" itemprop="name">Loyd Chen</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第3章-高质量的代码"><span class="nav-number">1.</span> <span class="nav-text">第3章 高质量的代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题11-数值的整数次方"><span class="nav-number">1.1.</span> <span class="nav-text">面试题11.数值的整数次方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题12-打印1到最大的n位数"><span class="nav-number">1.2.</span> <span class="nav-text">面试题12.打印1到最大的n位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题13：在O-1-时间删除链表节点"><span class="nav-number">1.3.</span> <span class="nav-text">面试题13：在O(1)时间删除链表节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题14：调整数组顺序使奇数位于偶数前面"><span class="nav-number">1.4.</span> <span class="nav-text">面试题14：调整数组顺序使奇数位于偶数前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题15：链表中倒数第k个节点"><span class="nav-number">1.5.</span> <span class="nav-text">面试题15：链表中倒数第k个节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题16：反转链表"><span class="nav-number">1.6.</span> <span class="nav-text">面试题16：反转链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题17：合并两个排序的链表"><span class="nav-number">1.7.</span> <span class="nav-text">面试题17：合并两个排序的链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题18：树的子结构"><span class="nav-number">1.8.</span> <span class="nav-text">面试题18：树的子结构</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Loyd Chen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

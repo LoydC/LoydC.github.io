@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据结构,栈,队列," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="栈和队列##栈的介绍 栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。  通常称插入、删除的这一端为栈顶 （Top），另一端称为栈底 （Bottom）。   当表中没有元素时称为空栈。   栈为后进先出（Last In First Out）的线性表，简称为 LIFO 表。    如下所示：  由于栈是一个表，因此任何实现表的方法都能实现栈。显然ArrayLis">
+<meta name="keywords" content="数据结构,栈,队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈和队列">
+<meta property="og:url" content="http://loyd.tech/2017/06/25/栈和队列/index.html">
+<meta property="og:site_name" content="Loyd">
+<meta property="og:description" content="栈和队列##栈的介绍 栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。  通常称插入、删除的这一端为栈顶 （Top），另一端称为栈底 （Bottom）。   当表中没有元素时称为空栈。   栈为后进先出（Last In First Out）的线性表，简称为 LIFO 表。    如下所示：  由于栈是一个表，因此任何实现表的方法都能实现栈。显然ArrayLis">
+<meta property="og:image" content="http://loyd.tech/2017/06/25/栈和队列/media/14993261272637/14993262408945.jpg">
+<meta property="og:image" content="http://loyd.tech/2017/06/25/栈和队列/media/14993261272637/14994282717694.png">
+<meta property="og:image" content="http://loyd.tech/2017/06/25/栈和队列/media/14993261272637/14994285924895.jpg">
+<meta property="og:updated_time" content="2017-07-16T12:50:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="栈和队列">
+<meta name="twitter:description" content="栈和队列##栈的介绍 栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。  通常称插入、删除的这一端为栈顶 （Top），另一端称为栈底 （Bottom）。   当表中没有元素时称为空栈。   栈为后进先出（Last In First Out）的线性表，简称为 LIFO 表。    如下所示：  由于栈是一个表，因此任何实现表的方法都能实现栈。显然ArrayLis">
+<meta name="twitter:image" content="http://loyd.tech/2017/06/25/栈和队列/media/14993261272637/14993262408945.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://loyd.tech/2017/06/25/栈和队列/"/>
+
+
+
+
+
+  <title>栈和队列 | Loyd</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/06/25/栈和队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">栈和队列</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T17:15:41+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h1><p>##栈的介绍</p>
+<p>栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行。</p>
+<ul>
+<li>通常称插入、删除的这一端为栈顶 （Top），另一端称为栈底 （Bottom）。  </li>
+<li>当表中没有元素时称为空栈。  </li>
+<li>栈为后进先出（Last In First Out）的线性表，简称为 LIFO 表。  </li>
+</ul>
+<p>如下所示：</p>
+<p><img src="media/14993261272637/14993262408945.jpg" alt=""></p>
+<p>由于栈是一个表，因此任何实现表的方法都能实现栈。显然ArrayList和LinkedList都支持栈操作，99%的情况它们都是最合适的选择。</p>
+<a id="more"></a>
+<p>##栈的数组实现</p>
+<p>###1.用数组实现栈：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.list;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.Serializable;</div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayStack</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Fields</span> serialVersionUID : TODO</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">74027006708386243L</span>;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Object[] elementData;<span class="comment">// 定义一个数组用于保存顺序栈的元素</span></div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> size = <span class="number">0</span>;<span class="comment">// 保存顺序栈中元素的当前个数</span></div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> capacity;<span class="comment">// 保存数组的长度</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">()</span> </span>&#123;</div><div class="line">		elementData = <span class="keyword">new</span> Object[<span class="number">10</span>];<span class="comment">// 默认长度为10的栈</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">(<span class="keyword">int</span> initSize)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.capacity = initSize;</div><div class="line">		elementData = <span class="keyword">new</span> Object[initSize];<span class="comment">// 默认长度为10的栈</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">(T element)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>();</div><div class="line">		elementData[<span class="number">0</span>] = element;</div><div class="line">		size++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">(T element, <span class="keyword">int</span> initSize)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.capacity = initSize;</div><div class="line">		elementData = <span class="keyword">new</span> Object[capacity];</div><div class="line">		elementData[<span class="number">0</span>] = element;</div><div class="line">		size++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: size</div><div class="line">	 * <span class="doctag">@Description</span>: 栈长度</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> size;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: push</div><div class="line">	 * <span class="doctag">@Description</span>: 入栈</div><div class="line">	 * <span class="doctag">@param</span> element</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(T element)</span> </span>&#123;</div><div class="line">		ensureCapacity(size + <span class="number">1</span>);</div><div class="line">		elementData[size++] = element;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</div><div class="line">		<span class="comment">// 如果数组的原有长度小于目前所需的长度</span></div><div class="line">		<span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">		<span class="keyword">if</span> (minCapacity &gt; oldCapacity) &#123;</div><div class="line">			<span class="keyword">int</span> newCapacity = (oldCapacity * <span class="number">3</span>) / <span class="number">2</span> + <span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span> (newCapacity &lt; minCapacity)</div><div class="line">				newCapacity = minCapacity;</div><div class="line">			<span class="comment">// minCapacity is usually close to size, so this is a win:</span></div><div class="line">			elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: pop</div><div class="line">	 * <span class="doctag">@Description</span>: 出栈</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (!isEmpty()) &#123;</div><div class="line">			T oldValue = (T) elementData[size - <span class="number">1</span>];</div><div class="line">			<span class="comment">// 释放栈顶元素</span></div><div class="line">			elementData[--size] = <span class="keyword">null</span>;</div><div class="line">			<span class="keyword">return</span> oldValue;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: peek</div><div class="line">	 * <span class="doctag">@Description</span>: 返回栈顶元素，但不删除栈顶元素</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (!isEmpty()) &#123;</div><div class="line">			<span class="keyword">return</span> (T) elementData[size - <span class="number">1</span>];</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(<span class="string">"空栈异常"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: empty</div><div class="line">	 * <span class="doctag">@Description</span>: 判断顺序栈是否为空栈</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> size == <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: clear</div><div class="line">	 * <span class="doctag">@Description</span>: 清空顺序栈</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// 将底层数组所有元素赋为null</span></div><div class="line">		Arrays.fill(elementData, <span class="keyword">null</span>);</div><div class="line">		size = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (size == <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="string">"[]"</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"["</span>);</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; -<span class="number">1</span>; i--) &#123;</div><div class="line">				sb.append(elementData[i].toString() + <span class="string">", "</span>);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">int</span> len = sb.length();</div><div class="line">			<span class="keyword">return</span> sb.delete(len - <span class="number">2</span>, len).append(<span class="string">"]"</span>).toString();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###2.用ArrayList实现栈<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.list;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.EmptyStackException;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayStack2</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">4396620094929287983L</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ArrayStack2</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ArrayStack2</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> initialSize)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(initialSize);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> isEmpty();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">peek</span><span class="params">()</span> <span class="keyword">throws</span> EmptyStackException </span>&#123;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> n = size();</div><div class="line">		<span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> get(n - <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">peek</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> n)</span> <span class="keyword">throws</span> EmptyStackException </span>&#123;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> m = (size() - n) - <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (m &lt; <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> get(m);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> <span class="keyword">throws</span> EmptyStackException </span>&#123;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> n = size();</div><div class="line">		<span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> remove(n - <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">push</span><span class="params">(<span class="keyword">final</span> E item)</span> </span>&#123;</div><div class="line">		add(item);</div><div class="line">		<span class="keyword">return</span> item;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">final</span> Object object)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> i = size() - <span class="number">1</span>; <span class="comment">// Current index</span></div><div class="line">		<span class="keyword">int</span> n = <span class="number">1</span>; <span class="comment">// Current distance</span></div><div class="line">		<span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">final</span> Object current = get(i);</div><div class="line">			<span class="keyword">if</span> ((object == <span class="keyword">null</span> &amp;&amp; current == <span class="keyword">null</span>) || (object != <span class="keyword">null</span> &amp;&amp; object.equals(current))) &#123;</div><div class="line">				<span class="keyword">return</span> n;</div><div class="line">			&#125;</div><div class="line">			i--;</div><div class="line">			n++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>##用链表实现栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.list;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.Serializable;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkStack</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">4378447264374701299L</span>;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line">		<span class="keyword">private</span> T data; <span class="comment">// 保存节点的数据</span></div><div class="line"></div><div class="line">		<span class="keyword">private</span> Node next; <span class="comment">// 指向下个节点的引用</span></div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(T data, Node next)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.data = data;</div><div class="line">			<span class="keyword">this</span>.next = next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Node top; <span class="comment">// 保存该链栈的栈顶元素</span></div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> size = <span class="number">0</span>; <span class="comment">// 保存该链栈中已包含的节点数,即栈的长度</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LinkStack</span><span class="params">()</span> </span>&#123;</div><div class="line">		top = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LinkStack</span><span class="params">(T element)</span> </span>&#123;</div><div class="line">		top = <span class="keyword">new</span> Node(element, <span class="keyword">null</span>);</div><div class="line">		size++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: size</div><div class="line">	 * <span class="doctag">@Description</span>: 栈的长度</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> size;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: push</div><div class="line">	 * <span class="doctag">@Description</span>: 入栈</div><div class="line">	 * <span class="doctag">@param</span> element</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(T element)</span> </span>&#123;</div><div class="line">		top = <span class="keyword">new</span> Node(element, top);</div><div class="line">		size++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: pop</div><div class="line">	 * <span class="doctag">@Description</span>: 出栈</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">		Node oldTop = top;</div><div class="line">		top = top.next;</div><div class="line">		oldTop.next = <span class="keyword">null</span>;</div><div class="line">		size--;</div><div class="line">		<span class="keyword">return</span> oldTop.data;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: peek</div><div class="line">	 * <span class="doctag">@Description</span>: 访问栈顶元素</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">peek</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> top.data;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: empty</div><div class="line">	 * <span class="doctag">@Description</span>: 判断顺序栈是否为空栈</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> size == <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@Title</span>: clear</div><div class="line">	 * <span class="doctag">@Description</span>: 清空顺序栈</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</div><div class="line">		top = <span class="keyword">null</span>;<span class="comment">// 将栈所有元素赋为null</span></div><div class="line">		size = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// 链栈为空链栈时</span></div><div class="line">		<span class="keyword">if</span> (isEmpty()) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="string">"[]"</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"["</span>);</div><div class="line">			<span class="keyword">for</span> (Node current = top; current != <span class="keyword">null</span>; current = current.next) &#123;</div><div class="line">				sb.append(current.data.toString() + <span class="string">", "</span>);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">int</span> len = sb.length();</div><div class="line">			<span class="keyword">return</span> sb.delete(len - <span class="number">2</span>, len).append(<span class="string">"]"</span>).toString();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##栈的应用</p>
+<p>###1.平衡符号</p>
+<p>检查字符串中的序列中的括号等是否都能成对出现，例如字符串<code>{（string）[acb]}</code>是合法的，而<code>{[)}</code>则是不合法的，可以通过栈进行检查。</p>
+<p><strong>算法思路</strong>：</p>
+<ul>
+<li>做一个空栈，读如字符直到结尾，遇到括号进行判断。</li>
+<li>若字符是左括号，推入栈中。</li>
+<li>若是右括号，则当栈空时报错，否则将栈中的符号弹出，若不是对应的左括号，则报错。</li>
+<li>在文件结尾若栈不空，则报错。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.stack;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 检测括号是否成对出现</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BalanceBrackets</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Character&gt;();</div><div class="line"></div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		map.put(<span class="string">')'</span>, <span class="string">'('</span>);</div><div class="line">		map.put(<span class="string">']'</span>, <span class="string">'['</span>);</div><div class="line">		map.put(<span class="string">'&#125;'</span>, <span class="string">'&#123;'</span>);</div><div class="line">		map.put(<span class="string">'&gt;'</span>, <span class="string">'&lt;'</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Boolean <span class="title">judge</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">		<span class="keyword">char</span>[] array = str.toCharArray();</div><div class="line"></div><div class="line">		ArrayStack2&lt;Character&gt; stack = <span class="keyword">new</span> ArrayStack2&lt;Character&gt;();</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (map.containsKey(array[i])) &#123;</div><div class="line">				<span class="keyword">if</span> (stack.isEmpty()) &#123;</div><div class="line">					<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">char</span> c = stack.peek();</div><div class="line">				<span class="keyword">if</span> (c == map.get(array[i])) &#123;</div><div class="line">					stack.pop();</div><div class="line">				&#125; <span class="keyword">else</span> &#123;</div><div class="line">					stack.push(array[i]);</div><div class="line">				&#125;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (map.containsValue(array[i])) &#123;</div><div class="line">				stack.add(array[i]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (stack.isEmpty()) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(judge(<span class="string">"(17[]&#123;&#125;)"</span>));</div><div class="line">		System.out.println(judge(<span class="string">"(17&gt;]&#123;&#125;)"</span>));</div><div class="line">		System.out.println(judge(<span class="string">"(17[]&#123;&#125;"</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###2.计算后缀表达式</p>
+<p>将<code>4.99 * 1.06 + 5.99 + 6.99 * 1.06</code>记作<code>4.99 1.06 * 5.99 + 6.99 1.06 * +</code>，这种记法叫做后缀（postfix）或逆波兰（reverse polish）记法。计算后缀表达式的方法使用了栈。</p>
+<p><strong>算法思路</strong>：</p>
+<ul>
+<li>遍历式子，若遇到数字，将数字压入栈中。</li>
+<li>若遇到运算符，取出栈中的两个元素和运算符进行运算，并把运算结果压入栈中。</li>
+<li>最后在栈中的元素即为运算结果。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.stack;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 计算后缀表达式</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalPostfix</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">calPostfix</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (<span class="string">""</span>.equals(str)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		String[] array = str.split(<span class="string">" "</span>);</div><div class="line">		ArrayStack&lt;Double&gt; stack = <span class="keyword">new</span> ArrayStack&lt;Double&gt;();</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (array[i].equals(<span class="string">"+"</span>)) &#123;</div><div class="line">				<span class="keyword">double</span> b = stack.pop();</div><div class="line">				<span class="keyword">double</span> a = stack.pop();</div><div class="line">				stack.push(a + b);</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i].equals(<span class="string">"-"</span>)) &#123;</div><div class="line">				<span class="keyword">double</span> b = stack.pop();</div><div class="line">				<span class="keyword">double</span> a = stack.pop();</div><div class="line">				stack.push(a - b);</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i].equals(<span class="string">"*"</span>)) &#123;</div><div class="line">				<span class="keyword">double</span> b = stack.pop();</div><div class="line">				<span class="keyword">double</span> a = stack.pop();</div><div class="line">				stack.push(a * b);</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i].equals(<span class="string">"/"</span>)) &#123;</div><div class="line">				<span class="keyword">double</span> b = stack.pop();</div><div class="line">				<span class="keyword">double</span> a = stack.pop();</div><div class="line">				stack.push(a / b);</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				stack.push(Double.parseDouble(array[i]));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> stack.pop();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		System.out.println(calPostfix(<span class="string">"1.66 7.5 * 2.3 1.3 / +"</span>));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###3.中缀到后缀的转换</p>
+<p>将<code>a + b * c + (d * e + f) * g</code>转换成<code>abc * + d e * f + g * +</code>，可以用到栈。</p>
+<p><strong>算法思路</strong>:</p>
+<ul>
+<li>当读到一个操作数的时候，立即把它放到输出中。</li>
+<li>当读到操作符时，若栈顶元素比该运算符的优先级低，则将该运算符压栈。</li>
+<li>若栈顶元素不比该运算符的优先级低，则出栈，并继续比较。</li>
+<li>左括号在栈外优先级最高，在栈内只有遇到右括号才出栈。</li>
+<li>结束后，将栈中元素全部弹出。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.stack;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * 将中缀表达式转换成后缀表达式</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConvertInfixToPostfix</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">convert</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">		StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (<span class="string">""</span>.equals(str)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		String[] array = str.split(<span class="string">" "</span>);</div><div class="line">		ArrayStack&lt;String&gt; stack = <span class="keyword">new</span> ArrayStack&lt;String&gt;();</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (array[i].equals(<span class="string">"+"</span>) || array[i].equals(<span class="string">"-"</span>)) &#123;</div><div class="line">				<span class="keyword">while</span> (!stack.isEmpty()) &#123;</div><div class="line">					<span class="keyword">if</span>(!stack.peek().equals(<span class="string">"("</span>))&#123;</div><div class="line">						sb.append(stack.pop());</div><div class="line">					&#125;<span class="keyword">else</span>&#123;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				stack.push(array[i]);</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i].equals(<span class="string">"*"</span>) || array[i].equals(<span class="string">"/"</span>)) &#123;</div><div class="line">				<span class="keyword">while</span> (!stack.isEmpty()) &#123;</div><div class="line">					<span class="keyword">if</span>(stack.peek().equals(<span class="string">"/"</span>) || stack.peek().equals(<span class="string">"*"</span>))&#123;</div><div class="line">						sb.append(stack.pop());	</div><div class="line">					&#125;<span class="keyword">else</span>&#123;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				stack.push(array[i]);</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i].equals(<span class="string">"("</span>)) &#123;</div><div class="line">				stack.push(array[i]);</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i].equals(<span class="string">")"</span>)) &#123;</div><div class="line">				<span class="keyword">while</span> (!stack.peek().equals(<span class="string">"("</span>)) &#123;</div><div class="line">					sb.append(stack.pop());</div><div class="line">				&#125;</div><div class="line">				stack.pop();</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				sb.append(array[i]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">while</span> (!stack.isEmpty()) &#123;</div><div class="line">			sb.append(stack.pop());</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> sb.toString();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(convert(<span class="string">"a + b * c + ( d * e + f ) * g"</span>));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##队列的介绍</p>
+<p>像栈一样，队列也是表。然而，使用队列时插入在一端进行而删除在另一端进行。</p>
+<p>队列的基本操作是入队（在表的末端插入一个元素）和出队（在表的开头删除一个元素）。如图所示：</p>
+<p><img src="media/14993261272637/14994282717694.png" alt=""></p>
+<p>##循环队列</p>
+<p>循环队列如下图所示：</p>
+<p><img src="media/14993261272637/14994285924895.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.queue;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopQueue</span>&lt;<span class="title">E</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">public</span> Object[] data = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxSize; <span class="comment">// 队列容量</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> rear;<span class="comment">// 队列尾，允许插入</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> front;<span class="comment">// 队列头，允许删除</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size=<span class="number">0</span>; <span class="comment">//队列当前长度</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoopQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(<span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LoopQueue</span><span class="params">(<span class="keyword">int</span> initialSize)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (initialSize &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.maxSize = initialSize;</div><div class="line">            data = <span class="keyword">new</span> Object[initialSize];</div><div class="line">            front = rear = <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"初始化大小不能小于0："</span> + initialSize);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 判空</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 插入</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (size == maxSize) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"队列已满，无法插入新的元素！"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            data[rear] = e;</div><div class="line">            rear = (rear + <span class="number">1</span>)%maxSize;</div><div class="line">            size ++;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 返回队首元素，但不删除</span></div><div class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">peek</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (empty()) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"空队列异常！"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> (E) data[front];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 出队</span></div><div class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">poll</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (empty()) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"空队列异常！"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            E value = (E) data[front]; <span class="comment">// 保留队列的front端的元素的值</span></div><div class="line">            data[front] = <span class="keyword">null</span>; <span class="comment">// 释放队列的front端的元素</span></div><div class="line">            front = (front+<span class="number">1</span>)%maxSize;  <span class="comment">//队首指针加1</span></div><div class="line">            size--;</div><div class="line">            <span class="keyword">return</span> value;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 队列长度</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//清空循环队列</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123;</div><div class="line">        Arrays.fill(data, <span class="keyword">null</span>);</div><div class="line">        size = <span class="number">0</span>;</div><div class="line">        front = <span class="number">0</span>;</div><div class="line">        rear = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##用链表实现队列</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.queue;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkQueue</span>&lt;<span class="title">E</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">// 链栈的节点</span></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</div><div class="line">        E e;</div><div class="line">        Node&lt;E&gt; next;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span> </span>&#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(E e, Node next)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.e = e;</div><div class="line">            <span class="keyword">this</span>.next = next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> Node front;<span class="comment">// 队列头，允许删除  </span></div><div class="line">    <span class="keyword">private</span> Node rear;<span class="comment">// 队列尾，允许插入  </span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size; <span class="comment">//队列当前长度 </span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinkQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">        front = <span class="keyword">null</span>;</div><div class="line">        rear = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//判空</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span></span>&#123;</div><div class="line">          <span class="keyword">return</span> size==<span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">      <span class="comment">//插入</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>&#123;</div><div class="line">          <span class="keyword">if</span>(empty())&#123;    <span class="comment">//如果队列为空</span></div><div class="line">              front = <span class="keyword">new</span> Node(e,<span class="keyword">null</span>);<span class="comment">//只有一个节点，front、rear都指向该节点</span></div><div class="line">              rear = front;</div><div class="line">          &#125;<span class="keyword">else</span>&#123;</div><div class="line">              Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;E&gt;(e, <span class="keyword">null</span>);</div><div class="line">              rear.next = newNode; <span class="comment">//让尾节点的next指向新增的节点</span></div><div class="line">              rear = newNode; <span class="comment">//以新节点作为新的尾节点</span></div><div class="line">          &#125;</div><div class="line">          size ++;</div><div class="line">          <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">      <span class="comment">//返回队首元素，但不删除</span></div><div class="line">      <span class="function"><span class="keyword">public</span> Node&lt;E&gt; <span class="title">peek</span><span class="params">()</span></span>&#123;</div><div class="line">          <span class="keyword">if</span>(empty())&#123;</div><div class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"空队列异常！"</span>);</div><div class="line">          &#125;<span class="keyword">else</span>&#123;</div><div class="line">              <span class="keyword">return</span> front;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">      <span class="comment">//出队</span></div><div class="line">      <span class="function"><span class="keyword">public</span> Node&lt;E&gt; <span class="title">poll</span><span class="params">()</span></span>&#123;</div><div class="line">          <span class="keyword">if</span>(empty())&#123;</div><div class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"空队列异常！"</span>);</div><div class="line">          &#125;<span class="keyword">else</span>&#123;</div><div class="line">              Node&lt;E&gt; value = front; <span class="comment">//得到队列头元素</span></div><div class="line">              front = front.next;<span class="comment">//让front引用指向原队列头元素的下一个元素</span></div><div class="line">              value.next = <span class="keyword">null</span>; <span class="comment">//释放原队列头元素的next引用</span></div><div class="line">              size --;</div><div class="line">              <span class="keyword">return</span> value;</div><div class="line">          &#125;        </div><div class="line">      &#125;</div><div class="line">      </div><div class="line">      <span class="comment">//队列长度</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>&#123;</div><div class="line">          <span class="keyword">return</span> size;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##队列的应用</p>
+<p>实际生活中的排队，打印机的作业，文件服务器等。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/栈/" rel="tag"># 栈</a>
+          
+            <a href="/tags/队列/" rel="tag"># 队列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/17/线性表/" rel="next" title="线性表">
+                <i class="fa fa-chevron-left"></i> 线性表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/01/冒泡排序/" rel="prev" title="冒泡排序">
+                冒泡排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Loyd Chen" />
+          <p class="site-author-name" itemprop="name">Loyd Chen</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#栈和队列"><span class="nav-number">1.</span> <span class="nav-text">栈和队列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Loyd Chen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
