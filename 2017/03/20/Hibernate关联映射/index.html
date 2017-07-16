@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hibernate关联映射 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hibernate关联映射 对象与对象之间的关联关系，对于客观世界的建模是非常重要的。 Hibernate完全可以理解面向对象的继承、多态等概念，一旦建立了正确的继承映射，程序就能以面向对象的方式进行数据库访问  映射关联关系：  在对象关系模型中，类与类之间的关系最常见的是关联关系。 关联关系分类： 单向关联 双向关联   映射关联关系就是把对象模型中类之间的关联关系映射成关系模型中表之间的外键">
+<meta name="keywords" content="Hibernate,SSH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hibernate关联映射">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/Hibernate关联映射/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hibernate关联映射 对象与对象之间的关联关系，对于客观世界的建模是非常重要的。 Hibernate完全可以理解面向对象的继承、多态等概念，一旦建立了正确的继承映射，程序就能以面向对象的方式进行数据库访问  映射关联关系：  在对象关系模型中，类与类之间的关系最常见的是关联关系。 关联关系分类： 单向关联 双向关联   映射关联关系就是把对象模型中类之间的关联关系映射成关系模型中表之间的外键">
+<meta property="og:updated_time" content="2017-03-20T08:19:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hibernate关联映射">
+<meta name="twitter:description" content="Hibernate关联映射 对象与对象之间的关联关系，对于客观世界的建模是非常重要的。 Hibernate完全可以理解面向对象的继承、多态等概念，一旦建立了正确的继承映射，程序就能以面向对象的方式进行数据库访问  映射关联关系：  在对象关系模型中，类与类之间的关系最常见的是关联关系。 关联关系分类： 单向关联 双向关联   映射关联关系就是把对象模型中类之间的关联关系映射成关系模型中表之间的外键">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Hibernate关联映射" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/20/Hibernate关联映射/" class="article-date">
+  <time datetime="2017-03-20T08:17:54.000Z" itemprop="datePublished">2017-03-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java框架/">Java框架</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hibernate关联映射
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hibernate关联映射"><a href="#Hibernate关联映射" class="headerlink" title="Hibernate关联映射"></a>Hibernate关联映射</h1><blockquote>
+<p>对象与对象之间的关联关系，对于客观世界的建模是非常重要的。</p>
+<p>Hibernate完全可以理解面向对象的继承、多态等概念，一旦建立了正确的继承映射，程序就能以面向对象的方式进行数据库访问</p>
+</blockquote>
+<p>映射关联关系：</p>
+<ul>
+<li>在对象关系模型中，类与类之间的关系最常见的是关联关系。</li>
+<li>关联关系分类：<ul>
+<li>单向关联</li>
+<li>双向关联</li>
+</ul>
+</li>
+<li>映射关联关系就是把对象模型中类之间的关联关系映射成关系模型中表之间的外键引用关系。</li>
+</ul>
+<hr>
+<h2 id="单向一对一关联映射"><a href="#单向一对一关联映射" class="headerlink" title="单向一对一关联映射"></a>单向一对一关联映射</h2><p>一对一关联映射策略：</p>
+<ul>
+<li>外键关联</li>
+<li>主键关联</li>
+</ul>
+<h3 id="基于外键的单向一对一关联映射"><a href="#基于外键的单向一对一关联映射" class="headerlink" title="基于外键的单向一对一关联映射"></a>基于外键的单向一对一关联映射</h3><blockquote>
+<p>基于外键的单向一对一实际上是多对一关联映射的特例</p>
+</blockquote>
+<p>有两个实体类，Account和Address，每一个Address对应一个Account，Account为主控端，Address为被控端，步骤如下：</p>
+<ul>
+<li><p>在主控段引用被控端的对象，并加入被控端的set/get方法</p>
+</li>
+<li><p>在主控端的hbm.xml文件中加入<many-to-one>标签，并指定多的一端的unique=true，这样就限制了多的一段多重性为一</many-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">column</span>=<span class="string">"address_id"</span> <span class="attr">unique</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
+</li>
+<li><p>建表时的sql语句</p>
+<ul>
+<li>生成两张表</li>
+<li>acc_table01表中的address_id增加了唯一的约束</li>
+<li>创建两张表的主外键关系</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> acc_table01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    address_id <span class="built_in">integer</span>,</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> address_table01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    address <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> acc_table01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> UK_d87hbvswjuy4mu25pj96usgaw  <span class="keyword">unique</span> (address_id)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> acc_table01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_d87hbvswjuy4mu25pj96usgaw </div><div class="line">    foreign <span class="keyword">key</span> (address_id) </div><div class="line">    <span class="keyword">references</span> address_table01 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>当插入数据时，将会有两条插入语句</p>
+</li>
+<li><p>若插入数据时两个Account共用一个Address对象，程序将会报错</p>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateOTO" target="_blank" rel="external">基于外键的单向一对一关联映射源码</a></p>
+<h3 id="基于主键的单向一对一关联映射"><a href="#基于主键的单向一对一关联映射" class="headerlink" title="基于主键的单向一对一关联映射"></a>基于主键的单向一对一关联映射</h3><p>有两个实体类，Citizen和IDCard，每一个Citizen对应一个IDCard，步骤如下：</p>
+<ul>
+<li><p>在主控端需要加入被控端对象的引用，并且加入set/get方法</p>
+</li>
+<li><p>在主控端的hbm.xml文件中，generator的class不再是native而是foreign，使用<one-to-one>标签</one-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>citizen<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">generator</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"citizen"</span> <span class="attr">constrained</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
+</li>
+<li><p>建表时的sql语句</p>
+<ul>
+<li>生成两张表</li>
+<li>两个id为相同的值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> citizen_tab1 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">       <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">create</span> <span class="keyword">table</span> idcard_tab1 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">       <span class="keyword">no</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">alter</span> <span class="keyword">table</span> idcard_tab1 </div><div class="line">       <span class="keyword">add</span> <span class="keyword">constraint</span> FK_2bxrettaaux1a562y39a3jhaj </div><div class="line">       foreign <span class="keyword">key</span> (<span class="keyword">id</span>) </div><div class="line">       <span class="keyword">references</span> citizen_tab1 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>当插入数据时，将会有两条插入语句</p>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernatePKOTO" target="_blank" rel="external">基于主键的单向一对一关联映射源码</a></p>
+<hr>
+<h2 id="双向一对一关联映射"><a href="#双向一对一关联映射" class="headerlink" title="双向一对一关联映射"></a>双向一对一关联映射</h2><h3 id="基于外键的双向一对一关联映射"><a href="#基于外键的双向一对一关联映射" class="headerlink" title="基于外键的双向一对一关联映射"></a>基于外键的双向一对一关联映射</h3><p>还是两个实体类，Account和Address，每个账户对应一个地址，每个地址也知道他所对应的账户是谁，Account为主控端，Address为被控端，步骤如下：</p>
+<ul>
+<li><p>在主控段引用被控端的对象，并加入被控端的set/get方法</p>
+</li>
+<li><p>在被控端引用主控端的对象，并加入主控端的set/get方法</p>
+</li>
+<li><p>在主控端的hbm.xml文件中加入<many-to-one>标签，并指定多的一端的unique=true，这样就限制了多的一段多重性为一</many-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">column</span>=<span class="string">"address_id"</span> <span class="attr">unique</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在被控端的hbm.xml文件中加入<one-to-one>标签，用property-ref来指定反向属性引用</one-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">property-ref</span>=<span class="string">"address_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
+</li>
+<li><p>建表时的sql语句</p>
+<ul>
+<li>生成两张表</li>
+<li>acc_table01表中的address_id增加了唯一的约束</li>
+<li>创建两张表的主外键关系</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> acc_table02 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">       <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       address_id <span class="built_in">integer</span>,</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">create</span> <span class="keyword">table</span> address_table02 (</div><div class="line">       <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">       address <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">       primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">   )</div><div class="line"></div><div class="line">   <span class="keyword">alter</span> <span class="keyword">table</span> acc_table02 </div><div class="line">       <span class="keyword">add</span> <span class="keyword">constraint</span> UK_ga1rk41rrbk0ksw32n53ru8ry  <span class="keyword">unique</span> (address_id)</div><div class="line"></div><div class="line">   <span class="keyword">alter</span> <span class="keyword">table</span> acc_table02 </div><div class="line">       <span class="keyword">add</span> <span class="keyword">constraint</span> FK_ga1rk41rrbk0ksw32n53ru8ry </div><div class="line">       foreign <span class="keyword">key</span> (address_id) </div><div class="line">       <span class="keyword">references</span> address_table02 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>当插入数据时，将会有两条插入语句</p>
+</li>
+<li><p>若插入数据时两个Account共用一个Address对象，程序将会报错</p>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateOTO2" target="_blank" rel="external">基于外键的双向一对一关联映射源码</a></p>
+<h3 id="基于主键的双向一对一关联映射"><a href="#基于主键的双向一对一关联映射" class="headerlink" title="基于主键的双向一对一关联映射"></a>基于主键的双向一对一关联映射</h3><p>还是两个实体类，Citizen和IDCard，每一个Citizen对应一个IDCard，步骤如下：</p>
+<ul>
+<li><p>在主控段引用被控端的对象，并加入被控端的set/get方法</p>
+</li>
+<li><p>在被控端引用主控端的对象，并加入主控端的set/get方法</p>
+</li>
+<li><p>在主控端的hbm.xml文件中，generator的class不再是native而是foreign，使用<one-to-one>标签</one-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span></div><div class="line"> 		<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>citizen<span class="tag">&lt;/<span class="name">param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">generator</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"citizen"</span> <span class="attr">constrained</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在被控端的hbm.xml文件中加入<one-to-one>标签</one-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"idCard"</span> /&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
+</li>
+<li><p>建表时的sql语句</p>
+<ul>
+<li>生成两张表</li>
+<li>两个id为相同的值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> citizen_tab2 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> idcard_tab2 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">    <span class="keyword">no</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> idcard_tab2 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_clvskb79psq8bihium1cxia0y </div><div class="line">    foreign <span class="keyword">key</span> (<span class="keyword">id</span>) </div><div class="line">    <span class="keyword">references</span> citizen_tab2 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>当插入数据时，将会有两条插入语句</p>
+</li>
+<li><p>若插入数据时两个Account共用一个Address对象，程序将会报错</p>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernatePKOTO2" target="_blank" rel="external">基于主键的双向一对一关联映射源码</a></p>
+<hr>
+<h2 id="单向一对多（多对一）关联映射"><a href="#单向一对多（多对一）关联映射" class="headerlink" title="单向一对多（多对一）关联映射"></a>单向一对多（多对一）关联映射</h2><h3 id="单向一对多关联映射"><a href="#单向一对多关联映射" class="headerlink" title="单向一对多关联映射"></a>单向一对多关联映射</h3><blockquote>
+<p>单向一对多关联映射，在对象关系映射文件中使用<one-to-many>标签映射，开发中不常见</one-to-many></p>
+</blockquote>
+<p>两个实体类，Account和Order，一个账户可以对应多个订单，</p>
+<ul>
+<li><p>在Account对象中加入对Order集合的引用，并加入set/get方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Set&lt;Orders&gt; setOrders;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在对应的xml文件中添加对集合的操作，并在其中加入<one-to-many>标签</one-to-many></p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;set name="setOrders"&gt;</div><div class="line">    &lt;key column="acc_id"&gt;&lt;/key&gt; 		</div><div class="line">    &lt;one-to-many class="tech.loyd.entity.Orders"/&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>在hibernate.cfg.xml中mapping这两个对象</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/hibernateOTM" target="_blank" rel="external">单向一对多关联映射源码</a></p>
+<h3 id="单向多对一关联映射"><a href="#单向多对一关联映射" class="headerlink" title="单向多对一关联映射"></a>单向多对一关联映射</h3><blockquote>
+<p>单向多对一关联中对象模型中类之间的引用在关系模型中表示为表之间的外键引用，通过<many-to-one>标签映射多对一关联</many-to-one></p>
+</blockquote>
+<p>两个实体类，员工Employee和部门Department，好多员工对应同一个部门，</p>
+<ul>
+<li><p>在Employee对象中加入对Department的引用，并加入set/get方法</p>
+</li>
+<li><p>在对应的xml文件中加入<many-to-one>标签</many-to-one></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"dept"</span> <span class="attr">column</span>=<span class="string">"dept_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTO" target="_blank" rel="external">单向多对一关联映射源码</a></p>
+<hr>
+<h2 id="双向一对多（多对一）关联映射"><a href="#双向一对多（多对一）关联映射" class="headerlink" title="双向一对多（多对一）关联映射"></a>双向一对多（多对一）关联映射</h2><h3 id="双向多对一（一对多）关联"><a href="#双向多对一（一对多）关联" class="headerlink" title="双向多对一（一对多）关联"></a>双向多对一（一对多）关联</h3><blockquote>
+<p>双向多对一（一对多）关联是最常见的关联关系</p>
+</blockquote>
+<p>两个实体类，Account和Order，一个账户可以对应多个订单，需要双向关联</p>
+<ul>
+<li><p>两个实体类都需要互相引用</p>
+</li>
+<li><p>少的一端需要对多的一端进行集合的引用，这里是Account中加入Set<order>集合</order></p>
+</li>
+<li><p>在Account.hbm.xml中，casecade选项为级联，inverse为反转关联关系的维护权，一般应交给多端来维护，两个结合使用insert和update会级联，但是关联关系不会反转</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"setOrders"</span> <span class="attr">cascade</span>=<span class="string">"all"</span> <span class="attr">inverse</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"acc_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"tech.loyd.entity.Orders"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在Order.hbm.xml中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">column</span>=<span class="string">"acc_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在hibernate.cfg.xml中mapping这两个对象</p>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTO(OTM" target="_blank" rel="external">双向多对一（一对多）关联映射源码</a>)</p>
+<h3 id="双向一对多自身关联"><a href="#双向一对多自身关联" class="headerlink" title="双向一对多自身关联"></a>双向一对多自身关联</h3><p>以类别为例，类别可能有父类别和子类别，其中子类别可能就不止一个，是一个类别的集合</p>
+<ul>
+<li><p>Category类相当于把上面的两个类的结合</p>
+</li>
+<li><p>在Category类中的引用如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//如果把Category看成是多的一端</span></div><div class="line"><span class="keyword">private</span> Category parent;</div><div class="line"></div><div class="line"><span class="comment">//如果把Category看成是少的一端,则需要对多的一端进行对象集合的引用</span></div><div class="line"><span class="keyword">private</span> Set&lt;Category&gt; clist;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在对应的xml文件中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"clist"</span> <span class="attr">inverse</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"parent_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">		<span class="comment">&lt;!-- 配置一对多的关联映射 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"com.jikexueyuan.entity.Category"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"parent"</span> <span class="attr">column</span>=<span class="string">"parent_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTO(self" target="_blank" rel="external">双向一对多自身关联</a>)</p>
+<hr>
+<h2 id="多对多关联映射"><a href="#多对多关联映射" class="headerlink" title="多对多关联映射"></a>多对多关联映射</h2><blockquote>
+<p>在关系模型中，无法直接表达两个表之间的多对多关系。需要创建一个连接表，它同时参照两个表。</p>
+</blockquote>
+<p>例如，学生和课程两个实体类，一个学生可以选择多个课程，一个课程也可以被多个学生选择，</p>
+<ul>
+<li><p>在Course类中添加对Student集合的引用，并加入set/get方法</p>
+</li>
+<li><p>在Student类中添加对Course集合的引用，并加入set/get方法</p>
+</li>
+<li><p>Course.hbm.xml中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"stuList"</span> <span class="attr">table</span>=<span class="string">"stu_course01"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"course_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">column</span>=<span class="string">"student_id"</span> <span class="attr">class</span>=<span class="string">"com.jikexueyuan.entity1.Student"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-many</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Student.hbm.xml中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"courseList"</span> <span class="attr">table</span>=<span class="string">"stu_course01"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"student_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span>	</div><div class="line">    <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">column</span>=<span class="string">"course_id"</span> <span class="attr">class</span>=<span class="string">"com.jikexueyuan.entity1.Course"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-many</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在SQL语句中，不但有course_tab01表和stu_tab01表，还会有一个stu_course01表</p>
+<p>相当于把两个多对多的关联映射分解成两个一对多关联映射</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> course_tab01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> stu_course01 (</div><div class="line">    course_id <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">    student_id <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">    primary <span class="keyword">key</span> (student_id, course_id)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> stu_tab01 (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    gender <span class="built_in">varchar</span>(<span class="number">255</span>),</div><div class="line">    primary <span class="keyword">key</span> (<span class="keyword">id</span>)</div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> stu_course01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_19y3ja4j3qell9u0r2xg8dseq </div><div class="line">    foreign <span class="keyword">key</span> (student_id) </div><div class="line">    <span class="keyword">references</span> stu_tab01 (<span class="keyword">id</span>)</div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> stu_course01 </div><div class="line">    <span class="keyword">add</span> <span class="keyword">constraint</span> FK_1m6b55xhhjylvvsev04wi216 </div><div class="line">    foreign <span class="keyword">key</span> (course_id) </div><div class="line">    <span class="keyword">references</span> course_tab01 (<span class="keyword">id</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第二种情况，有三个类，除了学生和课程两个实体类之外，还有一个学生和课程的关系实体类</p>
+<ul>
+<li><p>在Course类中添加对Student集合的引用，并加入set/get方法</p>
+</li>
+<li><p>在Student类中添加对Course集合的引用，并加入set/get方法</p>
+</li>
+<li><p>在关系实体类中，添加课程和学生类的引用</p>
+</li>
+<li><p>课程类对应的xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"stuList"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"course_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"tech.loyd.entity2.StuCourse02"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>学生类对应的xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"courseList"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"student_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"tech.loyd.entity2.StuCourse02"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>关系实体类中的xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span>  <span class="attr">name</span>=<span class="string">"stu"</span>  <span class="attr">column</span>=<span class="string">"student_id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"course"</span>  <span class="attr">column</span>=<span class="string">"course_id"</span>/&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="https://github.com/LoydC/Practice_Java/tree/master/HibernateMTM" target="_blank" rel="external">多对多关系映射</a></p>
+<hr>
+<h2 id="Hibernate中关联映射的最佳实践"><a href="#Hibernate中关联映射的最佳实践" class="headerlink" title="Hibernate中关联映射的最佳实践"></a>Hibernate中关联映射的最佳实践</h2><ul>
+<li>为每个持久实体类写一个映射文件</li>
+<li>不要用怪异的连接映射</li>
+<li>偏爱双向关联</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/20/Hibernate关联映射/" data-id="cj56omtun0001ro2f1wsdfcan" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/20/高效macbook工作环境（持续更新）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          高效macbook工作环境（持续更新）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/17/Hibernate基本查询/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hibernate基本查询</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java框架/">Java框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macbook/">macbook</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macbook/">macbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查询/">查询</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注释/">注释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hibernate/" style="font-size: 16.67px;">Hibernate</a> <a href="/tags/Java基础/" style="font-size: 10px;">Java基础</a> <a href="/tags/SSH/" style="font-size: 16.67px;">SSH</a> <a href="/tags/macbook/" style="font-size: 10px;">macbook</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/排序/" style="font-size: 20px;">排序</a> <a href="/tags/查询/" style="font-size: 10px;">查询</a> <a href="/tags/注释/" style="font-size: 10px;">注释</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/集合/" style="font-size: 13.33px;">集合</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/10/选择排序/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/插入排序/">插入排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/快速排序/">快速排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/归并排序/">归并排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/冒泡排序/">冒泡排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

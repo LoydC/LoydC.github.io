@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hibernate基本查询 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hibernate基本查询Query接口 Query是Hibernate专门用来执行HQL语句的查询接口 123Query query = session.createQuery(&quot;HQL语句&quot;);query.setParameter(...);List resultList = query.list(); HQL基本查询 Hibernate Query Language（HQL）：官方推荐的查询">
+<meta name="keywords" content="Hibernate,SSH,查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hibernate基本查询">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/Hibernate基本查询/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hibernate基本查询Query接口 Query是Hibernate专门用来执行HQL语句的查询接口 123Query query = session.createQuery(&quot;HQL语句&quot;);query.setParameter(...);List resultList = query.list(); HQL基本查询 Hibernate Query Language（HQL）：官方推荐的查询">
+<meta property="og:updated_time" content="2017-03-17T07:13:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hibernate基本查询">
+<meta name="twitter:description" content="Hibernate基本查询Query接口 Query是Hibernate专门用来执行HQL语句的查询接口 123Query query = session.createQuery(&quot;HQL语句&quot;);query.setParameter(...);List resultList = query.list(); HQL基本查询 Hibernate Query Language（HQL）：官方推荐的查询">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Hibernate基本查询" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/17/Hibernate基本查询/" class="article-date">
+  <time datetime="2017-03-17T07:10:41.000Z" itemprop="datePublished">2017-03-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java框架/">Java框架</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hibernate基本查询
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hibernate基本查询"><a href="#Hibernate基本查询" class="headerlink" title="Hibernate基本查询"></a>Hibernate基本查询</h1><p>Query接口</p>
+<p>Query是Hibernate专门用来执行HQL语句的查询接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Query query = session.createQuery(<span class="string">"HQL语句"</span>);</div><div class="line">query.setParameter(...);</div><div class="line">List resultList = query.list();</div></pre></td></tr></table></figure>
+<p>HQL基本查询</p>
+<p>Hibernate Query Language（HQL）：官方推荐的查询语言，具有以下功能</p>
+<ul>
+<li>条件查询</li>
+<li>支持投影查询</li>
+<li>分页查询</li>
+<li>连接查询</li>
+<li>分组查询</li>
+<li>子查询</li>
+<li>内置了一些聚集函数</li>
+<li>支持动态绑定参数</li>
+</ul>
+<h2 id="查询实体类的所有实例对象"><a href="#查询实体类的所有实例对象" class="headerlink" title="查询实体类的所有实例对象"></a>查询实体类的所有实例对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 查询所有的</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select1</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">         	<span class="comment">//默认为升序，desc为倒叙</span></div><div class="line">		String hql=<span class="string">"select stu from Student as stu order by stu.id asc"</span>;</div><div class="line">		</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">		<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">			System.out.println(stu);</div><div class="line">		&#125;</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="查询唯一的一条记录"><a href="#查询唯一的一条记录" class="headerlink" title="查询唯一的一条记录"></a>查询唯一的一条记录</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *查询一个实例对象</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select2</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"from Student"</span>;</div><div class="line">		Student stu=(Student)session.createQuery(hql).setMaxResults(<span class="number">1</span>).uniqueResult();</div><div class="line">		System.out.println(stu);</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="HQL的投影查询"><a href="#HQL的投影查询" class="headerlink" title="HQL的投影查询"></a>HQL的投影查询</h2><p>投影查询：即查询类的某几个属性，通过用select语句只选择类的部分属性来实现的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *HQL的投影查询</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select3</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"select a.stuName,a.age from Student a"</span>;</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		List&lt;Object[]&gt; list=query.list();</div><div class="line">		<span class="keyword">for</span>(Object objs[]:list)&#123;</div><div class="line">			<span class="keyword">for</span>(Object obj:objs)&#123;</div><div class="line">				System.out.println(obj);</div><div class="line">			&#125;</div><div class="line">			System.out.println(<span class="string">"*/****极客学院*******"</span>);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实例化投影查询，需要类的对应的有参构造函数"><a href="#实例化投影查询，需要类的对应的有参构造函数" class="headerlink" title="实例化投影查询，需要类的对应的有参构造函数"></a>实例化投影查询，需要类的对应的有参构造函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String stuName,<span class="keyword">int</span> age)</span></span>&#123;</div><div class="line">	<span class="keyword">this</span>.stuName=stuName;</div><div class="line">	<span class="keyword">this</span>.age=age;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *实例化投影查询结果</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select4</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"select new Student(a.stuName,a.age) from Student a"</span>;</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">		<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">			System.out.println(stu);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *where子句</div><div class="line"> *在where子句中可以指定</div><div class="line">	.号</div><div class="line">	比较运算符：</div><div class="line">		=、&gt;、&gt;=、&lt;、&lt;=、&lt;&gt; 、is null 、is not null </div><div class="line">	范围运算符：</div><div class="line">		in (值1, 值2 …)  ： 等于列表中的某一个值</div><div class="line">		not in(值1, 值2 …)  ： 不等于列表中的任意一个值</div><div class="line">		between 值1 and 值2  ： 在值1到值2的范围内(包括值1和值2)</div><div class="line">		not between 值1 and 值2 ： 不在值1到值2的范围内</div><div class="line">	字符串模式匹配： like '字符串模式'</div><div class="line">		字符串模式中可用“%”代表任意长度的字符串，“_”代表任意单个字符。</div><div class="line">	逻辑运算： and (与)、 or (或)、not (非)</div><div class="line">	用于集合的运算符：is empty、is not empty</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select5</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"from Student a where a.id not between 1 and 5"</span>;</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">		<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">			System.out.println(stu);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="HQL函数"><a href="#HQL函数" class="headerlink" title="HQL函数"></a>HQL函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String stuName)</span></span>&#123;</div><div class="line">	<span class="keyword">this</span>.stuName=stuName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">	 * HQL常见函数</div><div class="line">		1.字符串相关</div><div class="line">			upper(s) 、lower(s) 、</div><div class="line">			concat(s1, s2) 、substring(s,offset,length) 、 length(s)、</div><div class="line">			trim([[both|leading|trailing] char [from]] s)、locate(search, s, offset)</div><div class="line">		2.数字 </div><div class="line">			abs(n) 、sqrt(n)、mod(dividend, divisor)</div><div class="line">		3.集合</div><div class="line">			size(c)  返回集合中元素的个数</div><div class="line">		4.日期时间</div><div class="line">			current_date()、current_time()、current_timestamp() </div><div class="line">			返回数据库系统的日期、时间、时间戳</div><div class="line">			year(d)、month(d)、day(d)、hour(d)、minute(d)、second(d)</div><div class="line">			从指定的参数中提取相应的值</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select6</span><span class="params">()</span></span>&#123;</div><div class="line">		Transaction tx=<span class="keyword">null</span>;</div><div class="line">		Session session=<span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			session=HibernateUtils.getSession();</div><div class="line">			tx=session.beginTransaction();</div><div class="line">			String hql=<span class="string">"select new Student(upper(s.stuName))from Student s"</span>;</div><div class="line">			Query query=session.createQuery(hql);</div><div class="line">			List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">			<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">				System.out.println(stu);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			tx.commit();</div><div class="line">		&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">			<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">				tx.rollback();</div><div class="line">			&#125;</div><div class="line">			he.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			HibernateUtils.closeSession(session);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="参数绑定-号的使用"><a href="#参数绑定-号的使用" class="headerlink" title="参数绑定?号的使用"></a>参数绑定?号的使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">	 * HQL 参数绑定?号的使用</div><div class="line">	 */</div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select7</span><span class="params">()</span></span>&#123;</div><div class="line">		Transaction tx=<span class="keyword">null</span>;</div><div class="line">		Session session=<span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			session=HibernateUtils.getSession();</div><div class="line">			tx=session.beginTransaction();</div><div class="line">			String hql=<span class="string">"from Student a where a.id=? and a.stuName=?"</span>;</div><div class="line">			</div><div class="line">			Query query=session.createQuery(hql);</div><div class="line">			query.setInteger(<span class="number">0</span>, <span class="number">3</span>);</div><div class="line">			query.setString(<span class="number">1</span>, <span class="string">"wangwu"</span>);</div><div class="line">			List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">			<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">				System.out.println(stu);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			tx.commit();</div><div class="line">		&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">			<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">				tx.rollback();</div><div class="line">			&#125;</div><div class="line">			he.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			HibernateUtils.closeSession(session);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="HQL-参数名称绑定"><a href="#HQL-参数名称绑定" class="headerlink" title="HQL 参数名称绑定"></a>HQL 参数名称绑定</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * HQL 参数名称绑定</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select8</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		<span class="comment">//查询操作，首先要获取一个Query 接口实例对象</span></div><div class="line">		String hql=<span class="string">"from Student a where a.id=:id and a.stuName=:name"</span>;</div><div class="line">		</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		query.setInteger(<span class="string">"id"</span>, <span class="number">3</span>);</div><div class="line">		query.setString(<span class="string">"name"</span>, <span class="string">"wangwu"</span>);</div><div class="line">		List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">		<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">			System.out.println(stu);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="HQL-去掉重复记录"><a href="#HQL-去掉重复记录" class="headerlink" title="HQL 去掉重复记录"></a>HQL 去掉重复记录</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * HQL 去掉重复记录</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select9</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"select distinct s.age,s.stuName from Student s"</span>;</div><div class="line">		</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">	</div><div class="line">		List&lt;Object[]&gt; list=query.list();</div><div class="line">		<span class="keyword">for</span>(Object objs[]:list)&#123;</div><div class="line">				System.out.println(objs[<span class="number">0</span>]);</div><div class="line">				System.out.println(objs[<span class="number">1</span>]);</div><div class="line">			System.out.println(<span class="string">"*/******极客学院*****"</span>);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="HQL聚合函数"><a href="#HQL聚合函数" class="headerlink" title="HQL聚合函数"></a>HQL聚合函数</h2><ul>
+<li>count() 统计符合条件的记录条数</li>
+<li>avg() 求平均值</li>
+<li>sum() 求和</li>
+<li>max() 求最大值</li>
+<li>min() 求最小值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * HQL 聚合函数的使用</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select10</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"select min(s.age) from Student s"</span>;</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">	</div><div class="line">		List list=query.list();</div><div class="line">		System.out.println(list.get(<span class="number">0</span>));</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * HQL 分组函数</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select11</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">         	<span class="comment">//group分组 having筛选</span></div><div class="line">		String hql=<span class="string">"select count(s.id),s.clazz from Student s group by s.clazz having avg(s.age)&gt;20"</span>;</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		List&lt;Object[]&gt; list=query.list();</div><div class="line">		<span class="keyword">for</span>(Object[]objs:list)&#123;</div><div class="line">			<span class="keyword">for</span>(Object obj:objs)&#123;</div><div class="line">				System.out.println(obj);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><ul>
+<li>setFisrtResult(int firstResult)</li>
+<li>setMaxResult(int maxResults)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">testPager</span><span class="params">()</span></span>&#123;</div><div class="line">     	<span class="comment">//第一页，每页有两个</span></div><div class="line">	select12(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 分页查询</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select12</span><span class="params">(<span class="keyword">int</span> pageNo,<span class="keyword">int</span> pageSize)</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"from Student"</span>;</div><div class="line">		Query query=session.createQuery(hql).setFirstResult((pageNo-<span class="number">1</span>)*pageSize).setMaxResults(pageSize);</div><div class="line">		List&lt;Student&gt; list=(List&lt;Student&gt;)query.list();</div><div class="line">		<span class="keyword">for</span>(Student stu:list)&#123;</div><div class="line">			System.out.println(stu);</div><div class="line">		&#125;</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="批量更新和删除"><a href="#批量更新和删除" class="headerlink" title="批量更新和删除"></a>批量更新和删除</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * HQL 更新或者删除</div><div class="line"> */</div><div class="line"><span class="comment">//@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">updateOrDelete</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		String hql=<span class="string">"update Account set password='123456' where id=:id"</span>;</div><div class="line">		Query query=session.createQuery(hql);</div><div class="line">		query.setInteger(<span class="string">"id"</span>, <span class="number">1</span>);</div><div class="line">		<span class="keyword">int</span> i=query.executeUpdate();</div><div class="line">		System.out.println(i);</div><div class="line">		<span class="keyword">if</span>(i&gt;<span class="number">0</span>)&#123;</div><div class="line">			System.out.println(<span class="string">"成功"</span>);</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			System.out.println(<span class="string">"失败"</span>);</div><div class="line">		&#125;</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Hibernate命名查询"><a href="#Hibernate命名查询" class="headerlink" title="Hibernate命名查询"></a>Hibernate命名查询</h2><p>Account.hbm.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 命名查询 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">query</span> <span class="attr">name</span>=<span class="string">"accountHql"</span>&gt;</span></div><div class="line">	&lt;![CDATA[from Account]]&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">query</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * HQL的命名查询方式</div><div class="line"> */</div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">select13</span><span class="params">()</span></span>&#123;</div><div class="line">	Transaction tx=<span class="keyword">null</span>;</div><div class="line">	Session session=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		session=HibernateUtils.getSession();</div><div class="line">		tx=session.beginTransaction();</div><div class="line">		Query query=session.getNamedQuery(<span class="string">"accountHql"</span>);</div><div class="line">		List&lt;Account&gt; list=(List&lt;Account&gt;)query.list();</div><div class="line">		<span class="keyword">for</span>(Account ac:list)&#123;</div><div class="line">			System.out.println(ac);</div><div class="line">		&#125;</div><div class="line">		tx.commit();</div><div class="line">	&#125;<span class="keyword">catch</span>(HibernateException he)&#123;</div><div class="line">		<span class="keyword">if</span>(tx!=<span class="keyword">null</span>)&#123;</div><div class="line">			tx.rollback();</div><div class="line">		&#125;</div><div class="line">		he.printStackTrace();</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		HibernateUtils.closeSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h5 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a><a href="https://github.com/LoydC/Practice_Java/tree/master/Hibernate-HQL" target="_blank" rel="external">源码下载</a></h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/17/Hibernate基本查询/" data-id="cj56omtut0004ro2fzuz5o8ts" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查询/">查询</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/20/Hibernate关联映射/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hibernate关联映射
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/17/Java集合框架/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java集合框架</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java框架/">Java框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macbook/">macbook</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macbook/">macbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查询/">查询</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注释/">注释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hibernate/" style="font-size: 16.67px;">Hibernate</a> <a href="/tags/Java基础/" style="font-size: 10px;">Java基础</a> <a href="/tags/SSH/" style="font-size: 16.67px;">SSH</a> <a href="/tags/macbook/" style="font-size: 10px;">macbook</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/排序/" style="font-size: 20px;">排序</a> <a href="/tags/查询/" style="font-size: 10px;">查询</a> <a href="/tags/注释/" style="font-size: 10px;">注释</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/集合/" style="font-size: 13.33px;">集合</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/10/选择排序/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/插入排序/">插入排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/快速排序/">快速排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/归并排序/">归并排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/冒泡排序/">冒泡排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

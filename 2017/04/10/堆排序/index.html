@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>堆排序 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="堆排序堆排序（Heap Sort），是指利用有限队列的一种排序算法。 堆排序思想堆分为”最大堆”和”最小堆”。最大堆通常被用来进行”升序”排序，而最小堆通常被用来进行”降序”排序。 首先建立N个元素的二叉堆，这个阶段花费O(N)时间。然后把最大（最小）的元素导出后重新排序，操作花费时间为O(log N)，因此总的运行时间是O(N log N)。 建堆的过程如下图所示： 注意在第一个元素的索引为零的">
+<meta name="keywords" content="算法,排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆排序">
+<meta property="og:url" content="http://yoursite.com/2017/04/10/堆排序/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="堆排序堆排序（Heap Sort），是指利用有限队列的一种排序算法。 堆排序思想堆分为”最大堆”和”最小堆”。最大堆通常被用来进行”升序”排序，而最小堆通常被用来进行”降序”排序。 首先建立N个元素的二叉堆，这个阶段花费O(N)时间。然后把最大（最小）的元素导出后重新排序，操作花费时间为O(log N)，因此总的运行时间是O(N log N)。 建堆的过程如下图所示： 注意在第一个元素的索引为零的">
+<meta property="og:image" content="http://yoursite.com/media/14995862333021/14995882718919.jpg">
+<meta property="og:image" content="http://yoursite.com/media/14995862333021/14998473807195.gif">
+<meta property="og:updated_time" content="2017-07-16T10:28:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="堆排序">
+<meta name="twitter:description" content="堆排序堆排序（Heap Sort），是指利用有限队列的一种排序算法。 堆排序思想堆分为”最大堆”和”最小堆”。最大堆通常被用来进行”升序”排序，而最小堆通常被用来进行”降序”排序。 首先建立N个元素的二叉堆，这个阶段花费O(N)时间。然后把最大（最小）的元素导出后重新排序，操作花费时间为O(log N)，因此总的运行时间是O(N log N)。 建堆的过程如下图所示： 注意在第一个元素的索引为零的">
+<meta name="twitter:image" content="http://yoursite.com/media/14995862333021/14995882718919.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-堆排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/10/堆排序/" class="article-date">
+  <time datetime="2017-04-10T11:24:44.000Z" itemprop="datePublished">2017-04-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      堆排序
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>堆排序（Heap Sort），是指利用有限队列的一种排序算法。</p>
+<h2 id="堆排序思想"><a href="#堆排序思想" class="headerlink" title="堆排序思想"></a>堆排序思想</h2><p>堆分为”最大堆”和”最小堆”。最大堆通常被用来进行”升序”排序，而最小堆通常被用来进行”降序”排序。</p>
+<p>首先建立N个元素的二叉堆，这个阶段花费O(N)时间。然后把最大（最小）的元素导出后重新排序，操作花费时间为O(log N)，因此总的运行时间是O(N log N)。</p>
+<p><strong>建堆的过程如下图所示：</strong><br><img src="/media/14995862333021/14995882718919.jpg" alt=""></p>
+<p>注意在第一个元素的索引为零的情形中：</p>
+<ul>
+<li>索引为i的左孩子的索引是（2 * i + 1）</li>
+<li>索引为i的右孩子的索引是（2 * i + 2）</li>
+<li>索引为i的父节点的索引是 floor((i-1) / 2)</li>
+</ul>
+<p><strong>排序效果：</strong></p>
+<p><img src="/media/14995862333021/14998473807195.gif" alt=""></p>
+<h2 id="堆排序实现"><a href="#堆排序实现" class="headerlink" title="堆排序实现"></a>堆排序实现</h2><p><strong>算法实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(AnyType[] array)</span> </span>&#123;</div><div class="line">		<span class="comment">//建立最大堆</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=array.length/<span class="number">2</span>-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">			percolateDown(array,i,array.length);</div><div class="line">		&#125;</div><div class="line">		AnyType temp;</div><div class="line">		<span class="comment">//将最大的那个元素和数组随后一个元素交换，在重新调整0位置</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=array.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">			temp = array[i];</div><div class="line">			array[i] = array[<span class="number">0</span>];</div><div class="line">			array[<span class="number">0</span>] = temp;</div><div class="line">			percolateDown(array, <span class="number">0</span>, i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 用于调整堆的顺序</div><div class="line">	 * @param array 待调整的数组</div><div class="line">	 * @param i 待调整的位置</div><div class="line">	 * @param n 堆的逻辑大小</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> &lt;AnyType extends Comparable&lt;? <span class="keyword">super</span> AnyType&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">percolateDown</span><span class="params">(AnyType[] array,<span class="keyword">int</span> i,<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> child;</div><div class="line">		AnyType temp;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(temp = array[i];leftChild(i) &lt; n;i=child)&#123;</div><div class="line">			child = leftChild(i);</div><div class="line">			<span class="comment">//如果存在右孩子，且左孩子小于右孩子，就将child指向右孩子的位置</span></div><div class="line">			<span class="keyword">if</span>(child != n-<span class="number">1</span> &amp;&amp; array[child].compareTo(array[child+<span class="number">1</span>])&lt;<span class="number">0</span>)</div><div class="line">				child++;</div><div class="line">			<span class="comment">//比较该节点和孩子节点的大小，若小于，将孩子节点的值赋给该节点</span></div><div class="line">			<span class="keyword">if</span>(temp.compareTo(array[child]) &lt; <span class="number">0</span>)</div><div class="line">				array[i] = array[child];</div><div class="line">			<span class="keyword">else</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		array[i] = temp;</div><div class="line">		Test.print(array);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 返回最孩子的位置</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leftChild</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span> * n + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>算法测试</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package tech.loyd.algorithm.sort;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static &lt;AnyType&gt; void print(AnyType[] array)&#123;</div><div class="line">		for(AnyType x : array)&#123;</div><div class="line">			System.out.print(x + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		Integer[] array = &#123;52,23,101,33,34,26,15,98&#125;;</div><div class="line">		print(array);</div><div class="line"></div><div class="line">		//测试堆排序</div><div class="line">		HeapSort.heapSort(array);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将每次调整堆后的数组都打印出来，便于和上面的图对比。<br><strong>输出结果</strong>：</p>
+<blockquote>
+<p>52 23 101 33 34 26 15 98<br>52 23 101 98 34 26 15 33<br>52 23 101 98 34 26 15 33<br>52 98 101 33 34 26 15 23<br>101 98 52 33 34 26 15 23<br>98 34 52 33 23 26 15 101<br>52 34 26 33 23 15 98 101<br>34 33 26 15 23 52 98 101<br>33 23 26 15 34 52 98 101<br>26 23 15 33 34 52 98 101<br>23 15 26 33 34 52 98 101<br>15 23 26 33 34 52 98 101 </p>
+</blockquote>
+<ul>
+<li>第一条是原数组</li>
+<li>第二到五条是建堆的过程</li>
+<li>余下的是每次将第一和最后交换后调整的过程</li>
+</ul>
+<h2 id="堆排序的分析"><a href="#堆排序的分析" class="headerlink" title="堆排序的分析"></a>堆排序的分析</h2><ul>
+<li><p>平均时间复杂度为O(n log n)</p>
+</li>
+<li><p>空间复杂度为O(1)</p>
+</li>
+<li><p>堆排序不稳定 </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/10/堆排序/" data-id="cj56omtv9000iro2fq9a5o98t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/10/希尔排序/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          希尔排序
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/20/Hibernare高级查询/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hibernare高级查询</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java框架/">Java框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macbook/">macbook</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java基础/">Java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macbook/">macbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查询/">查询</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注释/">注释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hibernate/" style="font-size: 16.67px;">Hibernate</a> <a href="/tags/Java基础/" style="font-size: 10px;">Java基础</a> <a href="/tags/SSH/" style="font-size: 16.67px;">SSH</a> <a href="/tags/macbook/" style="font-size: 10px;">macbook</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/排序/" style="font-size: 20px;">排序</a> <a href="/tags/查询/" style="font-size: 10px;">查询</a> <a href="/tags/注释/" style="font-size: 10px;">注释</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/集合/" style="font-size: 13.33px;">集合</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/10/选择排序/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/插入排序/">插入排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/快速排序/">快速排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/归并排序/">归并排序</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/10/冒泡排序/">冒泡排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
