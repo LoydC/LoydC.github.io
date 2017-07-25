@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java虚拟机," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JVM启动流程  使用java命令启动 寻找jvm.cfg 定位dll 初始化JVM虚拟机，获得相应接口 找到main方法">
+<meta name="keywords" content="Java虚拟机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM运行机制">
+<meta property="og:url" content="http://loyd.tech/2017/07/22/JVM运行机制/index.html">
+<meta property="og:site_name" content="Loyd">
+<meta property="og:description" content="JVM启动流程  使用java命令启动 寻找jvm.cfg 定位dll 初始化JVM虚拟机，获得相应接口 找到main方法">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.08.00.png">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.10.21.png">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.17.35.png">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009103158183.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009103814313.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009104795215.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009106711642.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009434226025.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009439519325.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009442380716.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15009087696811/15009482012333.jpg">
+<meta property="og:updated_time" content="2017-07-25T05:20:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM运行机制">
+<meta name="twitter:description" content="JVM启动流程  使用java命令启动 寻找jvm.cfg 定位dll 初始化JVM虚拟机，获得相应接口 找到main方法">
+<meta name="twitter:image" content="http://loyd.tech/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.08.00.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://loyd.tech/2017/07/22/JVM运行机制/"/>
+
+
+
+
+
+  <title>JVM运行机制 | Loyd</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/07/22/JVM运行机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM运行机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T10:28:13+08:00">
+                2017-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java虚拟机/" itemprop="url" rel="index">
+                    <span itemprop="name">Java虚拟机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JVM启动流程"><a href="#JVM启动流程" class="headerlink" title="JVM启动流程"></a>JVM启动流程</h1><p><img src="/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.08.00.png" alt="屏幕快照 2017-07-24 下午11.08.00"></p>
+<ol>
+<li>使用java命令启动</li>
+<li>寻找jvm.cfg</li>
+<li>定位dll</li>
+<li>初始化JVM虚拟机，获得相应接口</li>
+<li>找到main方法</li>
+</ol>
+<a id="more"></a>
+<h1 id="JVM基本结构"><a href="#JVM基本结构" class="headerlink" title="JVM基本结构"></a>JVM基本结构</h1><p><img src="/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.10.21.png" alt="屏幕快照 2017-07-24 下午11.10.21"></p>
+<h2 id="PC寄存器"><a href="#PC寄存器" class="headerlink" title="PC寄存器"></a>PC寄存器</h2><ul>
+<li>每个线程拥有一个PC寄存器</li>
+<li>在线程创建时创建</li>
+<li>指向下一条指令的地址</li>
+<li>执行本地方法时，PC的值为undefined</li>
+</ul>
+<h2 id="方法去"><a href="#方法去" class="headerlink" title="方法去"></a>方法去</h2><ul>
+<li>保存装载的类信息<ul>
+<li>类型的常量池</li>
+<li>字段，方法信息</li>
+<li>方法字节码</li>
+</ul>
+</li>
+<li>通常和永久区（Perm）关联在一起</li>
+</ul>
+<h2 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h2><ul>
+<li>和程序开发密切相关</li>
+<li>应用系统对象都保存在Java堆中</li>
+<li>所有线程共享Java堆</li>
+<li>对分代GC来说，堆也是分代的</li>
+<li>GC的主要工作区间<br><img src="/media/15009087696811/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-24%20%E4%B8%8B%E5%8D%8811.17.35.png" alt="屏幕快照 2017-07-24 下午11.17.35"></li>
+</ul>
+<h2 id="Java栈"><a href="#Java栈" class="headerlink" title="Java栈"></a>Java栈</h2><ul>
+<li>线程私有</li>
+<li>栈由一系列帧组成（因此Java栈也叫做帧栈）</li>
+<li>帧保存一个方法的局部变量，操作数栈，常量池指针</li>
+<li>每一次方法调用创建一个帧，并压栈</li>
+</ul>
+<h3 id="java局部变量表"><a href="#java局部变量表" class="headerlink" title="java局部变量表"></a>java局部变量表</h3><p>包含参数和局部变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class StackDemo &#123;</div><div class="line"></div><div class="line">    public static int runStatic(int i,long l,float  f,Object o ,byte b)&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int runInstance(char c,short s,boolean b)&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一个静态函数对应局部变量表<br><img src="/media/15009087696811/15009103158183.jpg" alt=""></p>
+<p>第二个函数对应的局部变量表，多了一个this指针<br><img src="/media/15009087696811/15009103814313.jpg" alt=""></p>
+<h3 id="函数调用和组成帧栈"><a href="#函数调用和组成帧栈" class="headerlink" title="函数调用和组成帧栈"></a>函数调用和组成帧栈</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">runStatic</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">long</span> l,<span class="keyword">float</span>  f,Object o ,<span class="keyword">byte</span> b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> runStatic(i,l,f,o,b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对应的帧栈<br><img src="/media/15009087696811/15009104795215.jpg" alt=""></p>
+<h3 id="操作数栈"><a href="#操作数栈" class="headerlink" title="操作数栈"></a>操作数栈</h3><p>Java没有寄存器，所有参数传递使用操作数栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line"><span class="keyword">int</span> c=<span class="number">0</span>;</div><div class="line">c=a+b;</div><div class="line"><span class="keyword">return</span> c;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>iconst_0 // 0压栈</li>
+<li>istore_2 // 弹出int，存放于局部变量2</li>
+<li>iload_0  // 把局部变量0压栈</li>
+<li>iload_1 // 局部变量1压栈</li>
+<li>iadd      //弹出2个变量，求和，结果压栈</li>
+<li>istore_2 //弹出结果，放于局部变量2</li>
+<li>iload_2  //局部变量2压栈</li>
+<li>ireturn   //返回</li>
+</ol>
+<p><img src="/media/15009087696811/15009106711642.jpg" alt=""></p>
+<h3 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h3><p>C++示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BcmBasicString</span>&#123;</span>    ....&#125;</div></pre></td></tr></table></figure>
+<p>下面是堆上分配，每次需清理空间</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;    </div><div class="line">    BcmBasicString* str=<span class="keyword">new</span> BcmBasicString;</div><div class="line">        ....    </div><div class="line">    <span class="keyword">delete</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面为栈上分配，函数调用完自动清理</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;    </div><div class="line">    BcmBasicString str;  </div><div class="line">    ....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OnStackTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">alloc</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] b=<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span>];</div><div class="line">        b[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">long</span> b=System.currentTimeMillis();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100000000</span>;i++)&#123;</div><div class="line">            alloc();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">long</span> e=System.currentTimeMillis();</div><div class="line">        System.out.println(e-b);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一次设置为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-server -Xmx10m -Xms10m</div><div class="line">-XX:+DoEscapeAnalysis -XX:+PrintGC</div></pre></td></tr></table></figure>
+<p>输出结果为<code>5</code></p>
+<p>第二次设置为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-server -Xmx10m -Xms10m  </div><div class="line">-XX:-DoEscapeAnalysis -XX:+PrintGC</div></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">……</div><div class="line">[GC 3550K-&gt;478K(10240K), 0.0000977 secs]</div><div class="line">[GC 3550K-&gt;478K(10240K), 0.0001361 secs]</div><div class="line">[GC 3550K-&gt;478K(10240K), 0.0000963 secs]</div><div class="line">564</div></pre></td></tr></table></figure>
+<ul>
+<li>小对象（一般几十个bytes），在没有逃逸的情况下，可以直接分配在栈上</li>
+<li>直接分配在栈上，可以自动回收，减轻GC压力</li>
+<li>大对象或者逃逸对象无法栈上分配</li>
+</ul>
+<h2 id="堆、栈、方法区交互"><a href="#堆、栈、方法区交互" class="headerlink" title="堆、栈、方法区交互"></a>堆、栈、方法区交互</h2><p><img src="/media/15009087696811/15009434226025.jpg" alt=""></p>
+<p><img src="/media/15009087696811/15009439519325.jpg" alt=""></p>
+<h1 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h1><ul>
+<li>每个线程有一个工作内存和主存独立</li>
+<li>工作内存放主存中变量的值和拷贝</li>
+</ul>
+<p><img src="/media/15009087696811/15009442380716.jpg" alt=""></p>
+<p>当数据从主内存复制到工作存储时，必须出现两个动作：第一，由主内存执行的读（read）操作；第二，由工作内存执行的相应的load操作；当数据从工作内存拷贝到主内存时，也出现两个操作：第一个，由工作内存执行的存储（store）操作；第二，由主内存执行的相应的写（write）操作。</p>
+<p>每一个操作都是原子的，即执行期间不会被中断。</p>
+<p>对于普通变量，一个线程中更新的值，不能马上反应在其他变量中。</p>
+<p>如果需要在其他线程中立即可见，需要使用 volatile 关键字。</p>
+<p><img src="/media/15009087696811/15009482012333.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VolatileStopThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> stop = <span class="keyword">false</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopMe</span><span class="params">()</span></span>&#123;</div><div class="line">        stop=<span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(!stop)&#123;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"Stop thread"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</div><div class="line">        VolatileStopThread t=<span class="keyword">new</span> VolatileStopThread();</div><div class="line">        t.start();</div><div class="line">        Thread.sleep(<span class="number">1000</span>);</div><div class="line">        t.stopMe();</div><div class="line">        Thread.sleep(<span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>没有volatile -server 运行 无法停止</li>
+<li>volatile 不能代替锁</li>
+<li>一般认为volatile 比锁性能好（不绝对）</li>
+<li>选择使用volatile的条件是：语义是否满足应用</li>
+</ul>
+<h2 id="内存模型相关概念"><a href="#内存模型相关概念" class="headerlink" title="内存模型相关概念"></a>内存模型相关概念</h2><h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>一个线程修改了变量，其他线程可以立即知道</p>
+<p>保证可见性的方法：</p>
+<ul>
+<li>volatile</li>
+<li>synchronized（unlock之前，写变量值回主存）</li>
+<li>final（一旦初始化完成，其他线程就可见）</li>
+</ul>
+<h3 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h3><ul>
+<li>在本线程内，操作都是有序的</li>
+<li>在线程外观察，操作都是无序的。（指令重排或主内存同步延时）</li>
+</ul>
+<h3 id="指令重排"><a href="#指令重排" class="headerlink" title="指令重排"></a>指令重排</h3><ul>
+<li><p>线程内串行语义</p>
+<ul>
+<li>写后读    a = 1;b = a;    写一个变量之后，再读这个位置。</li>
+<li>写后写    a = 1;a = 2;    写一个变量之后，再写这个变量。</li>
+<li>读后写    a = b;b = 1;    读一个变量之后，再写这个变量。</li>
+<li>以上语句不可重排</li>
+<li>编译器不考虑多线程间的语义</li>
+<li>可重排： a=1;b=2;</li>
+</ul>
+</li>
+<li><p>指令重排的基本原则</p>
+<ul>
+<li>程序顺序原则：一个线程内保证语义的串行性</li>
+</ul>
+<ul>
+<li>volatile规则：volatile变量的写，先发生于读</li>
+<li>锁规则：解锁(unlock)必然发生在随后的加锁(lock)前</li>
+<li>传递性：A先于B，B先于C 那么A必然先于C</li>
+<li>线程的start方法先于它的每一个动作</li>
+<li>线程的所有操作先于线程的终结（Thread.join()）</li>
+<li>线程的中断（interrupt()）先于被中断线程的代码</li>
+<li>对象的构造函数执行结束先于finalize()方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="编译和解释运行的概念"><a href="#编译和解释运行的概念" class="headerlink" title="编译和解释运行的概念"></a>编译和解释运行的概念</h2><h3 id="解释运行"><a href="#解释运行" class="headerlink" title="解释运行"></a>解释运行</h3><ul>
+<li>解释执行以解释方式运行字节码</li>
+<li>解释执行的意思是：读一句执行一句</li>
+</ul>
+<h3 id="编译运行（JIT）"><a href="#编译运行（JIT）" class="headerlink" title="编译运行（JIT）"></a>编译运行（JIT）</h3><ul>
+<li>将字节码编译成机器码</li>
+<li>直接执行机器码</li>
+<li>运行时编译</li>
+<li>编译后性能有数量级的提升</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java虚拟机/" rel="tag"># Java虚拟机</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/19/第4章 解决面试题的思路/" rel="next" title="第4章 解决面试题的思路">
+                <i class="fa fa-chevron-left"></i> 第4章 解决面试题的思路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/22/常用JVM配置参数/" rel="prev" title="常用JVM配置参数">
+                常用JVM配置参数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Loyd Chen" />
+          <p class="site-author-name" itemprop="name">Loyd Chen</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM启动流程"><span class="nav-number">1.</span> <span class="nav-text">JVM启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM基本结构"><span class="nav-number">2.</span> <span class="nav-text">JVM基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PC寄存器"><span class="nav-number">2.1.</span> <span class="nav-text">PC寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法去"><span class="nav-number">2.2.</span> <span class="nav-text">方法去</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java堆"><span class="nav-number">2.3.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java栈"><span class="nav-number">2.4.</span> <span class="nav-text">Java栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java局部变量表"><span class="nav-number">2.4.1.</span> <span class="nav-text">java局部变量表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数调用和组成帧栈"><span class="nav-number">2.4.2.</span> <span class="nav-text">函数调用和组成帧栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作数栈"><span class="nav-number">2.4.3.</span> <span class="nav-text">操作数栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈上分配"><span class="nav-number">2.4.4.</span> <span class="nav-text">栈上分配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆、栈、方法区交互"><span class="nav-number">2.5.</span> <span class="nav-text">堆、栈、方法区交互</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存模型"><span class="nav-number">3.</span> <span class="nav-text">内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型相关概念"><span class="nav-number">3.1.</span> <span class="nav-text">内存模型相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性"><span class="nav-number">3.1.1.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序性"><span class="nav-number">3.1.2.</span> <span class="nav-text">有序性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令重排"><span class="nav-number">3.1.3.</span> <span class="nav-text">指令重排</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译和解释运行的概念"><span class="nav-number">3.2.</span> <span class="nav-text">编译和解释运行的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释运行"><span class="nav-number">3.2.1.</span> <span class="nav-text">解释运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译运行（JIT）"><span class="nav-number">3.2.2.</span> <span class="nav-text">编译运行（JIT）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Loyd Chen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
