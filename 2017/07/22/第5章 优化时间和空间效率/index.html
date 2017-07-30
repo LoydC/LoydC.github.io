@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="剑指Offer,求职," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="第5章 优化时间和空间效率[toc] 面试题29：数组中出现次数超过一半的数字 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。  解题思路1： 若数组中存在出现次数超过一半的数，即它出现的次数比所有其他元素加在一起出现的次数还要多。则保存两个值，一个是数字，一个是次数。若当前和保存的数字相同，加1，否则减1。若次数为零，则将当前值赋给数字，次数赋为1。最后判断记录的数字是否次数超过">
+<meta name="keywords" content="剑指Offer,求职">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第5章 优化时间和空间效率">
+<meta property="og:url" content="http://loyd.tech/2017/07/22/第5章 优化时间和空间效率/index.html">
+<meta property="og:site_name" content="Loyd">
+<meta property="og:description" content="第5章 优化时间和空间效率[toc] 面试题29：数组中出现次数超过一半的数字 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。  解题思路1： 若数组中存在出现次数超过一半的数，即它出现的次数比所有其他元素加在一起出现的次数还要多。则保存两个值，一个是数字，一个是次数。若当前和保存的数字相同，加1，否则减1。若次数为零，则将当前值赋给数字，次数赋为1。最后判断记录的数字是否次数超过">
+<meta property="og:image" content="http://loyd.tech/media/15006375515954/15010670395326.jpg">
+<meta property="og:updated_time" content="2017-07-30T03:07:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第5章 优化时间和空间效率">
+<meta name="twitter:description" content="第5章 优化时间和空间效率[toc] 面试题29：数组中出现次数超过一半的数字 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。  解题思路1： 若数组中存在出现次数超过一半的数，即它出现的次数比所有其他元素加在一起出现的次数还要多。则保存两个值，一个是数字，一个是次数。若当前和保存的数字相同，加1，否则减1。若次数为零，则将当前值赋给数字，次数赋为1。最后判断记录的数字是否次数超过">
+<meta name="twitter:image" content="http://loyd.tech/media/15006375515954/15010670395326.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://loyd.tech/2017/07/22/第5章 优化时间和空间效率/"/>
+
+
+
+
+
+  <title>第5章 优化时间和空间效率 | Loyd</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/07/22/第5章 优化时间和空间效率/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第5章 优化时间和空间效率</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T11:43:29+08:00">
+                2017-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/剑指Offer/" itemprop="url" rel="index">
+                    <span itemprop="name">剑指Offer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第5章-优化时间和空间效率"><a href="#第5章-优化时间和空间效率" class="headerlink" title="第5章 优化时间和空间效率"></a>第5章 优化时间和空间效率</h1><p>[toc]</p>
+<h2 id="面试题29：数组中出现次数超过一半的数字"><a href="#面试题29：数组中出现次数超过一半的数字" class="headerlink" title="面试题29：数组中出现次数超过一半的数字"></a>面试题29：数组中出现次数超过一半的数字</h2><blockquote>
+<p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</p>
+</blockquote>
+<p><strong>解题思路1：</strong></p>
+<p>若数组中存在出现次数超过一半的数，即它出现的次数比所有其他元素加在一起出现的次数还要多。则保存两个值，一个是数字，一个是次数。若当前和保存的数字相同，加1，否则减1。若次数为零，则将当前值赋给数字，次数赋为1。最后判断记录的数字是否次数超过一半。</p>
+<p><strong>注意：</strong> 最后循环完次数若大于1，一定记录的数字出现的次数超过了一半，若等于1，则不一定。</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question29_1</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findNumMoreThanHalf</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (array == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (array.length == <span class="number">1</span>)</div><div class="line">			<span class="keyword">return</span> array[<span class="number">0</span>];</div><div class="line"></div><div class="line">		<span class="keyword">int</span> num = array[<span class="number">0</span>];</div><div class="line">		<span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; array.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (array[i] == num) &#123;</div><div class="line">				count++;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				count--;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</div><div class="line">				count = <span class="number">1</span>;</div><div class="line">				num = array[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> isMoreThanHalf(array,num) ? num : -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 验证传入的数的个数是否超过一半</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMoreThanHalf</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(array[i] == num)&#123;</div><div class="line">				count++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">		<span class="keyword">return</span> count&gt;array.length/<span class="number">2</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</div><div class="line">	&#125; </div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span>[] array1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] array2 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] array3 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] array4 = &#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</div><div class="line">		</div><div class="line">		System.out.println(findNumMoreThanHalf(array1));</div><div class="line">		System.out.println(findNumMoreThanHalf(array2));</div><div class="line">		System.out.println(findNumMoreThanHalf(array3));</div><div class="line">		System.out.println(findNumMoreThanHalf(<span class="keyword">null</span>));</div><div class="line">		System.out.println(findNumMoreThanHalf(array4));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>解题思路2：</strong>    </p>
+<p>找到数组的中位数，再判断这个中位数在数组中的个数是否超过一半。</p>
+<p>找到中位数的方法类似于快排，选取一个数，使小于它的排在它的左边，大于它的排在它的右边。若选取的数排序后的位置小于length/2，则在选取的左边查找，大于length/2，在右边查找。相等返回这个数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question29_2</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findNumMoreThanHalf</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(array == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(array.length == <span class="number">1</span>)</div><div class="line">			<span class="keyword">return</span> array[<span class="number">0</span>];</div><div class="line">		</div><div class="line">		<span class="comment">//获取中位数</span></div><div class="line">		<span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> end = array.length -<span class="number">1</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> index = findMid(array,start,end);</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(index != array.length/<span class="number">2</span>)&#123;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(index &gt; array.length/<span class="number">2</span>)&#123;</div><div class="line">				end = index-<span class="number">1</span>;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				start = index+<span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			index = findMid(array,start,end);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="comment">//验证该中位数的个数是否超过一半</span></div><div class="line">		</div><div class="line">		<span class="keyword">return</span> isMoreThanHalf(array,array[index]) ? array[index] : -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 递归找到中位数，返回的是array[start]排序后的位置</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findMid</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> mid = array[start];</div><div class="line">		<span class="keyword">int</span> i= start;</div><div class="line">		<span class="keyword">int</span> j = end;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(i&lt; j)&#123;</div><div class="line">			<span class="keyword">while</span>(i &lt; j &amp;&amp;array[j] &gt;= mid)</div><div class="line">				j--;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(i&lt;j)&#123;</div><div class="line">				array[i++] = array[j];</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">while</span>(i &lt; j &amp;&amp;array[i] &lt;= mid)</div><div class="line">				i++;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(i&lt;j)&#123;</div><div class="line">				array[j--] = array[i];</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">		array[i] = mid;</div><div class="line">		<span class="keyword">return</span> i;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 验证传入的数的个数是否超过一半</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMoreThanHalf</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(array[i] == num)&#123;</div><div class="line">				count++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">		<span class="keyword">return</span> count&gt;array.length/<span class="number">2</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</div><div class="line">	&#125; </div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span>[] array1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] array2 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] array3 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</div><div class="line">		</div><div class="line">		System.out.println(findNumMoreThanHalf(array1));</div><div class="line">		System.out.println(findNumMoreThanHalf(array2));</div><div class="line">		System.out.println(findNumMoreThanHalf(array3));</div><div class="line">		System.out.println(findNumMoreThanHalf(<span class="keyword">null</span>));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题30：最小的k个数"><a href="#面试题30：最小的k个数" class="headerlink" title="面试题30：最小的k个数"></a>面试题30：最小的k个数</h2><blockquote>
+<p>输入n个整数，找出其中最小的k个数，例如输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。</p>
+</blockquote>
+<p><strong>解题思路1：</strong></p>
+<p>受到上一题的启发，可以继续利用Partition算法，找到在数组中位置为K的数，并使小于它的排在它的左边，大于它的排在它的右边。</p>
+<p>该算法的时间复杂度为O(n)，但是将会改变数组的顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question30_1</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] minTopK(<span class="keyword">int</span>[] array, <span class="keyword">int</span> k) &#123;</div><div class="line"></div><div class="line">		<span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> end = array.length-<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> index = adjustPosition(array, start, end);</div><div class="line"></div><div class="line">		<span class="keyword">while</span> (index != k) &#123;</div><div class="line">			<span class="keyword">if</span> (index &lt; k) &#123;</div><div class="line">				start++;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				end--;</div><div class="line">			&#125;</div><div class="line">			index = adjustPosition(array, start, end);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> Arrays.copyOfRange(array, <span class="number">0</span>, k);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 调整序列的第一个元素的位置，使得左边的元素都比它小，右边的元素都比它大</div><div class="line">	 * </div><div class="line">	 * @return 返回调整后的位置</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">adjustPosition</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> temp = array[start];</div><div class="line">		<span class="keyword">int</span> i = start;</div><div class="line">		<span class="keyword">int</span> j = end;</div><div class="line"></div><div class="line">		<span class="keyword">while</span> (i &lt; j) &#123;</div><div class="line">			<span class="keyword">while</span> (i &lt; j &amp;&amp; array[j] &gt;= temp)</div><div class="line">				j--;</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (i &lt; j)</div><div class="line">				array[i++] = array[j];</div><div class="line"></div><div class="line">			<span class="keyword">while</span> (i &lt; j &amp;&amp; array[i] &lt;= temp)</div><div class="line">				i++;</div><div class="line"></div><div class="line">			<span class="keyword">if</span>(i &lt; j)</div><div class="line">				array[j--] = array[i];</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		array[i] = temp;</div><div class="line">		<span class="keyword">return</span> i;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printTopK</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (array == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</div><div class="line">			System.out.print(array[i] + <span class="string">" "</span>);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span>[] array = &#123; <span class="number">163</span>, <span class="number">221</span>, <span class="number">563</span>, <span class="number">342</span>, <span class="number">317</span>, <span class="number">359</span>, <span class="number">323</span>, <span class="number">954</span>, <span class="number">212</span>, <span class="number">317</span>, <span class="number">133</span>, <span class="number">422</span>, <span class="number">452</span>, <span class="number">82</span> &#125;;</div><div class="line">		printTopK(minTopK(array, <span class="number">3</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>解题思路2：</strong></p>
+<p>新建一个新的数组，大小为k。循环原序列，若数组中的元素个数少于k，则加入，在数组元素等于k的时候，新建一个大顶堆，用于记录最大的元素。和大顶堆[0]位置的元素比较，若比最大的元素小，替换[0]位置的元素，并在[0]位置重新调整堆。</p>
+<p>算法的时间复杂度为O(nlogk)，不需要修改原来的数组，特别适合处理海量数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question30_2</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] minTopK(<span class="keyword">int</span>[] array, <span class="keyword">int</span> k) &#123;</div><div class="line">		<span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length &lt; k)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">		<span class="keyword">int</span>[] arrayK = <span class="keyword">new</span> <span class="keyword">int</span>[k];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (i &lt; k) &#123;</div><div class="line">				arrayK[i] = array[i];</div><div class="line">				<span class="comment">//建大顶堆</span></div><div class="line">				<span class="keyword">if</span> (i == k - <span class="number">1</span>) &#123;</div><div class="line">					arrayK[i] = array[i];</div><div class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = arrayK.length / <span class="number">2</span> - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</div><div class="line">						adjustHeapPosition(arrayK, j, arrayK.length);</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">if</span> (array[i] &lt; arrayK[<span class="number">0</span>]) &#123;</div><div class="line">					arrayK[<span class="number">0</span>] = array[i];</div><div class="line">					<span class="comment">//重新调整堆的位置</span></div><div class="line">					adjustHeapPosition(arrayK, <span class="number">0</span>, arrayK.length);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> arrayK;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 构建大顶堆</div><div class="line">	 * </div><div class="line">	 * @param array为带调整的序列</div><div class="line">	 * </div><div class="line">	 * @param i 当前调整的位置</div><div class="line">	 * </div><div class="line">	 * @param n 序列的逻辑长度</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">adjustHeapPosition</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> i, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> child;</div><div class="line">		<span class="keyword">int</span> temp;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (temp = array[i]; i * <span class="number">2</span> + <span class="number">1</span> &lt; n; i = child) &#123;</div><div class="line">			child = i * <span class="number">2</span> + <span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span> (child != n - <span class="number">1</span> &amp;&amp; array[child] &lt; array[child + <span class="number">1</span>])</div><div class="line">				child++;</div><div class="line">			<span class="keyword">if</span> (temp &lt; array[child])</div><div class="line">				array[i] = array[child];</div><div class="line">			<span class="keyword">else</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		array[i] = temp;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printTopK</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (array == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</div><div class="line">			System.out.print(array[i] + <span class="string">" "</span>);</div><div class="line">		&#125;</div><div class="line">		System.out.println();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span>[] array = &#123; <span class="number">163</span>, <span class="number">221</span>, <span class="number">563</span>, <span class="number">342</span>, <span class="number">317</span>, <span class="number">359</span>, <span class="number">323</span>, <span class="number">954</span>, <span class="number">212</span>, <span class="number">317</span>, <span class="number">133</span>, <span class="number">422</span>, <span class="number">452</span>, <span class="number">82</span> &#125;;</div><div class="line">		printTopK(minTopK(array, <span class="number">3</span>));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题31：连续子数组的最大和"><a href="#面试题31：连续子数组的最大和" class="headerlink" title="面试题31：连续子数组的最大和"></a>面试题31：连续子数组的最大和</h2><blockquote>
+<p>输入一个整型数组，数组里有正数也有负数。数组中一个或连续的多个整数组成一个子数组。求所有子数组的和的最大值。要求时间复杂度为O(n)。</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<p>用一个变量a记录临时的最大值，初始值为0。用一个变量b记录真实的最大值，初始值为无穷小。遍历数组，若a小于等于0，就把数组当前值赋给a，否则就把当前值和a累加。若a大于b，将a赋给b。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question31_1</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">largestSubArray</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(array == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> tempSum = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> returnSum = Integer.MIN_VALUE;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(tempSum &lt;= <span class="number">0</span>)&#123;</div><div class="line">				tempSum = array[i];</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				tempSum += array[i];</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(tempSum &gt; returnSum)&#123;</div><div class="line">				returnSum = tempSum;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> returnSum;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span>[] arary1 = &#123;<span class="number">1</span>,<span class="number">3</span>,-<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,-<span class="number">10</span>,<span class="number">9</span>,<span class="number">7</span>&#125;;</div><div class="line">		System.out.println(largestSubArray(arary1));</div><div class="line">		</div><div class="line">		<span class="keyword">int</span>[] array2 = &#123;-<span class="number">1</span>,-<span class="number">3</span>,-<span class="number">1</span>&#125;;</div><div class="line">		System.out.println(largestSubArray(array2));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题32：从1到n整数中1出现的次数"><a href="#面试题32：从1到n整数中1出现的次数" class="headerlink" title="面试题32：从1到n整数中1出现的次数"></a>面试题32：从1到n整数中1出现的次数</h2><blockquote>
+<p>输入一个整数n，求从1到n这n个整数的十进制表示中1出现的次数。例如输入12，从1到12这些整数中包含1的数值有1，10，11，12，1一共出现了5次。</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<p>21345 作为例子来分析。我们把从1 到21345 的所有数字分为两段， 一段是从1 到1345，另一段是从1346 到21345。</p>
+<p>我们先看从1346 到21345 中1 出现的次数。1 的出现分为两种情况。首先分析1出现在最高位（本例中是万位）的情况。从1346 到21345 的数字中， 1出现在10000～19999 这10000 个数字的万位中， 一共出现了10000(10^4)个。</p>
+<p>值得注意的是， 并不是对所有5 位数而言在万位出现的次数都是10000<br>个。对于万位是1 的数字比如输入12345, 1 只出现在10000～ 12345 的万位，出现的次数不是10^4 次，而是2346 次，也就是除去最高数字之后剩下的数字再加上1 （即2345+1=2346 次）。</p>
+<p>接下来分析1出现在除最高位之外的其他四位数中的情况。例子中1346～21345 这20000 个数字中后4 位中1 出现的次数是2000 次。由于最<br>高位是2，我们可以再把1346～21345 分成两段， 1346～11345 和1 1346～21345 。每一段剩下的4 位数字中， 选择其中一位是1 ，其余三位可以在0～9 这10 个数字中任意选择，因此根据排列组合原则，总共出现的次数是2*10^3=2000</p>
+<p>至于从l 到1345 中1 出现的次数，我们就可以用递归求得了。这也是我们为什么要把1～21345 分成1～ 1 345 和1346～21345 两段的原因。因为把21345 的最高位去掉就变成1345 ，便于我们采用递归的思路。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question32</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numberOf1Between1AndN</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(n &lt;= <span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		</div><div class="line">		String s = n + <span class="string">""</span>;</div><div class="line">		<span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</div><div class="line">			array[i] = s.charAt(i) - <span class="string">'0'</span>;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> numberOf1(array,<span class="number">0</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 求0到当前位置表示的数字中1的个数</div><div class="line">	 * 若array为&#123;1,2,3,4,5&#125; curIdx为2，则表示数字345</div><div class="line">	 * </div><div class="line">	 * @param array 数字转的数组</div><div class="line">	 * @param curIdx 当前位置</div><div class="line">	 * </div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numberOf1</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> curIdx)</span></span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (array == <span class="keyword">null</span> || curIdx &gt;= array.length || curIdx &lt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> first = array[curIdx];</div><div class="line">		<span class="keyword">int</span> length = array.length - curIdx;</div><div class="line">		</div><div class="line">		<span class="comment">// 如果只有一位且这一位是0返回0</span></div><div class="line">        <span class="keyword">if</span> (length == <span class="number">1</span> &amp;&amp; first == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">		</div><div class="line">        <span class="comment">//若数字为21345，则numFirstDigit表示10000-19999的个数</span></div><div class="line">        <span class="keyword">int</span> numFirstDigit = <span class="number">0</span>;</div><div class="line">        <span class="comment">//numOtherDigits是[1346, 21345]中，除了第一位之外（不看21345中的第一位2）的数位中的1的数目</span></div><div class="line">        <span class="keyword">int</span> numOtherDigits;</div><div class="line">        <span class="comment">//numRecursive是递归计算[1-1234]中1的的数目</span></div><div class="line">        <span class="keyword">int</span> numRecursive;</div><div class="line">        </div><div class="line">		<span class="keyword">if</span>(first &gt; <span class="number">1</span>)&#123;</div><div class="line">			numFirstDigit = (<span class="keyword">int</span>)Math.pow(<span class="number">10</span>, length-<span class="number">1</span>);</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(first == <span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = curIdx+<span class="number">1</span>;i&lt;array.length;i++)&#123;</div><div class="line">				numFirstDigit = numFirstDigit * <span class="number">10</span> + array[i];</div><div class="line">			&#125;</div><div class="line">			numFirstDigit++;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		numOtherDigits = first * (length-<span class="number">1</span>) * (<span class="keyword">int</span>)Math.pow(<span class="number">10</span>, length-<span class="number">2</span>);</div><div class="line">		numRecursive = numberOf1(array,curIdx+<span class="number">1</span>);</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> numFirstDigit + numOtherDigits + numRecursive;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(numberOf1Between1AndN(<span class="number">1</span>));</div><div class="line">		System.out.println(numberOf1Between1AndN(<span class="number">6</span>));</div><div class="line">		System.out.println(numberOf1Between1AndN(<span class="number">10</span>));</div><div class="line">		System.out.println(numberOf1Between1AndN(<span class="number">11</span>));</div><div class="line">		System.out.println(numberOf1Between1AndN(<span class="number">92</span>));</div><div class="line">		System.out.println(numberOf1Between1AndN(<span class="number">21345</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题33：把数组排成最小的数"><a href="#面试题33：把数组排成最小的数" class="headerlink" title="面试题33：把数组排成最小的数"></a>面试题33：把数组排成最小的数</h2><blockquote>
+<p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3,32,321}，则打印出这三个数字能排成的最小数字321323。</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<p>本质上一个排序问题。改变判断排序的条件即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question33</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 把数组排成最小的数</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sortArrayToMinNum</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</div><div class="line">		</div><div class="line">		sort(array,<span class="number">0</span>,array.length-<span class="number">1</span>);</div><div class="line">		</div><div class="line">		StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</div><div class="line">			sb.append(array[i]);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> sb.toString();</div><div class="line">	&#125; </div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 快速排序，改变排序的判断条件</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(start &lt; end)&#123;</div><div class="line">			<span class="keyword">int</span> temp = array[start];</div><div class="line">			<span class="keyword">int</span> i = start;</div><div class="line">			<span class="keyword">int</span> j = end;</div><div class="line">			</div><div class="line">			<span class="keyword">while</span>(i&lt;j)&#123;</div><div class="line">				<span class="keyword">while</span>(i&lt;j &amp;&amp; (<span class="string">""</span>+temp + array[j]).compareTo(<span class="string">""</span>+array[j] + temp) &lt;= <span class="number">0</span> )&#123;</div><div class="line">					j--;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				<span class="keyword">if</span>(i&lt;j)</div><div class="line">					array[i++] = array[j];</div><div class="line">				</div><div class="line">				<span class="keyword">while</span>(i&lt;j &amp;&amp; (<span class="string">""</span>+temp + array[i]).compareTo(<span class="string">""</span>+array[i] + temp) &gt;= <span class="number">0</span>)&#123;</div><div class="line">					i++;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				<span class="keyword">if</span>(i&lt;j)</div><div class="line">					array[j--] = array[i];</div><div class="line">				</div><div class="line">			&#125;</div><div class="line">			array[i] = temp;</div><div class="line">			sort(array,start,i-<span class="number">1</span>);</div><div class="line">			sort(array,i+<span class="number">1</span>,end);</div><div class="line">			</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span>[] array = &#123;<span class="number">3</span>,<span class="number">321</span>,<span class="number">32</span>&#125;;</div><div class="line">		System.out.println(sortArrayToMinNum(array));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题34：丑数"><a href="#面试题34：丑数" class="headerlink" title="面试题34：丑数"></a>面试题34：丑数</h2><blockquote>
+<p>我们把只包含因子2、3和5的数称作丑数。求按从小到大的顺序的第1500个丑数，例如6，8都是丑数，但14不是，因为它包含因子7.习惯上我们把1当做第一个丑数。</p>
+</blockquote>
+<p><strong>解题思路：</strong><br>用空间换时间，用数组存储丑数。<br>丑数乘以2、3、5仍是丑数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question34</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">uglyNumOfIndexK</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(k &lt;= <span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[k];</div><div class="line">		array[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> nextNum = <span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> multi2 = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> multi3 = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> multi5 = <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(nextNum &lt; k)&#123;</div><div class="line">			</div><div class="line">			array[nextNum] = Math.min(Math.min(array[multi2] * <span class="number">2</span>, array[multi3] * <span class="number">3</span>),array[multi5] * <span class="number">5</span>);</div><div class="line">			</div><div class="line">			<span class="keyword">while</span>(array[multi2] * <span class="number">2</span> &lt;= array[nextNum])&#123;</div><div class="line">				multi2++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">while</span>(array[multi3] * <span class="number">3</span> &lt;= array[nextNum])&#123;</div><div class="line">				multi3++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">while</span>(array[multi5] * <span class="number">5</span> &lt;= array[nextNum])&#123;</div><div class="line">				multi5++;</div><div class="line">			&#125;</div><div class="line">			nextNum++;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> array[nextNum-<span class="number">1</span>];</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(uglyNumOfIndexK(<span class="number">11</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题35：第一个只出现一次的字符"><a href="#面试题35：第一个只出现一次的字符" class="headerlink" title="面试题35：第一个只出现一次的字符"></a>面试题35：第一个只出现一次的字符</h2><blockquote>
+<p>在字符串中找出第一个只出现一次的字符。如输入”abaccdeff“，则输出”b“。</p>
+</blockquote>
+<p><strong>解题思路：</strong>:<br>哈希表，牺牲空间换时间。O(n)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> java.util.Set;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question35</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">firstNotRepeatingChar</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() &lt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Arg should not be null or empty"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">char</span> c = s.charAt(i);</div><div class="line">            <span class="keyword">if</span> (map.containsKey(c)) &#123;</div><div class="line">                map.put(c, -<span class="number">1</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                map.put(c, i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Set&lt;Map.Entry&lt;Character, Integer&gt;&gt; entrySet = map.entrySet();</div><div class="line">        <span class="comment">// 记录只出现一次的字符的索引</span></div><div class="line">        <span class="keyword">int</span> idx = Integer.MAX_VALUE;</div><div class="line">        <span class="comment">// 记录只出现一次的字符</span></div><div class="line">        <span class="keyword">char</span> result = <span class="string">'\0'</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 找最小索引对应的字符</span></div><div class="line">        <span class="keyword">for</span> (Map.Entry&lt;Character, Integer&gt; entry : entrySet) &#123;</div><div class="line">            <span class="keyword">if</span> (entry.getValue() &gt;= <span class="number">0</span> &amp;&amp; entry.getValue() &lt; idx) &#123;</div><div class="line">                idx = entry.getValue();</div><div class="line">                result = entry.getKey();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(firstNotRepeatingChar(<span class="string">"google"</span>)); <span class="comment">// l</span></div><div class="line">        System.out.println(firstNotRepeatingChar(<span class="string">"aabccdbd"</span>)); <span class="comment">// '\0'</span></div><div class="line">        System.out.println(firstNotRepeatingChar(<span class="string">"abcdefg"</span>)); <span class="comment">// a</span></div><div class="line">        System.out.println(firstNotRepeatingChar(<span class="string">"gfedcba"</span>)); <span class="comment">// g</span></div><div class="line">        System.out.println(firstNotRepeatingChar(<span class="string">"zgfedcba"</span>)); <span class="comment">// g</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题36：数组中的逆序对"><a href="#面试题36：数组中的逆序对" class="headerlink" title="面试题36：数组中的逆序对"></a>面试题36：数组中的逆序对</h2><blockquote>
+<p>在数组中的两个数字，如果前面一个数字大于后面一个数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<p><img src="/media/15006375515954/15010670395326.jpg" alt=""></p>
+<p>类似于归并排序，空间复杂度O(N)，时间复杂度为 O(NlogN) 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question36</span> </span>&#123;</div><div class="line"></div><div class="line">	 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">inversePairs</span><span class="params">(<span class="keyword">int</span>[] data)</span> </span>&#123;</div><div class="line">	        <span class="keyword">if</span> (data == <span class="keyword">null</span> || data.length &lt; <span class="number">1</span>) &#123;</div><div class="line">	            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Array arg should contain at least a value"</span>);</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="keyword">int</span>[] copy = <span class="keyword">new</span> <span class="keyword">int</span>[data.length];</div><div class="line">	        System.arraycopy(data, <span class="number">0</span>, copy, <span class="number">0</span>, data.length);</div><div class="line"></div><div class="line">	        <span class="keyword">return</span> inversePairsCore(data, copy, <span class="number">0</span>, data.length - <span class="number">1</span>);</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">inversePairsCore</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span>[] copy, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line"></div><div class="line">	        <span class="keyword">if</span> (start == end) &#123;</div><div class="line">	            copy[start] = data[start];</div><div class="line">	            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="keyword">int</span> length = (end - start) / <span class="number">2</span>;</div><div class="line">	        <span class="keyword">int</span> left = inversePairsCore(copy, data, start, start + length);</div><div class="line">	        <span class="keyword">int</span> right = inversePairsCore(copy, data, start + length + <span class="number">1</span>, end);</div><div class="line"></div><div class="line">	        <span class="comment">// 前半段的最后一个数字的下标</span></div><div class="line">	        <span class="keyword">int</span> i = start + length;</div><div class="line">	        <span class="comment">// 后半段最后一个数字的下标</span></div><div class="line">	        <span class="keyword">int</span> j = end;</div><div class="line">	        <span class="comment">// 开始拷贝的位置</span></div><div class="line">	        <span class="keyword">int</span> indexCopy = end;</div><div class="line">	        <span class="comment">// 逆序数</span></div><div class="line">	        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">	        <span class="keyword">while</span> (i &gt;= start &amp;&amp; j &gt;= start + length + <span class="number">1</span>) &#123;</div><div class="line">	            <span class="keyword">if</span> (data[i] &gt; data[j]) &#123;</div><div class="line">	                copy[indexCopy] = data[i];</div><div class="line">	                indexCopy--;</div><div class="line">	                i--;</div><div class="line">	                count += j - (start + length); <span class="comment">// 对应的逆序数</span></div><div class="line">	            &#125; <span class="keyword">else</span> &#123;</div><div class="line">	                copy[indexCopy] = data[j];</div><div class="line">	                indexCopy--;</div><div class="line">	                j--;</div><div class="line">	            &#125;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="keyword">for</span> (; i &gt;= start;) &#123;</div><div class="line">	            copy[indexCopy] = data[i];</div><div class="line">	            indexCopy--;</div><div class="line">	            i--;</div><div class="line">	        &#125;</div><div class="line"></div><div class="line">	        <span class="keyword">for</span> (; j &gt;= start + length + <span class="number">1</span>;) &#123;</div><div class="line">	            copy[indexCopy] = data[j];</div><div class="line">	            indexCopy--;</div><div class="line">	            j--;</div><div class="line">	        &#125;</div><div class="line">	        <span class="keyword">return</span> count + left + right;</div><div class="line">	    &#125;</div><div class="line"></div><div class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	        <span class="keyword">int</span>[] data = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data)); <span class="comment">// 3</span></div><div class="line">	        <span class="keyword">int</span>[] data2 = &#123;<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data2)); <span class="comment">//  15</span></div><div class="line">	        <span class="keyword">int</span>[] data3 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data3)); <span class="comment">// 0</span></div><div class="line">	        <span class="keyword">int</span>[] data4 = &#123;<span class="number">1</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data4)); <span class="comment">// 0</span></div><div class="line">	        <span class="keyword">int</span>[] data5 = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data5)); <span class="comment">// 0</span></div><div class="line">	        <span class="keyword">int</span>[] data6 = &#123;<span class="number">2</span>, <span class="number">1</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data6)); <span class="comment">// 1</span></div><div class="line">	        <span class="keyword">int</span>[] data7 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>&#125;;</div><div class="line">	        System.out.println(inversePairs(data7)); <span class="comment">// 3</span></div><div class="line">	    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试题37：两个链表的第一个公共节点"><a href="#面试题37：两个链表的第一个公共节点" class="headerlink" title="面试题37：两个链表的第一个公共节点"></a>面试题37：两个链表的第一个公共节点</h2><blockquote>
+<p>输入两个链表，找出它们的第一个公共节点。</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<p>首先遍历两个链表得到它们的长度，就能知道哪个链表长，以及长的链表比短的链表多了几个节点。在第二次遍历的时候，在较长的链表上先走若干步，接着再同时在两个链表上遍历，找到第一个相同的节点就是它们的第一个公共节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.offer.ch5;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Question37</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> value;</div><div class="line">		Node next;</div><div class="line">		</div><div class="line">		Node(<span class="keyword">int</span> value)&#123;</div><div class="line">			<span class="keyword">this</span>.value = value;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Node <span class="title">findFirstPublicNode</span><span class="params">(Node head1,Node head2)</span></span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(head1 == <span class="keyword">null</span> || head2 == <span class="keyword">null</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		</div><div class="line">		Node newHead1 = head1;</div><div class="line">		Node newHead2 = head2;</div><div class="line">		<span class="keyword">int</span> length1 = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> length2 = <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(head1!=<span class="keyword">null</span>)&#123;</div><div class="line">			length1++;</div><div class="line">			head1 = head1.next;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(head2!=<span class="keyword">null</span>)&#123;</div><div class="line">			length2++;</div><div class="line">			head2 = head2.next;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(length1&gt;length2)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length1-length2;i++)&#123;</div><div class="line">				newHead1 = newHead1.next;</div><div class="line">			&#125;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length2-length1;i++)&#123;</div><div class="line">				newHead2 = newHead2.next;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		Node publicNode = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">while</span>(newHead1!=<span class="keyword">null</span>)&#123;</div><div class="line">			<span class="keyword">if</span>(newHead1 != newHead2)&#123;</div><div class="line">				newHead1 = newHead1.next;</div><div class="line">				newHead2 = newHead2.next;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				publicNode = newHead1;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;	</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> publicNode;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// 第一个公共结点在链表中间</span></div><div class="line">        <span class="comment">// 1 - 2 - 3 \</span></div><div class="line">        <span class="comment">//            6 - 7</span></div><div class="line">        <span class="comment">//     4 - 5 /</span></div><div class="line">        Node n1 = <span class="keyword">new</span> Node(<span class="number">1</span>);</div><div class="line">        Node n2 = <span class="keyword">new</span> Node(<span class="number">2</span>);</div><div class="line">        Node n3 = <span class="keyword">new</span> Node(<span class="number">3</span>);</div><div class="line">        Node n4 = <span class="keyword">new</span> Node(<span class="number">4</span>);</div><div class="line">        Node n5 = <span class="keyword">new</span> Node(<span class="number">5</span>);</div><div class="line">        Node n6 = <span class="keyword">new</span> Node(<span class="number">6</span>);</div><div class="line">        Node n7 = <span class="keyword">new</span> Node(<span class="number">7</span>);</div><div class="line"></div><div class="line">        n1.next = n2;</div><div class="line">        n2.next = n3;</div><div class="line">        n3.next = n6;</div><div class="line">        n6.next = n7;</div><div class="line"></div><div class="line">        n4.next = n5;</div><div class="line">        n5.next = n6;		</div><div class="line"></div><div class="line">        System.out.println(findFirstPublicNode(n1, n4).value);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/剑指Offer/" rel="tag"># 剑指Offer</a>
+          
+            <a href="/tags/求职/" rel="tag"># 求职</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/22/JVM运行机制/" rel="next" title="JVM运行机制">
+                <i class="fa fa-chevron-left"></i> JVM运行机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/22/GC算法/" rel="prev" title="GC算法">
+                GC算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Loyd Chen" />
+          <p class="site-author-name" itemprop="name">Loyd Chen</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第5章-优化时间和空间效率"><span class="nav-number">1.</span> <span class="nav-text">第5章 优化时间和空间效率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题29：数组中出现次数超过一半的数字"><span class="nav-number">1.1.</span> <span class="nav-text">面试题29：数组中出现次数超过一半的数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题30：最小的k个数"><span class="nav-number">1.2.</span> <span class="nav-text">面试题30：最小的k个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题31：连续子数组的最大和"><span class="nav-number">1.3.</span> <span class="nav-text">面试题31：连续子数组的最大和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题32：从1到n整数中1出现的次数"><span class="nav-number">1.4.</span> <span class="nav-text">面试题32：从1到n整数中1出现的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题33：把数组排成最小的数"><span class="nav-number">1.5.</span> <span class="nav-text">面试题33：把数组排成最小的数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题34：丑数"><span class="nav-number">1.6.</span> <span class="nav-text">面试题34：丑数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题35：第一个只出现一次的字符"><span class="nav-number">1.7.</span> <span class="nav-text">面试题35：第一个只出现一次的字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题36：数组中的逆序对"><span class="nav-number">1.8.</span> <span class="nav-text">面试题36：数组中的逆序对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题37：两个链表的第一个公共节点"><span class="nav-number">1.9.</span> <span class="nav-text">面试题37：两个链表的第一个公共节点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Loyd Chen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
