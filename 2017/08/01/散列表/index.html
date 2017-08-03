@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据结构,散列表," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="散列表基本概念散列表又叫哈希表(hash table)，通过访问key而直接访问存储的value值。它的key-value之间存在一个映射函数，我们可以通过key值和“看不到”的映射函数（散列函数）访问对应的value值。这加快了查找的速度。 散列方法不同于顺序查找、二分查找、二叉排序树及B-树上的查找。它不以关键字的比较为基本操作，采用直接寻址技术（就是说，它是直接通过key映射[映射函数，实现">
+<meta name="keywords" content="数据结构,散列表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="散列表">
+<meta property="og:url" content="http://loyd.tech/2017/08/01/散列表/index.html">
+<meta property="og:site_name" content="Loyd">
+<meta property="og:description" content="散列表基本概念散列表又叫哈希表(hash table)，通过访问key而直接访问存储的value值。它的key-value之间存在一个映射函数，我们可以通过key值和“看不到”的映射函数（散列函数）访问对应的value值。这加快了查找的速度。 散列方法不同于顺序查找、二分查找、二叉排序树及B-树上的查找。它不以关键字的比较为基本操作，采用直接寻址技术（就是说，它是直接通过key映射[映射函数，实现">
+<meta property="og:image" content="http://loyd.tech/media/15016742015712/15016746458990.jpg">
+<meta property="og:image" content="http://loyd.tech/media/15016742015712/15016770351766.jpg">
+<meta property="og:updated_time" content="2017-08-03T02:08:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="散列表">
+<meta name="twitter:description" content="散列表基本概念散列表又叫哈希表(hash table)，通过访问key而直接访问存储的value值。它的key-value之间存在一个映射函数，我们可以通过key值和“看不到”的映射函数（散列函数）访问对应的value值。这加快了查找的速度。 散列方法不同于顺序查找、二分查找、二叉排序树及B-树上的查找。它不以关键字的比较为基本操作，采用直接寻址技术（就是说，它是直接通过key映射[映射函数，实现">
+<meta name="twitter:image" content="http://loyd.tech/media/15016742015712/15016746458990.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://loyd.tech/2017/08/01/散列表/"/>
+
+
+
+
+
+  <title>散列表 | Loyd</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loyd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://loyd.tech/2017/08/01/散列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Loyd Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loyd">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">散列表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T19:32:30+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="散列表基本概念"><a href="#散列表基本概念" class="headerlink" title="散列表基本概念"></a>散列表基本概念</h1><p>散列表又叫哈希表(hash table)，通过访问key而直接访问存储的value值。它的key-value之间存在一个映射函数，我们可以通过key值和“看不到”的映射函数（散列函数）访问对应的value值。这加快了查找的速度。</p>
+<p>散列方法不同于顺序查找、二分查找、二叉排序树及B-树上的查找。它不以关键字的比较为基本操作，采用直接寻址技术（就是说，它是直接通过key映射[映射函数，实现的方式有多种] 到内存地址上去的）。在理想情况下，无须任何比较就可以找到待查关键字，查找的期望时间为O(1)）。</p>
+<p><img src="/media/15016742015712/15016746458990.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h1><p>散列函数就是将关键字映射到散列表的对应位置中的函数，理想情况下它应该计算起来简单，并且应该保证任意两个不同的关键字映射到不同的单元。不过，这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的，因此，我们寻找一个散列函数，该函数要在单元之间均匀地分配关键字。</p>
+<h2 id="关键字是整数"><a href="#关键字是整数" class="headerlink" title="关键字是整数"></a>关键字是整数</h2><p>如果输入的关键字是整数，则一般合理的方法就是直接返回Key mod TableSize，但有些特殊情况需要考虑。</p>
+<p>例如：若表的大小是10而关键字都是以0为个位。</p>
+<p>为了避免上面的情况，好的办法通常是保证表的大小是素数。当输入的关键字是随机整数时，散列函数不仅计算起来简单而且关键字的分配也很均匀。</p>
+<h2 id="关键字是字符串"><a href="#关键字是字符串" class="headerlink" title="关键字是字符串"></a>关键字是字符串</h2><p>关键字是字符串，在这种情况下，散列函数需要仔细地选择。</p>
+<p>第一种选择是把字符串中的字符的ASCII码（或Unicode码）值加起来，再除以表的大小。但如果表很大，函数将不会很好的分配关键字。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(String key,<span class="keyword">int</span> tableSize)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> hashVal = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;key.length();i++)&#123;</div><div class="line">        hashVal += key.charAt(i);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> hashVal % tableSize;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第二种选择假设Key至少有3个字符，值27表示英文字母表的字幕外加一个个空格的个数，对于表很大的情况，可以较为合理的分布。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(String key,<span class="keyword">int</span> tableSize)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> (key.charAt(<span class="number">0</span>) + <span class="number">27</span>*key.charAt(<span class="number">1</span>) </div><div class="line">    + <span class="number">729</span>*key.charAt(<span class="number">2</span>)) % tableSize;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是英文不是随机的，虽然3个字符有26的3次方17576种，但实际上只有2851种，所以这个函数还是不合适。</p>
+<p>第三种情况，这个散列函数设计关键字中的所有字符，并且一般可以分布的很好。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(String key,<span class="keyword">int</span> tableSize)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> hashVal = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;key.length();i++)&#123;</div><div class="line">        hashVal = <span class="number">37</span> * hashVal + key.charAt(i);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    hashVal %= tableSize;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(hashVal &lt; <span class="number">0</span>)</div><div class="line">        hashVal += tableSize;</div><div class="line">        </div><div class="line">    <span class="keyword">return</span> hashVal;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果关键字特别长，那么该散列函数计算起来将会花费过多的时间，在这种情况下通常的经验是不使用所有的字符，例如只是用技术位置上的字符。</p>
+<h1 id="分离链接法"><a href="#分离链接法" class="headerlink" title="分离链接法"></a>分离链接法</h1><p>解决冲突的第一种方法通常叫做分离链接法（separate chaining），其做法是将散列到同一个值得所有元素保留到一个表中。</p>
+<p><img src="/media/15016742015712/15016770351766.jpg" alt=""></p>
+<p>分离链接发的Java实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.hashtable;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.LinkedList;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeparateChainingHashTable</span>&lt;<span class="title">AnyType</span>&gt; </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_TABLE_SIZE = <span class="number">101</span>;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> List&lt;AnyType&gt;[] theLists;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> currentSize;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SeparateChainingHashTable</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>(DEFAULT_TABLE_SIZE);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SeparateChainingHashTable</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">		theLists = <span class="keyword">new</span> LinkedList[nextPrime(size)];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; theLists.length; i++)</div><div class="line">			theLists[i] = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		List&lt;AnyType&gt; whichList = theLists[myhash(x)];</div><div class="line">		<span class="keyword">if</span> (!whichList.contains(x)) &#123;</div><div class="line">			whichList.add(x);</div><div class="line"></div><div class="line">			<span class="comment">// Rehash; see Section 5.5</span></div><div class="line">			<span class="keyword">if</span> (++currentSize &gt; theLists.length)</div><div class="line">				rehash();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		List&lt;AnyType&gt; whichList = theLists[myhash(x)];</div><div class="line">		<span class="keyword">if</span> (whichList.contains(x)) &#123;</div><div class="line">			whichList.remove(x);</div><div class="line">			currentSize--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		List&lt;AnyType&gt; whichList = theLists[myhash(x)];</div><div class="line">		<span class="keyword">return</span> whichList.contains(x);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; theLists.length; i++)</div><div class="line">			theLists[i].clear();</div><div class="line">		currentSize = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(String key, <span class="keyword">int</span> tableSize)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> hashVal = <span class="number">0</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; key.length(); i++)</div><div class="line">			hashVal = <span class="number">37</span> * hashVal + key.charAt(i);</div><div class="line"></div><div class="line">		hashVal %= tableSize;</div><div class="line">		<span class="keyword">if</span> (hashVal &lt; <span class="number">0</span>)</div><div class="line">			hashVal += tableSize;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> hashVal;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rehash</span><span class="params">()</span> </span>&#123;</div><div class="line">		List&lt;AnyType&gt;[] oldLists = theLists;</div><div class="line"></div><div class="line">		theLists = <span class="keyword">new</span> List[nextPrime(<span class="number">2</span> * theLists.length)];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; theLists.length; j++)</div><div class="line">			theLists[j] = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line"></div><div class="line">		currentSize = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (List&lt;AnyType&gt; list : oldLists)</div><div class="line">			<span class="keyword">for</span> (AnyType item : list)</div><div class="line">				insert(item);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">myhash</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> hashVal = x.hashCode();</div><div class="line"></div><div class="line">		hashVal %= theLists.length;</div><div class="line">		<span class="keyword">if</span> (hashVal &lt; <span class="number">0</span>)</div><div class="line">			hashVal += theLists.length;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> hashVal;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">			n++;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (; !isPrime(n); n += <span class="number">2</span>)</div><div class="line">			;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> n;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n == <span class="number">2</span> || n == <span class="number">3</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (n == <span class="number">1</span> || n % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i * i &lt;= n; i += <span class="number">2</span>)</div><div class="line">			<span class="keyword">if</span> (n % i == <span class="number">0</span>)</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		SeparateChainingHashTable&lt;Integer&gt; H = <span class="keyword">new</span> SeparateChainingHashTable&lt;&gt;();</div><div class="line"></div><div class="line">		<span class="keyword">long</span> startTime = System.currentTimeMillis();</div><div class="line"></div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> NUMS = <span class="number">2000000</span>;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> GAP = <span class="number">37</span>;</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"Checking... (no more output means success)"</span>);</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = GAP; i != <span class="number">0</span>; i = (i + GAP) % NUMS)</div><div class="line">			H.insert(i);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; NUMS; i += <span class="number">2</span>)</div><div class="line">			H.remove(i);</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; NUMS; i += <span class="number">2</span>)</div><div class="line">			<span class="keyword">if</span> (!H.contains(i))</div><div class="line">				System.out.println(<span class="string">"Find fails "</span> + i);</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; NUMS; i += <span class="number">2</span>) &#123;</div><div class="line">			<span class="keyword">if</span> (H.contains(i))</div><div class="line">				System.out.println(<span class="string">"OOPS!!! "</span> + i);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">long</span> endTime = System.currentTimeMillis();</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"Elapsed time: "</span> + (endTime - startTime));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="不用链表的散列表"><a href="#不用链表的散列表" class="headerlink" title="不用链表的散列表"></a>不用链表的散列表</h1><h2 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h2><p>在线性探测法中，函数f是i的线性函数，典型情形是f(i)=i。这相当于相继探测逐个单元，已找出一个空单元。</p>
+<p>将关键字[89,18,49,58,69]插入到散列表中的情况：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Empty Table</th>
+<th style="text-align:center">After 89</th>
+<th style="text-align:center">After 18</th>
+<th style="text-align:center">After 49</th>
+<th style="text-align:center">After 58</th>
+<th style="text-align:center">After 69</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">58</td>
+<td style="text-align:center">58</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">69</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+</tr>
+</tbody>
+</table>
+<p>即使表相对较空，占据的单元也会开始形成一些区块，其结果称为一次聚集，就是说，散列到区块中的任何关键字都需要多次试选单元才能解决冲突，然后关键字被添加到相应的区块中。</p>
+<h2 id="平方探测法"><a href="#平方探测法" class="headerlink" title="平方探测法"></a>平方探测法</h2><p>平方探测是消除线性探测中一次聚集问题的冲突解决方法。</p>
+<p>流行的选择是f(i) = i <sup>2</sup>。</p>
+<p>将关键字[89,18,49,58,69]插入到散列表中的情况：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Empty Table</th>
+<th style="text-align:center">After 89</th>
+<th style="text-align:center">After 18</th>
+<th style="text-align:center">After 49</th>
+<th style="text-align:center">After 58</th>
+<th style="text-align:center">After 69</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">58</td>
+<td style="text-align:center">58</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">69</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> tech.loyd.ds.hashtable;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuadraticProbingHashTable</span>&lt;<span class="title">AnyType</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_TABLE_SIZE = <span class="number">101</span>;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> HashEntry&lt;AnyType&gt;[] array; <span class="comment">// The array of elements</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> occupied; <span class="comment">// The number of occupied cells</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> theSize; <span class="comment">// Current size</span></div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">QuadraticProbingHashTable</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>(DEFAULT_TABLE_SIZE);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">QuadraticProbingHashTable</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">		allocateArray(size);</div><div class="line">		doClear();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		<span class="comment">// Insert x as active</span></div><div class="line">		<span class="keyword">int</span> currentPos = findPos(x);</div><div class="line">		<span class="keyword">if</span> (isActive(currentPos))</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		array[currentPos] = <span class="keyword">new</span> HashEntry&lt;&gt;(x, <span class="keyword">true</span>);</div><div class="line">		theSize++;</div><div class="line"></div><div class="line">		<span class="comment">// Rehash; see Section 5.5</span></div><div class="line">		<span class="keyword">if</span> (++occupied &gt; array.length / <span class="number">2</span>)</div><div class="line">			rehash();</div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rehash</span><span class="params">()</span> </span>&#123;</div><div class="line">		HashEntry&lt;AnyType&gt;[] oldArray = array;</div><div class="line"></div><div class="line">		<span class="comment">// Create a new double-sized, empty table</span></div><div class="line">		allocateArray(<span class="number">2</span> * oldArray.length);</div><div class="line">		occupied = <span class="number">0</span>;</div><div class="line">		theSize = <span class="number">0</span>;</div><div class="line"></div><div class="line">		<span class="comment">// Copy table over</span></div><div class="line">		<span class="keyword">for</span> (HashEntry&lt;AnyType&gt; entry : oldArray)</div><div class="line">			<span class="keyword">if</span> (entry != <span class="keyword">null</span> &amp;&amp; entry.isActive)</div><div class="line">				insert(entry.element);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findPos</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> offset = <span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> currentPos = myhash(x);</div><div class="line"></div><div class="line">		<span class="keyword">while</span> (array[currentPos] != <span class="keyword">null</span> &amp;&amp; !array[currentPos].element.equals(x)) &#123;</div><div class="line">			currentPos += offset; <span class="comment">// Compute ith probe</span></div><div class="line">			offset += <span class="number">2</span>;</div><div class="line">			<span class="keyword">if</span> (currentPos &gt;= array.length)</div><div class="line">				currentPos -= array.length;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> currentPos;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> currentPos = findPos(x);</div><div class="line">		<span class="keyword">if</span> (isActive(currentPos)) &#123;</div><div class="line">			array[currentPos].isActive = <span class="keyword">false</span>;</div><div class="line">			theSize--;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125; <span class="keyword">else</span></div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> theSize;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">capacity</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> array.length;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> currentPos = findPos(x);</div><div class="line">		<span class="keyword">return</span> isActive(currentPos);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isActive</span><span class="params">(<span class="keyword">int</span> currentPos)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> array[currentPos] != <span class="keyword">null</span> &amp;&amp; array[currentPos].isActive;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		doClear();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doClear</span><span class="params">()</span> </span>&#123;</div><div class="line">		occupied = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++)</div><div class="line">			array[i] = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">myhash</span><span class="params">(AnyType x)</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> hashVal = x.hashCode();</div><div class="line"></div><div class="line">		hashVal %= array.length;</div><div class="line">		<span class="keyword">if</span> (hashVal &lt; <span class="number">0</span>)</div><div class="line">			hashVal += array.length;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> hashVal;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">HashEntry</span>&lt;<span class="title">AnyType</span>&gt; </span>&#123;</div><div class="line">		<span class="keyword">public</span> AnyType element; <span class="comment">// the element</span></div><div class="line">		<span class="keyword">public</span> <span class="keyword">boolean</span> isActive; <span class="comment">// false if marked deleted</span></div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">HashEntry</span><span class="params">(AnyType e)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>(e, <span class="keyword">true</span>);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">HashEntry</span><span class="params">(AnyType e, <span class="keyword">boolean</span> i)</span> </span>&#123;</div><div class="line">			element = e;</div><div class="line">			isActive = i;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">allocateArray</span><span class="params">(<span class="keyword">int</span> arraySize)</span> </span>&#123;</div><div class="line">		array = <span class="keyword">new</span> HashEntry[nextPrime(arraySize)];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">			n++;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (; !isPrime(n); n += <span class="number">2</span>)</div><div class="line">			;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> n;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n == <span class="number">2</span> || n == <span class="number">3</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (n == <span class="number">1</span> || n % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i * i &lt;= n; i += <span class="number">2</span>)</div><div class="line">			<span class="keyword">if</span> (n % i == <span class="number">0</span>)</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Simple main</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		QuadraticProbingHashTable&lt;String&gt; H = <span class="keyword">new</span> QuadraticProbingHashTable&lt;&gt;();</div><div class="line"></div><div class="line">		<span class="keyword">long</span> startTime = System.currentTimeMillis();</div><div class="line"></div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> NUMS = <span class="number">2000000</span>;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">int</span> GAP = <span class="number">37</span>;</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"Checking... (no more output means success)"</span>);</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = GAP; i != <span class="number">0</span>; i = (i + GAP) % NUMS)</div><div class="line">			H.insert(<span class="string">""</span> + i);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = GAP; i != <span class="number">0</span>; i = (i + GAP) % NUMS)</div><div class="line">			<span class="keyword">if</span> (H.insert(<span class="string">""</span> + i))</div><div class="line">				System.out.println(<span class="string">"OOPS!!! "</span> + i);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; NUMS; i += <span class="number">2</span>)</div><div class="line">			H.remove(<span class="string">""</span> + i);</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; NUMS; i += <span class="number">2</span>)</div><div class="line">			<span class="keyword">if</span> (!H.contains(<span class="string">""</span> + i))</div><div class="line">				System.out.println(<span class="string">"Find fails "</span> + i);</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; NUMS; i += <span class="number">2</span>) &#123;</div><div class="line">			<span class="keyword">if</span> (H.contains(<span class="string">""</span> + i))</div><div class="line">				System.out.println(<span class="string">"OOPS!!! "</span> + i);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">long</span> endTime = System.currentTimeMillis();</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"Elapsed time: "</span> + (endTime - startTime));</div><div class="line">		System.out.println(<span class="string">"H size is: "</span> + H.size());</div><div class="line">		System.out.println(<span class="string">"Array size is: "</span> + H.capacity());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="双散列"><a href="#双散列" class="headerlink" title="双散列"></a>双散列</h2><p>对于双散列，流行的选择是 f(x) = i * hash<sub>2</sub> (x)。这个公式是说，我们将第二个散列函数应用到x并在距离hash<sub>2</sub> (x)，2hash<sub>2</sub> (x)，…等处探测。</p>
+<p>通常hash<sub>2</sub> (x) = R - (x mod R)，其中R为小于TableSize的素数，下面我们选择R为7。</p>
+<p>将关键字[89,18,49,58,69]插入到散列表中的情况：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Empty Table</th>
+<th style="text-align:center">After 89</th>
+<th style="text-align:center">After 18</th>
+<th style="text-align:center">After 49</th>
+<th style="text-align:center">After 58</th>
+<th style="text-align:center">After 69</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">69</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">58</td>
+<td style="text-align:center">58</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">89</td>
+</tr>
+</tbody>
+</table>
+<h1 id="再散列"><a href="#再散列" class="headerlink" title="再散列"></a>再散列</h1><p>对于使用平方探测的开放定址散列法，如果散列表填的太满，那么操作的运行时间将开始消耗过长，且插入操作可能失败。此时，一种解决方法是建立另外一个约两倍大的表，使用新的散列函数，扫描整个原始散列表，计算每个元素的新散列值并将其插入到新表中。</p>
+<p>代码见上面的rehash()方法。</p>
+<p>在散列可以以多种方式实现：</p>
+<ul>
+<li>第一种是只要表满到一半就再散列。</li>
+<li>第二种是只有插入失败才再散列。</li>
+<li>第三种是当散列表到达某一填装因子时进行再散列。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/散列表/" rel="tag"># 散列表</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/01/二叉堆/" rel="next" title="二叉堆">
+                <i class="fa fa-chevron-left"></i> 二叉堆
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Loyd Chen" />
+          <p class="site-author-name" itemprop="name">Loyd Chen</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表基本概念"><span class="nav-number">1.</span> <span class="nav-text">散列表基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列函数"><span class="nav-number">2.</span> <span class="nav-text">散列函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字是整数"><span class="nav-number">2.1.</span> <span class="nav-text">关键字是整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字是字符串"><span class="nav-number">2.2.</span> <span class="nav-text">关键字是字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分离链接法"><span class="nav-number">3.</span> <span class="nav-text">分离链接法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不用链表的散列表"><span class="nav-number">4.</span> <span class="nav-text">不用链表的散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性探测法"><span class="nav-number">4.1.</span> <span class="nav-text">线性探测法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平方探测法"><span class="nav-number">4.2.</span> <span class="nav-text">平方探测法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双散列"><span class="nav-number">4.3.</span> <span class="nav-text">双散列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#再散列"><span class="nav-number">5.</span> <span class="nav-text">再散列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Loyd Chen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
